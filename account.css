@@ -1,0 +1,43 @@
+/* Account navigation and the compact rewards overview. */
+body:not(.is-admin) [data-admin-link]{display:none}
+.header .admin-header-entry{display:inline-flex;align-items:center;text-decoration:none;padding:10px 12px;border:1px solid #cbd9c4;border-radius:6px;font-size:14px;color:#284f3d}
+#header-account{font-weight:600;white-space:nowrap}
+#rewards-dialog{width:min(660px,calc(100% - 28px))}
+#rewards-dialog .modal-head{margin-bottom:23px}
+#rewards-dialog #account-name{margin:10px 0 5px;font-size:28px}
+#rewards-dialog #account-email{margin:0;font-size:14px}
+.account-summary{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.account-metric{padding:22px;border:1px solid #dce6d5;border-radius:11px;background:#edf3e6;min-width:0}
+.account-metric>span{display:block;font-size:14px;font-weight:600}
+.account-metric>strong{display:block;font-family:Manrope,sans-serif;font-size:46px;line-height:1.25;margin:8px 0;color:#1b5148;font-weight:650}
+.account-metric>small{display:block;font-size:12px;line-height:1.5;color:#687d60}
+.account-points{background:#1b5148;border-color:#1b5148;color:#fff}
+.account-points>strong{color:#fff}
+.account-points>small{color:#d5e5ce}
+.account-redeem-row{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:21px 0}
+.account-redeem-row>p{margin:0;font-size:14px;line-height:1.6;color:#63795b;max-width:320px}
+.account-redeem-row .button{white-space:nowrap;font-size:14px;padding:14px 19px;gap:12px}
+#rewards-dialog .account-details{padding:17px 0;margin:0;border-top:1px solid #dce5d5}
+#rewards-dialog .account-details>summary{cursor:pointer;font-size:15px;font-weight:600;line-height:1.6}
+#rewards-dialog .account-details[open]>summary{margin-bottom:16px}
+#rewards-dialog .account-details .form-note{font-size:13px;line-height:1.7}
+.account-vouchers{padding:12px 0 22px}
+.account-vouchers>h3{font-size:20px;margin:12px 0 15px;letter-spacing:-.4px}
+.account-empty{font-size:14px;line-height:1.7;color:#708465;background:#eff3e9;border:1px dashed #d6e2cb;border-radius:8px;padding:20px;margin:0}
+#rewards-dialog .issued-voucher{padding:18px;margin:12px 0;background:#fff}
+#rewards-dialog .issued-voucher>div{align-items:flex-start;flex-wrap:wrap;font-size:15px}
+#rewards-dialog .voucher-state{font-size:12px;padding:4px 8px;background:#edf3e6;color:#446739;border-radius:4px}
+#rewards-dialog .issued-voucher p{font-size:14px;margin:10px 0}
+#rewards-dialog .issued-voucher code{font-size:15px}
+#rewards-dialog .issued-voucher small{font-size:12px;line-height:1.6}
+#rewards-dialog .reward-brands{grid-template-columns:repeat(2,minmax(0,1fr))}
+#rewards-dialog .reward-brands>div{min-width:0;padding:17px}
+#rewards-dialog .reward-brands strong{font-size:16px;overflow-wrap:anywhere}
+#rewards-dialog .reward-brands span{font-size:12px;line-height:1.6}
+#rewards-dialog .reward-redeem{font-size:13px;min-height:40px}
+#rewards-dialog .points-entry{font-size:14px}
+#rewards-dialog .points-entry span{font-size:12px}
+#rewards-dialog #reward-error:empty{display:none}
+#rewards-dialog #sign-out{margin-top:22px;font-size:14px}
+@media(max-width:700px){.header .admin-header-entry{font-size:12px;padding:9px 10px}.is-admin .header-end{gap:10px}.account-redeem-row{gap:16px}}
+@media(max-width:480px){#rewards-dialog{padding:22px}.account-summary{gap:10px}.account-metric{padding:17px 13px}.account-metric>span{font-size:13px}.account-metric>strong{font-size:38px}.account-redeem-row{align-items:stretch;flex-direction:column;gap:14px}.account-redeem-row>p{max-width:none}.account-redeem-row .button{width:100%}#rewards-dialog .reward-brands{grid-template-columns:1fr}.is-admin .header{flex-wrap:wrap;height:auto;min-height:64px;padding-block:12px;gap:10px}.is-admin .header-end{flex-wrap:wrap;margin-left:auto}.is-admin .header .resources-header-button{display:none}}

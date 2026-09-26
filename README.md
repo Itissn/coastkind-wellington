@@ -38,6 +38,10 @@ Official external resources are available through **Useful links** on the map an
 
 The map offers 20 coastal communities. Regional zoom shows five main labels and smaller points for nearby communities; zooming in reveals additional names. All locations remain available in the selector. The 240-record demonstration intentionally covers the original five communities, while the other areas open without fabricated extra observations.
 
+Map source buttons separate community signals, Greater Wellington water-sampling stations and GeoNet earthquake points. Community colours use the past 30 days: red for repeated reviewed concerns, orange for evidence needing review, green for eligible positive observations, and grey for insufficient evidence. They are not swimming ratings. Water markers describe sample age (blue within seven days, grey older/unavailable); GeoNet markers describe event age (orange within seven days, grey 8–30 days). An earthquake point opens the nearest coastal community without claiming that community was affected.
+
+Each community has two views: **Community** for photos and words, and **Official data** for dated samples and nearby earthquakes. Real water values come from the council's public Hilltop service, with LAWA links for swimming advice. The GeoNet feed is limited; it is not a tsunami warning service. Source failures retain dated cached records rather than manufacturing results. Refresh the separate public snapshot with `python official_data.py --refresh-snapshot`, then rebuild the presentation. See [SOURCES.md](SOURCES.md) for provenance and attribution.
+
 ## Accounts and guest uploads
 
 The website has three simple access levels. Guests upload photos and optional
@@ -48,6 +52,8 @@ requests and respond to feedback. Ordinary registration always creates a member.
 An operator-created temporary administrator password must be replaced before any
 administration functions can be used. See [DEPLOYMENT.md](DEPLOYMENT.md) for the
 prepared shared online backend; GitHub Pages remains a read-only presentation.
+
+Everyone uses the same **Sign in** entry. Only an administrator sees **Data management**. Members open **My account** to see points, usable vouchers and redemption options. The administrator workspace separates **Records**, **Analysis** and **Requests**; server-side permission checks protect every private operation.
 
 Use **Create account** to register with a display name, email and a password of 12–128 characters. Passwords use a random salt and PBKDF2-HMAC-SHA256 with 600,000 iterations; raw passwords are not stored. Login uses a revocable, expiring server session in an HttpOnly, SameSite cookie; authenticated writes require a CSRF token. The local HTTP cookie is not Secure: public deployment requires HTTPS and secure cookies. See [OWASP password storage guidance](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html).
 

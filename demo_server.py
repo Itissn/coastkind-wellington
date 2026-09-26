@@ -5,9 +5,11 @@ import json
 from pathlib import Path
 import sqlite3
 from http.server import ThreadingHTTPServer
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 from server import Handler, ROOT, Store
+import community_status
+import official_data
 
 DEMO_KIND = 'synthetic-demo-v1'
 DEFAULT_DB = ROOT / 'data' / 'demo' / 'coastkind-demo.sqlite3'
@@ -77,6 +79,7 @@ def dataset_payload(store):
     return {'synthetic': True, 'dataset_kind': DEMO_KIND,
             'notice': 'Fictional data for software and analysis practice. No real environmental findings, AI calls, human assessments or monetary rewards.',
             'summary': summary, 'observations': records, 'users': users, 'alerts': alerts,
+            'community_status': community_status.generate(store, synthetic=True),
             'concerns': [{**group, 'synthetic': True} for group in store.concerns()]}
 
 
@@ -94,6 +97,30 @@ class DemoHandler(Handler):
                                   'demoMode': True, 'synthetic': True})
         if path == '/api/demo-data':
             return self.json(200, dataset_payload(self.server.store))
+        if path == '/api/community-status':
+            return self.json(200, community_status.generate(self.server.store, synthetic=True))
+        if path == '/api/official-map':
+            if urlsplit(self.path).query:
+                return self.json(400, {'error': 'The official map does not accept query parameters.'})
+            snapshot_path = ROOT / 'data' / 'official' / 'official-snapshot.json'
+            try:
+                snapshot = json.loads(snapshot_path.read_text(encoding='utf-8')) if snapshot_path.is_file() and snapshot_path.stat().st_size <= official_data.MAX_PAYLOAD_BYTES else None
+            except (OSError, ValueError):
+                snapshot = None
+            return self.json(200, official_data.offline_map(snapshot))
+        if path == '/api/official-data':
+            try:
+                params = parse_qs(urlsplit(self.path).query, keep_blank_values=True, strict_parsing=True, max_num_fields=2)
+                if set(params) != {'community'} or len(params['community']) != 1:
+                    raise ValueError('Choose one community.')
+                snapshot_path = ROOT / 'data' / 'official' / 'official-snapshot.json'
+                try:
+                    snapshot = json.loads(snapshot_path.read_text(encoding='utf-8')) if snapshot_path.is_file() else None
+                except (OSError, ValueError):
+                    snapshot = None
+                return self.json(200, official_data.offline(snapshot, params['community'][0]))
+            except (ValueError, TypeError):
+                return self.json(400, {'error': 'Choose one valid coastal community.'})
         assets = {'/demo-data': ('demo.html', 'text/html'),
                   '/demo.js': ('demo.js', 'text/javascript'), '/demo.css': ('demo.css', 'text/css')}
         if path in assets:
@@ -111,7 +138,7 @@ class DemoHandler(Handler):
         if path in ('/', '/index.html'):
             html = (ROOT / 'index.html').read_text(encoding='utf-8')
             banner = ('<div class="synthetic-banner"><strong>SYNTHETIC DEMO · READ ONLY</strong>'
-                      '<span>Fictional observations, analysis and points.</span>'
+                      '<span>Fictional community posts. Official source snapshots are labelled separately.</span>'
                       '<a href="/demo-data">Explore the dataset ↗</a>'
                       '<a href="http://localhost:8000">Main website ↗</a></div>')
             html = html.replace('<body>', '<body class="demo-preview">' + banner)

@@ -11,10 +11,12 @@ import zipfile
 
 from demo_server import DEFAULT_DB, dataset_payload, validate_demo_database
 from server import ROOT, Store
+import official_data
+from server import COMMUNITIES
 
 PACKAGE_KIND = 'coastkind-static-synthetic-v1'
 MARKER = '.coastkind-presentation.json'
-ASSETS = ('app.js', 'styles.css', 'map.css', 'demo.js', 'demo.css', 'static_demo.js')
+ASSETS = ('app.js', 'styles.css', 'map.css', 'account.css', 'demo.js', 'demo.css', 'static_demo.js')
 FORBIDDEN_KEYS = {'password', 'password_hash', 'token_hash', 'csrf_token', 'csrfToken', 'voucher_code', 'api_key', 'email', 'image'}
 
 
@@ -66,6 +68,20 @@ def source_text(filename):
     return path.read_text(encoding='utf-8')
 
 
+def official_snapshot():
+    source = ROOT / 'data' / 'official' / 'official-snapshot.json'
+    if source.is_symlink():
+        raise ValueError('Official source snapshots must be ordinary generated files.')
+    snapshot = json.loads(source.read_text(encoding='utf-8')) if source.is_file() else None
+    points = official_data.offline_map(snapshot)
+    result = {'kind': 'official-data-snapshot-v1',
+              'generated_at': snapshot.get('generated_at') if isinstance(snapshot, dict) else None,
+              'communities': [official_data.offline(snapshot, name) for name in sorted(COMMUNITIES)],
+              'map': {key: points[key] for key in ('water_stations', 'earthquakes', 'notice')}}
+    reject_private_fields(result)
+    return result
+
+
 def build_presentation(output_dir=ROOT / 'presentation', db_path=DEFAULT_DB):
     output = validate_output(output_dir)
     database = validate_demo_database(db_path)
@@ -91,7 +107,7 @@ def build_presentation(output_dir=ROOT / 'presentation', db_path=DEFAULT_DB):
     main = main.replace('<script src="app.js" defer></script>', '<script src="static_demo.js" defer></script><script src="app.js" defer></script>')
     main = main.replace('</head>', '<link rel="stylesheet" href="demo.css"></head>')
     banner = ('<div class="synthetic-banner"><strong>SYNTHETIC DEMO &middot; READ ONLY</strong>'
-              '<span>Fictional observations, analysis and points. No uploads or real rewards.</span>'
+              '<span>Fictional community posts. Official source snapshots are labelled separately. No uploads.</span>'
               '<a href="demo.html">Explore the dataset &nearr;</a></div>')
     if '<body>' not in main:
         raise ValueError('The community page body could not be prepared for presentation.')
@@ -114,6 +130,7 @@ def build_presentation(output_dir=ROOT / 'presentation', db_path=DEFAULT_DB):
             record['photo'] = f'images/{identifier}.jpg'
             plan[record['photo']] = bytes(image['image'])
     plan['data/preview.json'] = json.dumps(payload, indent=2, ensure_ascii=False).encode('utf-8')
+    plan['data/official.json'] = json.dumps(official_snapshot(), indent=2, ensure_ascii=False).encode('utf-8')
     for name in ('observations.csv', 'dataset.json', 'CODEBOOK.md'):
         source = database.parent / name
         if source.is_symlink():
@@ -139,7 +156,7 @@ def build_presentation(output_dir=ROOT / 'presentation', db_path=DEFAULT_DB):
               'built_at': datetime.now(timezone.utc).isoformat(),
               'files': {name: hashlib.sha256(content).hexdigest() for name, content in sorted(plan.items())},
               'observations': len(payload['observations']),
-              'notice': 'Static fictional demonstration only. No database, credentials, account sessions or voucher codes.'}
+              'notice': 'Fictional community demonstration with separately attributed official source snapshots. No private database, credentials, account sessions or voucher codes.'}
     plan[MARKER] = json.dumps(marker, indent=2).encode('utf-8')
     # Only the explicit package plan is written or archived; no folder-wide copying or deletion.
     output.mkdir(parents=True, exist_ok=True)

@@ -2,6 +2,8 @@
 
 This is an English, read-only demonstration of a coastal community around Wellington. All observations, illustrations, accounts, analysis, review decisions, points and attention signals are fictional. They are provided for presentation and analysis practice, not environmental findings or real benefits. Do not submit or sell them as evidence.
 
+Official water samples and GeoNet events are real, separately attributed snapshots in `data/official.json`. They are not mixed into the fictional community dataset. Sampling dates and earthquake dates are shown; a recent download does not make an old measurement current. The public site cannot refresh these sources live.
+
 Open `index.html` through a web server to explore the coastal map and community stories. Open `demo.html` to filter the dataset and inspect each record. The `downloads` directory contains synthetic CSV and JSON exports plus a data dictionary. Modern browsers block some file-based requests, so double-clicking an HTML file is not sufficient.
 
 ## Publish the complete project on GitHub Pages
@@ -26,10 +28,11 @@ See [GitHub's publishing source instructions](https://docs.github.com/en/pages/g
 ## What works
 
 - Wellington map and community selection; internet access is needed for the map library and OpenStreetMap tiles.
+- Switch map sources: Community, Water samples, GeoNet. Click any point to visit the associated community. Earthquake points link to the nearest community, not a claimed affected area.
 - Fictional observations, community concerns, simulated analysis and attention signals.
 - Dataset filtering, record inspection and synthetic dataset downloads.
 
-Uploads, registration, sign-in, AI requests, actual rewards and database writes are disabled. GitHub Pages hosts static files and does not run the Python backend. All files uploaded here are publicly downloadable, which is why this package contains only marked synthetic data and no credentials, database or voucher codes.
+Uploads, registration, sign-in, AI requests, actual rewards and database writes are disabled. GitHub Pages hosts static files and does not run the Python backend. Public files contain marked synthetic community data and attributed official snapshots; no credentials, private database or voucher codes are included.
 
 ## Rebuild from the local project
 
@@ -37,6 +40,7 @@ From `C:\SDG14`, run:
 
 ```powershell
 & 'C:\LSVRP Program\Anaconda\python.exe' seed_demo.py
+& 'C:\LSVRP Program\Anaconda\python.exe' official_data.py --refresh-snapshot
 & 'C:\LSVRP Program\Anaconda\python.exe' build_presentation.py
 ```
 

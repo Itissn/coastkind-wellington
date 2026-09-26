@@ -30,6 +30,9 @@ pollutionLabels.unclassified = 'Reported coastal concerns';
 let currentUser = null, csrfToken = null, authMode = 'login', authBusy = false, authIntent = null, authRevision = 0;
 let rewardCatalog = [], myVouchers = [], redemption = null;
 let posts = [], filter = 'all', currentPost = null, coastMap = null, mapLoaded = false;
+let communityMarkers = [], communitySignals = new Map(), signalsLoading = false;
+let officialRevision = 0, mapSource = 'community', officialMap = null, officialMarkers = [], communityView = 'community';
+const signalStyles={red:{label:'Repeated concerns',symbol:'!'},orange:{label:'Needs review',symbol:'?'},green:{label:'Positive observations',symbol:'✓'},gray:{label:'Not enough evidence',symbol:'–'}};
 let photoData = '', photoVersion = 0, photoLoading = false, position = null, locationVersion = 0;
 let cameraStream = null, cameraRevision = 0;
 let submitting = false, submissionId = '', submissionHint = 'observation', backendReady = false, aiConfigured = false, demoMode = !!(window.coastkindDemoApi || document.body.classList.contains('demo-preview'));
@@ -78,7 +81,7 @@ function render() {
   const community = $('#location-filter').value;
   const local = posts.filter(p => community === 'all' || p.community === community);
   $('.community .section-heading h2').textContent = community === 'all' ? 'Around the coast' : `${community} community`;
-  $('.community .section-heading p').textContent = 'For swimmers, anglers, boaters, fishing crews and everyone who cares for our waters.';
+  $('.community .section-heading p').textContent = 'See what others noticed. Share a photo and a few words.';
   $('#community-summary').textContent = `${local.length} observations · ${local.filter(p => postType(p) === 'concern').length} concerns`;
   renderConcerns(community);
   const focused = concerns.find(g=>g.id===focusedConcern);
@@ -107,7 +110,7 @@ async function refreshPosts() {
     posts = result.observations; concerns = trends.concerns; alerts = trends.alerts;
     wallet=balance;renderWallet();renderAccount();syncComposerPlacement();
     $('#connection-status').textContent = demoMode ? 'Synthetic demonstration · Scripted analysis and reviews · No real pollution findings or rewards' : aiConfigured ? 'Saved to the community database · AI suggestions await human review' : 'Your observations are saved to the local database. AI analysis is awaiting setup.';
-    if (changed || first) render();
+    if (changed || first) {render();refreshCommunitySignals();}
   } catch (error) { if(revision===authRevision){backendReady = false; $('#connection-status').textContent = error.message; render();} }
   finally { refreshing = false; }
 }
@@ -331,8 +334,9 @@ document.addEventListener('click', async event => {
   }
   if(event.target.closest('#report-info')) $('#info-dialog').showModal();
 });
-function enterCommunity(name) {
+function enterCommunity(name, view = 'community') {
   const c=coastalCommunities.find(c=>c.name===name); if(!c)return;
+  setCommunityView(view);
   const hash=`#coast/${c.slug}`; if(location.hash===hash)applyCommunityRoute();else location.hash=hash;
 }
 function applyCommunityRoute() {
@@ -344,9 +348,17 @@ function applyCommunityRoute() {
   focusedConcern=null;
   document.title=c?`${c.name} community — Coastkind`:'Coastkind — Wellington coast';
   render(); window.scrollTo({top:0,behavior:'instant'});
+  loadOfficialData(c?.name);
   if(!c && coastMap)requestAnimationFrame(fitCoastalMap);
   if(c)refreshPosts();
 }
+function setCommunityView(view){
+  communityView=view==='official'?'official':'community';
+  document.body.classList.toggle('view-official',communityView==='official');
+  document.querySelectorAll('[data-community-view]').forEach(button=>{const selected=button.dataset.communityView===communityView;button.classList.toggle('selected',selected);button.setAttribute('aria-pressed',String(selected));});
+  if(communityView==='official')closeCamera();
+}
+document.querySelectorAll('[data-community-view]').forEach(button=>button.addEventListener('click',()=>setCommunityView(button.dataset.communityView)));
 // The same list drives navigation, filtering and uploads so new map points are usable everywhere.
 for (const selector of ['#community-picker', '#location-filter', '#compose-form [name="location"]']) {
   const select = $(selector);
@@ -369,21 +381,34 @@ function renderConcerns(community){
 function renderWallet(){
   $('#points-count').textContent=wallet.points;
   $('#wallet-balance').textContent=wallet.points;
-  $('#wallet-pending').textContent=wallet.pending_observations?`${wallet.pending_observations} observations awaiting review`:'No observations awaiting review.';
+  $('#wallet-pending').hidden=!wallet.pending_observations;
+  $('#wallet-pending').textContent=`${wallet.pending_observations} ${wallet.pending_observations===1?'observation':'observations'} awaiting review`;
+  $('#account-points-note').textContent=`Earn ${wallet.points_per_approved_observation||10} points for each eligible observation approved by a reviewer.`;
   $('#points-history').innerHTML=wallet.entries.length?wallet.entries.map(e=>`<div class="points-entry"><div><strong>${escapeHTML(e.reason)}</strong><span>${dateLabel(e.created)}</span></div><b>${e.delta>0?'+':''}${e.delta}</b></div>`).join(''):'<p class="form-note">Your points will appear here after a contribution is approved.</p>';
+  renderVoucherSummary();
+}
+function renderVoucherSummary(){
+  const available=myVouchers.filter(v=>v.status==='fulfilled'&&v.voucher_code&&(!v.expires_at||Date.parse(v.expires_at)>Date.now())).length;
+  const pending=myVouchers.filter(v=>v.status==='pending').length;
+  $('#wallet-voucher-count').textContent=available;
+  $('#wallet-voucher-pending').hidden=!pending;
+  $('#wallet-voucher-pending').textContent=`${pending} ${pending===1?'request':'requests'} awaiting review`;
 }
 function clearAccountData(){
   wallet={points:0,pending_observations:0,entries:[]};myVouchers=[];rewardCatalog=[];redemption=null;
   $('#my-vouchers').replaceChildren();$('#points-history').replaceChildren();$('#reward-catalog').replaceChildren();$('#my-feedback').replaceChildren();$('#member-feedback-form').reset();$('#feedback-message').textContent='';
   $('#redemption-confirm').hidden=true;$('#reward-error').textContent='';
+  $('#rewards-dialog').querySelectorAll('details').forEach(details=>{details.open=false;});
   $('#account-email').textContent='';$('#account-name').textContent='Your account';
   $('#rewards-dialog').close();renderWallet();
 }
 function renderAccount(){
   $('#header-sign-in').hidden=!!currentUser;$('#header-register').hidden=!!currentUser;
-  $('#header-account').hidden=!currentUser;$('#open-rewards').hidden=!currentUser;
+  $('#header-account').hidden=!currentUser;$('#open-rewards').hidden=true;
   if(currentUser){$('#account-name').textContent=currentUser.display_name;$('#account-email').textContent=currentUser.email;}
-  document.querySelectorAll('[data-admin-link]').forEach(link=>{link.textContent=currentUser?.role==='admin'?'Admin dashboard':'Admin sign in';link.hidden=demoMode;});
+  const administrator=currentUser?.role==='admin'&&!demoMode;
+  document.body.classList.toggle('is-admin',administrator);
+  document.querySelectorAll('[data-admin-link]').forEach(link=>{link.textContent='Data management';link.hidden=!administrator;});
   if(!identityChosen&&!hasComposerContent())$('#upload-as-guest').checked=!currentUser;
   renderUploadIdentity();
 }
@@ -460,9 +485,14 @@ async function openAccount(){
 }
 function renderRewards(){
   $('#reward-catalog').innerHTML=rewardCatalog.map(r=>`<div><strong>${escapeHTML(r.brand)}</strong><span>${escapeHTML(r.title)}</span><span>${r.points_cost?`${r.points_cost} points${r.value_label?' · '+escapeHTML(r.value_label):''}`:'Reward details to be confirmed'}</span><button class="reward-redeem" data-redeem="${escapeHTML(r.id)}" ${!r.available || wallet.points<r.points_cost?'disabled':''}>${r.status==='unavailable'?'Not available yet':r.status==='out_of_stock'?'Out of stock':wallet.points<r.points_cost?'Not enough points':'Redeem'}</button></div>`).join('');
-  $('#my-vouchers').innerHTML=myVouchers.length?myVouchers.map(v=>`<article class="issued-voucher"><div><strong>${escapeHTML(v.brand)}</strong><span>${escapeHTML(v.value_label)} · ${v.points_cost} points</span></div><p>${escapeHTML(v.title)}</p>${v.status==='fulfilled'?`<code>${escapeHTML(v.voucher_code)}</code><small>Issued ${dateLabel(v.redeemed_at)}${v.expires_at?' · Expires '+dateLabel(v.expires_at):''}</small><button class="text-button" data-copy-voucher="${escapeHTML(v.id)}">Copy voucher code</button>`:`<strong>${v.status==='pending'?'Awaiting administrator approval':'Request rejected'}</strong><p class="form-note">Your points have not been spent.${v.review_note?' '+escapeHTML(v.review_note):''}</p>`}</article>`).join(''):'<p class="form-note">Your voucher requests and issued vouchers will appear here.</p>';
+  $('#my-vouchers').innerHTML=myVouchers.length?myVouchers.map(v=>{
+    const expired=v.status==='fulfilled'&&v.expires_at&&Date.parse(v.expires_at)<=Date.now();
+    return `<article class="issued-voucher"><div><strong>${escapeHTML(v.brand)}</strong><span class="voucher-state">${v.status==='pending'?'Awaiting review':v.status==='fulfilled'?(expired?'Expired':'Ready to use'):'Request declined'}</span></div><p>${escapeHTML(v.value_label)} · ${v.points_cost} points</p>${v.status==='fulfilled'?`<code>${escapeHTML(v.voucher_code)}</code><small>Issued ${dateLabel(v.redeemed_at)}${v.expires_at?' · Expires '+dateLabel(v.expires_at):''}</small>${expired?'':`<button class="text-button" data-copy-voucher="${escapeHTML(v.id)}">Copy voucher code</button>`}`:`<p class="form-note">No points spent.${v.review_note?' '+escapeHTML(v.review_note):''}</p>`}</article>`;
+  }).join(''):'<p class="account-empty">No vouchers yet. Redeem your points to request one.</p>';
   for(const button of document.querySelectorAll('[data-redeem]')){if(myVouchers.some(v=>v.reward_id===button.dataset.redeem&&v.status==='pending')){button.disabled=true;button.textContent='Awaiting review';}else if(!button.disabled)button.textContent='Request voucher';}
+  renderVoucherSummary();
 }
+$('#account-redeem').addEventListener('click',()=>{const options=$('#account-reward-options');options.open=true;options.scrollIntoView({block:'nearest',behavior:'smooth'});});
 document.addEventListener('click',async event=>{
   const redeem=event.target.closest('[data-redeem]');
   if(redeem){const reward=rewardCatalog.find(r=>r.id===redeem.dataset.redeem);if(!reward||!reward.available)return;redemption={reward_id:reward.id,request_id:crypto.randomUUID()};$('#redemption-description').textContent=`Redeem ${reward.brand} · ${reward.value_label} for ${reward.points_cost} points?`;$('#redemption-confirm').hidden=false;$('#redemption-confirm').scrollIntoView({block:'nearest',behavior:'smooth'});}
@@ -494,6 +524,124 @@ function fitCoastalMap() {
   coastMap.invalidateSize(); const mobile=innerWidth<=700, panel=$('.explorer-copy');
   coastMap.fitBounds(coastalCommunities.map(c=>c.point),{paddingTopLeft:mobile?[75,40]:[48,45],paddingBottomRight:mobile?[100,panel.offsetHeight+65]:[70,45],maxZoom:12,animate:false});
 }
+function communitySignal(name){
+  const signal=communitySignals.get(name);
+  return signal&&signalStyles[signal.status]?signal:{status:'gray',label:'Not enough evidence',detail:'Recent community evidence is unavailable.'};
+}
+function officialDate(value){
+  const date=new Date(value);return value&&Number.isFinite(date.getTime())?date.toLocaleString('en-NZ',{day:'numeric',month:'short',year:'numeric',hour:'numeric',minute:'2-digit',timeZone:'Pacific/Auckland'}):'Not supplied';
+}
+function officialNumber(value){return Number.isFinite(value)?value.toFixed(1):'Unknown';}
+function officialURL(value,fallback){
+  try{const url=new URL(value);if(url.protocol==='https:'&&['lawa.org.nz','www.lawa.org.nz','gw.govt.nz','www.gw.govt.nz','graphs.gw.govt.nz','hilltop.gw.govt.nz','geonet.org.nz','www.geonet.org.nz','api.geonet.org.nz'].includes(url.hostname))return url.href;}catch{}
+  return fallback;
+}
+function renderOfficialWater(source){
+  const samples=Array.isArray(source.samples)?source.samples:[],lawa=officialURL(source.lawa_url,'https://www.lawa.org.nz/explore-data/swimming');
+  const sample=samples.find(item=>/enterococci/i.test(item.parameter))||samples[0];
+  const age=sample?.sampled_at?Math.floor((Date.now()-new Date(sample.sampled_at).getTime())/86400000):null;
+  $('#official-water').innerHTML=`<div class="official-source">WATER MONITORING · GREATER WELLINGTON</div><h4>${escapeHTML(source.station_name||'Coastal water samples')}</h4>${sample?`<div class="official-measurement"><strong>${escapeHTML(sample.value)}</strong><span>${escapeHTML(sample.unit)}</span></div><p class="official-parameter">${escapeHTML(sample.parameter)}</p><p>Sampled <strong>${escapeHTML(officialDate(sample.sampled_at))}</strong> (Wellington time)${Number.isFinite(age)&&age>=0?`<br><span class="official-age">${age===0?'Sample taken today':`${age} days since this sample`}</span>`:''}</p>`:'<p class="official-empty">No measured result is available here. Check the official site for monitoring and current advice.</p>'}${source.station_distance_km!=null?`<p class="official-meta">Monitoring site: ${escapeHTML(source.station_distance_km)} km from this community point.</p>`:''}<p class="official-meta">${escapeHTML(source.notice||'A sample describes one site at one time. Check LAWA for current advice.')}</p>${source.status==='stale'?'<p class="official-stale">Refresh unavailable. Showing the last saved source data.</p>':''}<div class="official-links"><a href="${escapeHTML(lawa)}" target="_blank" rel="noopener noreferrer">Check LAWA advice ↗</a><a href="${escapeHTML(officialURL(source.station_url||source.source_url,'https://www.gw.govt.nz/environment/freshwater/swimming-water-quality/our-monitoring-programme/'))}" target="_blank" rel="noopener noreferrer">Council data source ↗</a></div>${source.retrieved_at?`<p class="official-retrieved">Retrieved ${escapeHTML(officialDate(source.retrieved_at))}</p>`:''}`;
+}
+function renderOfficialGeoNet(source){
+  const events=Array.isArray(source.events)?source.events.map(event=>({...event,magnitude:officialNumber(event.magnitude),depth_km:officialNumber(event.depth_km)})):[];
+  $('#official-geonet').innerHTML=`<div class="official-source">GEONET · GEOLOGICAL INFORMATION</div><h4>Nearby earthquakes</h4>${events.length?`<ul class="official-events">${events.slice(0,3).map(event=>`<li><strong>M ${escapeHTML(event.magnitude)}</strong><div><a href="${escapeHTML(officialURL(event.url,'https://www.geonet.org.nz/earthquake'))}" target="_blank" rel="noopener noreferrer">${escapeHTML(event.locality||'View earthquake')} ↗</a><span>${escapeHTML(officialDate(event.time))} · ${escapeHTML(event.distance_km)} km away · depth ${escapeHTML(event.depth_km)} km</span></div></li>`).join('')}</ul>`:`<p class="official-empty">${source.status==='unavailable'?'GeoNet data is currently unavailable. Open GeoNet for its latest information.':'No matching nearby events in this source snapshot.'}</p>`}<p class="official-meta">Within 100 km, last 30 days. From GeoNet's latest 100 possibly felt New Zealand earthquakes.</p><p class="official-meta">Earthquake information is separate from water quality. This is not a tsunami warning service.</p>${source.status==='stale'?'<p class="official-stale">Refresh unavailable. Showing the last saved source data.</p>':''}<div class="official-links"><a href="https://www.geonet.org.nz/earthquake" target="_blank" rel="noopener noreferrer">View GeoNet ↗</a></div>${source.retrieved_at?`<p class="official-retrieved">Retrieved ${escapeHTML(officialDate(source.retrieved_at))}</p>`:''}`;
+}
+function foldOfficialDetails(water={}){
+  const age=sampleAge(water),ageLabel=$('#official-water .official-age');
+  if(ageLabel&&age>7)ageLabel.textContent=`Historical sample · ${age} days old. Check LAWA for current advice.`;
+  document.querySelectorAll('.official-stale').forEach(note=>{note.textContent='Saved source data · Check the source for updates.';});
+  for(const card of document.querySelectorAll('.official-card')){
+    const notes=[...card.querySelectorAll('.official-meta,.official-retrieved')];if(!notes.length)continue;
+    const details=document.createElement('details');details.className='official-details';
+    const summary=document.createElement('summary');summary.textContent='Source & details';details.append(summary,...notes);card.append(details);
+  }
+}
+async function loadOfficialData(community){
+  const version=++officialRevision,section=$('#official-information');section.hidden=!community;if(!community)return;
+  $('#refresh-official').textContent=demoMode?'Reload snapshot ↻':'Refresh sources ↻';
+  $('#refresh-official').disabled=true;$('#official-context').textContent='Loading official sources…';
+  $('#official-water').innerHTML='<div class="official-source">WATER MONITORING</div><p>Loading the latest available sample…</p>';
+  $('#official-geonet').innerHTML='<div class="official-source">GEONET</div><p>Loading nearby earthquake information…</p>';
+  try{const data=await api('/api/official-data?'+new URLSearchParams({community}));if(version!==officialRevision)return;
+    renderOfficialWater(data.water||{});renderOfficialGeoNet(data.geonet||{});foldOfficialDetails(data.water);
+    $('#official-context').textContent=demoMode?'Official source snapshots · Community posts on this demo are fictional.':'Measurements, earthquakes and community posts are separate sources.';
+    if(!demoMode)loadOfficialMap(false);
+  }catch(error){if(version!==officialRevision)return;renderOfficialWater({status:'unavailable'});renderOfficialGeoNet({status:'unavailable'});foldOfficialDetails();$('#official-context').textContent='Could not refresh official sources. Use the source links above for current information.';
+  }finally{if(version===officialRevision)$('#refresh-official').disabled=false;}
+}
+$('#refresh-official').addEventListener('click',()=>{window.coastkindReloadOfficial?.();loadOfficialData(coastalCommunities.find(c=>location.hash===`#coast/${c.slug}`)?.name);});
+const communityLegend=$('#map-source-legend').innerHTML;
+function sampleAge(source){
+  const time=new Date(source?.samples?.[0]?.sampled_at).getTime();return Number.isFinite(time)?Math.floor((Date.now()-time)/86400000):null;
+}
+function waterPointState(source){
+  const age=sampleAge(source);return age!==null&&age>=0&&age<=7&&source.status==='available'?'blue':'gray';
+}
+function nearestCommunity(point){
+  return coastalCommunities.reduce((best,community)=>!best||coastMap.distance(point,community.point)<coastMap.distance(point,best.point)?community:best,null);
+}
+function setMapSource(source,fit=true){
+  if(!['community','water','geonet'].includes(source))return;
+  mapSource=source;
+  document.querySelectorAll('[data-map-source]').forEach(button=>{const selected=button.dataset.mapSource===source;button.classList.toggle('selected',selected);button.setAttribute('aria-pressed',String(selected));});
+  $('#map-status-context').hidden=source!=='community';
+  $('#map-legend-title').textContent={community:'Community signals',water:'Council water samples',geonet:'GeoNet earthquakes'}[source];
+  $('#map-source-legend').innerHTML=source==='community'?communityLegend:source==='water'?'<ul><li><span class="signal-dot signal-blue">■</span>Sample within 7 days</li><li><span class="signal-dot signal-gray">■</span>Older or unavailable</li></ul><p>Colour shows sample age, not swimming safety. Check LAWA for advice.</p>':'<ul><li><span class="signal-dot signal-orange">◆</span>Event within 7 days</li><li><span class="signal-dot signal-gray">◆</span>Event 8–30 days ago</li></ul><p>Earthquake dates, not water quality or tsunami alerts.</p>';
+  $('#map-source-status').hidden=source==='community';
+  $('#map-note').textContent={community:'Select a point to enter its community. Community locations are approximate.',water:'Select a council monitoring station to open its coastal community. A sample describes one site at one time.',geonet:'Select an earthquake to open the nearest coastal community. This does not mean the community was affected.'}[source];
+  if(!coastMap)return;
+  for(const {marker} of communityMarkers){if(source==='community')marker.addTo(coastMap);else coastMap.removeLayer(marker);}
+  for(const marker of officialMarkers)coastMap.removeLayer(marker);officialMarkers=[];
+  if(source==='community'){updateCommunityLabels();if(fit)fitCoastalMap();return;}
+  if(!officialMap){$('#map-source-status').textContent='Loading source locations…';return;}
+  const rows=source==='water'?officialMap.water_stations||[]:officialMap.earthquakes||[];
+  for(const row of rows){
+    if(!Number.isFinite(row.latitude)||!Number.isFinite(row.longitude))continue;
+    const point=[row.latitude,row.longitude],community=source==='water'?coastalCommunities.find(c=>c.name===row.community):nearestCommunity(point);if(!community)continue;
+    const age=source==='water'?sampleAge(row.water):Math.floor((Date.now()-new Date(row.time))/86400000);
+    if(source==='geonet'&&(!Number.isFinite(age)||age<0||age>30))continue;
+    const state=source==='water'?waterPointState(row.water):age<=7?'orange':'gray';
+    const label=source==='water'?row.station_name:`M ${officialNumber(row.magnitude)} · ${row.locality}`;
+    const sample=row.water?.samples?.[0],detail=source==='water'?`${sample?`${sample.value} ${sample.unit} · ${officialDate(sample.sampled_at)}`:'No sample available'}`:officialDate(row.time);
+    const title=`${source==='water'?'Council sample':'GeoNet'}: ${label}. ${detail}. Open ${community.name} community.`;
+    const marker=L.marker(point,{title,alt:title,keyboard:true,icon:L.divIcon({className:`coast-marker official-marker map-state-${state}${source==='geonet'?' official-quake':''}`,html:`<span aria-hidden="true">${source==='water'?'≈':'<b>·</b>'}</span>`,iconSize:[32,32],iconAnchor:[16,16]})}).addTo(coastMap);
+    marker.bindTooltip(`<strong>${escapeHTML(label)}</strong><span class="map-tooltip-signal">${escapeHTML(detail)}</span><span class="map-tooltip-signal">Open ${escapeHTML(community.name)} community ↗</span>`,{className:'coast-label',direction:'top',offset:[0,-14]});
+    marker.on('click',()=>enterCommunity(community.name,'official'));marker.getElement()?.addEventListener('focus',()=>marker.openTooltip());marker.getElement()?.addEventListener('blur',()=>marker.closeTooltip());officialMarkers.push(marker);
+  }
+  $('#map-source-status').textContent=source==='water'?`${officialMarkers.length} monitoring locations · Greater Wellington. Unmapped sites remain available by community name.`:`${officialMarkers.length} nearby events · Limited GeoNet feed; not a complete catalogue.`;
+  if(fit&&source==='geonet'&&officialMarkers.length)coastMap.fitBounds(officialMarkers.map(marker=>marker.getLatLng()),{paddingTopLeft:[390,55],paddingBottomRight:[65,55],maxZoom:11,animate:false});
+  else if(fit)fitCoastalMap();
+}
+async function loadOfficialMap(fit=false){
+  try{officialMap=await api('/api/official-map');setMapSource(mapSource,fit);}
+  catch{if(mapSource!=='community')$('#map-source-status').textContent='Source locations unavailable. Choose a community for source links.';}
+}
+document.querySelectorAll('[data-map-source]').forEach(button=>button.addEventListener('click',()=>{setMapSource(button.dataset.mapSource);if(!officialMap)loadOfficialMap(true);}));
+function updateCommunityLabels(){
+  if(!coastMap)return;
+  for(const {community:c,marker} of communityMarkers){
+    const signal=communitySignal(c.name),style=signalStyles[signal.status],element=marker.getElement(),permanent=!!c.homeLabel||coastMap.getZoom()>=12.5;
+    if(element){
+      for(const status of Object.keys(signalStyles))element.classList.toggle('map-state-'+status,status===signal.status);
+      element.dataset.status=signal.status;element.querySelector('span').textContent=style.symbol;
+      element.setAttribute('aria-label',`${c.name}: ${style.label}. Open community.`);element.title=`${c.name}: ${style.label}. ${signal.detail}`;
+    }
+    const content=`<strong>${escapeHTML(c.name)}</strong><span class="map-tooltip-signal"><i class="signal-dot signal-${signal.status}" aria-hidden="true">${style.symbol}</i>${escapeHTML(style.label)}</span>`;
+    if(marker.getTooltip()?.options.permanent!==permanent){marker.unbindTooltip().bindTooltip(content,{permanent,direction:c.side,className:'coast-label',offset:c.side==='left'?[-16,0]:[16,0]});}
+    else marker.setTooltipContent(content);
+  }
+}
+async function refreshCommunitySignals(){
+  if(signalsLoading)return;signalsLoading=true;
+  try{
+    const data=await api('/api/community-status');
+    if(!Array.isArray(data.communities))throw new Error('Signals unavailable');
+    communitySignals=new Map(data.communities.filter(item=>signalStyles[item.status]).map(item=>[item.community,item]));
+    $('#map-status-context').textContent=`${data.synthetic?'Demo snapshot · ':''}Last ${data.window_days} days · ${dateLabel(data.as_of)}`;
+  }catch{
+    communitySignals.clear();$('#map-status-context').textContent='Status unavailable. No water condition is assumed.';
+  }finally{signalsLoading=false;updateCommunityLabels();}
+}
 const leaflet=document.createElement('script');
 leaflet.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';leaflet.integrity='sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';leaflet.crossOrigin='';
 function mapUnavailable(){if(!mapLoaded)$('#coast-map').innerHTML='<p class="map-loading">The map is unavailable.<br>Choose a community by name to explore.</p>';}
@@ -502,24 +650,19 @@ leaflet.onload=()=>{
   mapLoaded=true; $('#coast-map').replaceChildren();
   coastMap=L.map('coast-map',{scrollWheelZoom:false,zoomSnap:.25,zoomDelta:.5}).setView([-41.23,174.82],10);coastMap.zoomControl.setPosition('topright');fitCoastalMap();
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(coastMap).on('tileerror',()=>{$('#map-note').textContent='Some map tiles could not load. You can still choose a community by name.';});
-  const communityMarkers=coastalCommunities.map(c=>{
+  communityMarkers=coastalCommunities.map(c=>{
     const marker=L.marker(c.point,{title:`Enter ${c.name} community`,alt:`Enter ${c.name} community`,keyboard:true,
-      icon:L.divIcon({className:`coast-marker${c.homeLabel?'':' coast-marker-secondary'}`,html:'<span></span>',iconSize:[28,28],iconAnchor:[14,14]})})
+      icon:L.divIcon({className:`coast-marker map-state-gray${c.homeLabel?'':' coast-marker-secondary'}`,html:'<span aria-hidden="true">–</span>',iconSize:[32,32],iconAnchor:[16,16]})})
       .addTo(coastMap).on('click',()=>enterCommunity(c.name));
     marker.getElement()?.addEventListener('focus',()=>marker.openTooltip());
     marker.getElement()?.addEventListener('blur',()=>{if(!marker.getTooltip()?.options.permanent)marker.closeTooltip();});
     return {community:c,marker};
   });
-  function updateCommunityLabels(){
-    for(const {community:c,marker} of communityMarkers){
-      const permanent=!!c.homeLabel || coastMap.getZoom()>=12.5;
-      if(marker.getTooltip()?.options.permanent===permanent)continue;
-      marker.unbindTooltip().bindTooltip(escapeHTML(c.name),{permanent,direction:c.side,className:'coast-label',offset:c.side==='left'?[-13,0]:[13,0]});
-    }
-  }
-  coastMap.on('zoomend',updateCommunityLabels);updateCommunityLabels();
+  coastMap.on('zoomend',updateCommunityLabels);updateCommunityLabels();loadOfficialMap();
 };
 document.head.append(leaflet);setTimeout(mapUnavailable,12000);
 addEventListener('hashchange',applyCommunityRoute);addEventListener('resize',fitCoastalMap);
 setInterval(()=>{if(!document.hidden && document.body.classList.contains('in-community'))refreshPosts();},5000);
-applyCommunityRoute();refreshPosts();
+setInterval(()=>{if(!document.hidden)refreshCommunitySignals();},30000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshCommunitySignals();});
+applyCommunityRoute();refreshPosts();refreshCommunitySignals();

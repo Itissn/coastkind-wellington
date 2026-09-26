@@ -15,7 +15,7 @@ import time
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 from urllib.request import Request, urlopen
 from uuid import UUID
 from PIL import Image, ImageOps, UnidentifiedImageError
@@ -23,6 +23,8 @@ import accounts
 import rewards
 import admin_data
 import admin_ops
+import community_status
+import official_data
 
 ROOT = Path(__file__).resolve().parent
 # Approximate navigation/validation centres, not monitoring or water-quality results.
@@ -258,6 +260,7 @@ class Store:
         accounts.initialize_accounts(self)
         rewards.initialize_rewards(self)
         admin_ops.initialize(self)
+        official_data.initialize(self)
 
     @contextmanager
     def connect(self):
@@ -543,6 +546,30 @@ class Handler(BaseHTTPRequestHandler):
             return self.json(200, {"storage": "sqlite", "aiConfigured": bool(self.server.api_key), "adminConfigured": admin_configured})
         if path == "/api/auth/me":
             return self.json(200, self.auth_session() or {"user": None, "csrfToken": None})
+        if path == "/api/community-status":
+            return self.json(200, community_status.generate(self.server.store))
+        if path == "/api/official-map":
+            if urlsplit(self.path).query:
+                return self.json(400, {"error": "The official map does not accept query parameters."})
+            snapshot_path = ROOT / "data" / "official" / "official-snapshot.json"
+            try:
+                snapshot = json.loads(snapshot_path.read_text(encoding="utf-8")) if snapshot_path.is_file() and snapshot_path.stat().st_size <= official_data.MAX_PAYLOAD_BYTES else None
+            except (OSError, ValueError):
+                snapshot = None
+            try:
+                return self.json(200, official_data.map_snapshot(self.server.store, snapshot))
+            except sqlite3.Error:
+                return self.json(503, {"error": "Official map data is temporarily unavailable."})
+        if path == "/api/official-data":
+            try:
+                params = parse_qs(urlsplit(self.path).query, keep_blank_values=True, strict_parsing=True, max_num_fields=2)
+                if set(params) != {"community"} or len(params["community"]) != 1 or params["community"][0] not in COMMUNITIES:
+                    raise ValueError("Choose one valid coastal community.")
+                return self.json(200, official_data.get(self.server.store, params["community"][0]))
+            except (ValueError, TypeError):
+                return self.json(400, {"error": "Choose one valid coastal community."})
+            except sqlite3.Error:
+                return self.json(503, {"error": "Official source data is temporarily unavailable."})
         if path in ("/api/admin/data", "/api/admin/export"):
             auth = self.auth_session()
             if not self.require_admin(auth):
@@ -599,7 +626,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send_bytes(200, row["image"], row["mime"])
         assets = {"/": ("index.html", "text/html"), "/index.html": ("index.html", "text/html"),
                   "/app.js": ("app.js", "text/javascript"), "/styles.css": ("styles.css", "text/css"),
-                  "/map.css": ("map.css", "text/css"), "/admin": ("admin.html", "text/html"),
+                  "/map.css": ("map.css", "text/css"), "/account.css": ("account.css", "text/css"), "/admin": ("admin.html", "text/html"),
                   "/admin.html": ("admin.html", "text/html"), "/admin.js": ("admin.js", "text/javascript"),
                   "/admin.css": ("admin.css", "text/css")}
         if path in assets:

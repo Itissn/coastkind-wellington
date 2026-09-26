@@ -1,12 +1,14 @@
 {
   "package_kind": "coastkind-static-synthetic-v1",
   "synthetic": true,
-  "built_at": "2026-09-26T09:26:11.589759+00:00",
+  "built_at": "2026-09-26T09:55:38.884251+00:00",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "README.md": "376a0b4fd0fec47b18cdd927fd31f973d899d1869c30979b1d0b9092475dddce",
-    "app.js": "b5380f185bc627de5321b75d51963ff6f22dede3ebf594d946d6a4703b89746f",
-    "data/preview.json": "7f461ce1143a4f06ca10f2dcd94076764ff68bb4d01404b65dad9eb6051bd44a",
+    "README.md": "c397ef5a9e51b900820f7724249c5c33d0e6ecdac72e1adf273c9e586619fbe2",
+    "account.css": "162709198f09936e3244c77db6f6e437918bbe0a1018018e6a74b42d2978a05f",
+    "app.js": "63bb22edee74aa6b06e827e832fe149e480bd980f4401a114d50f0723b667ed6",
+    "data/official.json": "1fe1ea2c1b36ddaae4e6803ab8c155b47664bad742a1eff948536307ce14ac49",
+    "data/preview.json": "fbfee648d533344d3578d146a6844766deb4ba0c3a9c157021d6a2d712d17cac",
     "demo.css": "1e9f6d9b033e33b1b5b6f3c71fcf34a089890e624d5381cc49f11aacf02107b5",
     "demo.html": "072dfbafb2a4c383e3e2f4611777c667da0a41ce33d28221e203d92cddeb2421",
     "demo.js": "5b22a747474a3c549c6b8435de2eb0963a0b513a885eead7288da9a8eae6d387",
@@ -253,11 +255,11 @@
     "images/fd400775-a4e2-51fb-8476-95a8d4da1dad.jpg": "829f3c9520e980365c623b1bec131d84fa1fda9b7e85e16ec89562ec0ce2d94c",
     "images/ff2de9c0-4ac6-5177-b435-46f60cb45eea.jpg": "d308ac96b459574826829a0b0993b4adb9a874dfe4055fa3f7369aef218be772",
     "images/ffe61199-5a31-552f-bd1c-f0220d9bd030.jpg": "f4b5a8e242b05141aa239408a14bd3b63e78464e141597647d4255d1a1c8b6b8",
-    "index.html": "63f5753b1270d664efa54df4e3e0a2ac0fb93025fbe6a18ee699f2c54919cd9d",
-    "map.css": "0a353e3df7d0381d2abdcb4ccede13cf4368d7e61f67e84d0901cf7416c3e646",
-    "static_demo.js": "026614c15e89fe5cd926832bbb873f8044a9e69cb335798b44064ed9dcb13f09",
+    "index.html": "fd321a754b6e4bc4daa5699dc4d95e9a1a1e789b34c85a9ce6c35fb489e2f587",
+    "map.css": "e94376e9666d1367aa26301cb34faf3cbcf1044e8ad6e93fb8444d49b4385985",
+    "static_demo.js": "f5d0cc051dda5f263f773192174263fb3d675c3975da4932433b49e33557e200",
     "styles.css": "9d199d9c882af8622234ac3e12be9cb3e11a742c8342c958f3747eff1265a88a"
   },
   "observations": 240,
-  "notice": "Static fictional demonstration only. No database, credentials, account sessions or voucher codes."
+  "notice": "Fictional community demonstration with separately attributed official source snapshots. No private database, credentials, account sessions or voucher codes."
 }

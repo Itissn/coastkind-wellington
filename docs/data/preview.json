@@ -15906,6 +15906,335 @@
       "synthetic": true
     }
   ],
+  "community_status": {
+    "basis": "community_observations",
+    "window_days": 30,
+    "as_of": "2026-09-25T09:27:00+00:00",
+    "synthetic": true,
+    "notice": "Synthetic demo using the dataset's latest valid observation date. Colours summarise recent community observations, not measured water quality, verified pollution severity or swimming safety. Check official advice before entering the water.",
+    "communities": [
+      {
+        "community": "Breaker Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Days Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Hataitai Beach",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Houghton Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Island Bay",
+        "status": "orange",
+        "label": "Needs review",
+        "detail": "Synthetic demo. Recent concerns or incomplete observations need review. Community reports alone do not establish pollution or water safety.",
+        "counts": {
+          "recent_observations": 26,
+          "usable_observations": 18,
+          "concern_observations": 14,
+          "reviewed_positive_observations": 1,
+          "unresolved_observations": 17,
+          "excluded_observations": 8,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Lyall Bay",
+        "status": "orange",
+        "label": "Needs review",
+        "detail": "Synthetic demo. Recent concerns or incomplete observations need review. Community reports alone do not establish pollution or water safety.",
+        "counts": {
+          "recent_observations": 26,
+          "usable_observations": 18,
+          "concern_observations": 14,
+          "reviewed_positive_observations": 1,
+          "unresolved_observations": 17,
+          "excluded_observations": 8,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Mākara Beach",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Oriental Bay",
+        "status": "orange",
+        "label": "Needs review",
+        "detail": "Synthetic demo. Recent concerns or incomplete observations need review. Community reports alone do not establish pollution or water safety.",
+        "counts": {
+          "recent_observations": 26,
+          "usable_observations": 18,
+          "concern_observations": 14,
+          "reviewed_positive_observations": 1,
+          "unresolved_observations": 17,
+          "excluded_observations": 8,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Paremata",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Petone Beach",
+        "status": "orange",
+        "label": "Needs review",
+        "detail": "Synthetic demo. Recent concerns or incomplete observations need review. Community reports alone do not establish pollution or water safety.",
+        "counts": {
+          "recent_observations": 26,
+          "usable_observations": 18,
+          "concern_observations": 14,
+          "reviewed_positive_observations": 1,
+          "unresolved_observations": 17,
+          "excluded_observations": 8,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Plimmerton Beach",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Porirua Harbour",
+        "status": "orange",
+        "label": "Needs review",
+        "detail": "Synthetic demo. Recent concerns or incomplete observations need review. Community reports alone do not establish pollution or water safety.",
+        "counts": {
+          "recent_observations": 26,
+          "usable_observations": 18,
+          "concern_observations": 14,
+          "reviewed_positive_observations": 1,
+          "unresolved_observations": 17,
+          "excluded_observations": 8,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Princess Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Pukerua Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Rona Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Scorching Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Seatoun Beach",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Tītahi Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Worser Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      },
+      {
+        "community": "Ōwhiro Bay",
+        "status": "gray",
+        "label": "Not enough evidence",
+        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "counts": {
+          "recent_observations": 0,
+          "usable_observations": 0,
+          "concern_observations": 0,
+          "reviewed_positive_observations": 0,
+          "unresolved_observations": 0,
+          "excluded_observations": 0,
+          "repeated_concern_photos": 0,
+          "repeated_concern_accounts": 0
+        }
+      }
+    ]
+  },
   "concerns": [
     {
       "id": "caa64e3aa2a0ec55",

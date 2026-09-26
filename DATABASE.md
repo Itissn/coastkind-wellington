@@ -21,8 +21,11 @@ The application stores accounts, observations, review decisions, points and vouc
 | `reward_requests` | Pending, rejected or fulfilled member request, saved cost/value, reviewer and member-visible decision note. |
 | `reward_request_keys` / `reward_request_events` | Retry deduplication and audited voucher decisions. |
 | `feedback` / `feedback_events` | Private member messages, administrator responses and status history. |
+| `official_source_cache` | Public council/GeoNet payloads, original sample/event dates, retrieval time and last refresh outcome. Separate from user observations, review decisions and rewards. |
 
 Account IDs are assigned by the server. The browser's old `X-Client-ID` value grants no ownership, wallet access or reward claim. Authenticated API writes derive the account from a server-side session, and supplied ownership fields are rejected. Public observations expose display names rather than email addresses or account IDs.
+
+Official sources use a 15-minute cache and bounded requests to fixed public endpoints. The map reads cache/snapshot data without making 20 external requests on page load. Opening a community refreshes its sources when needed. The snapshot maintenance command uses a separate database at `data/official/source-cache.sqlite3`; static publication copies only curated public JSON. Government/research observation exports and points never include official cache rows or fictional demonstration records. Historical water samples remain dated and are not current swimming assessments.
 
 ## Guest contributions and rewards
 

@@ -4,8 +4,15 @@ const formatDate = value => value ? new Date(value).toLocaleDateString('en-NZ',{
 const categories={litter:'Litter & rubbish',suspected_industrial:'Suspected industrial',oil_or_fuel:'Possible oil or fuel',suspected_wastewater:'Suspected wastewater',unusual_water:'Unusual water appearance',other:'Other concern',unclassified:'Unclassified concern'};
 let adminUser=null, csrfToken=null, dataset=null, page=0, recordId=null, busy=false, requestVersion=0, setupMode=false;
 const PAGE_SIZE=20;
+function setAdminView(view){
+  if(!['records','analysis','requests'].includes(view))return;
+  document.querySelectorAll('[data-admin-view]').forEach(section=>{section.hidden=section.dataset.adminView!==view;});
+  document.querySelectorAll('[data-admin-tab]').forEach(button=>{button.setAttribute('aria-pressed',String(button.dataset.adminTab===view));});
+}
+$('.admin-view-tabs').addEventListener('click',event=>{const button=event.target.closest('[data-admin-tab]');if(button)setAdminView(button.dataset.adminTab);});
 function forgetData(){
   requestVersion++;dataset=null;recordId=null;page=0;
+  setAdminView('records');
   for(const id of ['admin-metrics','admin-records','admin-category-chart','admin-trend-chart','admin-alerts','admin-record-body','admin-vouchers','admin-feedback'])$('#'+id).replaceChildren();
   $('#admin-password').hidden=true;$('#admin-password-form').reset();
   $('#admin-record-dialog').close();$('#admin-workspace').hidden=true;$('#admin-auth').hidden=false;$('#admin-who').textContent='';$('#admin-status').textContent='';

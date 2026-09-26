@@ -1,0 +1,2544 @@
+{
+  "kind": "official-data-snapshot-v1",
+  "generated_at": "2026-09-26T09:50:46.709313+00:00",
+  "communities": [
+    {
+      "community": "Breaker Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Breaker Bay",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Breaker%20Bay&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.33017782,
+        "station_longitude": 174.83207222,
+        "station_distance_km": 0.003,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "24",
+            "value_text": "24",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-31T10:39:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 45.6
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 67.4
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 12.3
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 54.1
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 72.8
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Days Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Days Bay at Wharf",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Days%20Bay%20at%20Wharf&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.28084503,
+        "station_longitude": 174.90641735,
+        "station_distance_km": 0.005,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "4",
+            "value_text": "4",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-30T10:15:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 37.6
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 75.7
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 7.6
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 62.4
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 64.6
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Hataitai Beach",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Hataitai Beach",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Hataitai%20Beach&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.30583398,
+        "station_longitude": 174.79937783,
+        "station_distance_km": 0.004,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "8",
+            "value_text": "8",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-31T09:46:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 45.2
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 67.3
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 15.1
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 54.1
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 73.6
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Houghton Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Houghton Bay",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Houghton%20Bay&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": null,
+        "station_longitude": null,
+        "station_distance_km": null,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "12",
+            "value_text": "12",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2005-03-25T08:30:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 49.2
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 63.5
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 16.3
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 50.2
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 76.9
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Island Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Island Bay at Surf Club",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Island%20Bay%20at%20Surf%20Club&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.34352595,
+        "station_longitude": 174.77346379,
+        "station_distance_km": 0.004,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "8",
+            "value_text": "8",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-08-12T12:03:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 49.8
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 62.8
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 17.3
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 49.5
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 77.7
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Lyall Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Lyall Bay at Tirangi Road",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Lyall%20Bay%20at%20Tirangi%20Road&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.32832071,
+        "station_longitude": 174.80137072,
+        "station_distance_km": 0.472,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "180",
+            "value_text": "180",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-08-12T11:49:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 47.4
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 65.2
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 15.3
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 52.0
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 75.3
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Mākara Beach",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Makara Beach",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Makara%20Beach&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": null,
+        "station_longitude": null,
+        "station_distance_km": null,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "7000",
+            "value_text": "7000",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2001-11-01T10:18:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 44.4
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 70.0
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 24.9
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 57.3
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 75.7
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Oriental Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Oriental Bay at Band Rotunda",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Oriental%20Bay%20at%20Band%20Rotunda&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.29109602,
+        "station_longitude": 174.79432712,
+        "station_distance_km": 0.002,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "500",
+            "value_text": "500",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-31T09:30:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 44.3
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 68.2
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 15.8
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 55.0
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 73.1
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Paremata",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Pauatahanui Inlet at Paremata Bridge",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Pauatahanui%20Inlet%20at%20Paremata%20Bridge&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.1015345,
+        "station_longitude": 174.87143953,
+        "station_distance_km": 0.005,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "<4",
+            "value_text": "<4",
+            "qualifier": "<",
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-09T14:10:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 26.2
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 88.5
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 26.1
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 75.6
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 58.7
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Petone Beach",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Petone Beach at Kiosk",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Petone%20Beach%20at%20Kiosk&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.2325087,
+        "station_longitude": 174.88916682,
+        "station_distance_km": 0.003,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "28",
+            "value_text": "28",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-08-11T12:19:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 34.1
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 78.4
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 12.4
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 65.1
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 63.0
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Plimmerton Beach",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Plimmerton Beach at Bath Street",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Plimmerton%20Beach%20at%20Bath%20Street&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.0833261,
+        "station_longitude": 174.86560139,
+        "station_distance_km": 0.003,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "<4",
+            "value_text": "<4",
+            "qualifier": "<",
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-09T13:25:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 25.9
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 89.8
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 28.1
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 77.0
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 58.7
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Porirua Harbour",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Porirua Harbour at Rowing Club",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Porirua%20Harbour%20at%20Rowing%20Club&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.11400634,
+        "station_longitude": 174.84485321,
+        "station_distance_km": 0.004,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "12",
+            "value_text": "12",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-08-10T10:05:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 28.8
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 86.0
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 25.7
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 73.2
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 61.2
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Princess Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Princess Bay",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Princess%20Bay&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.34407669,
+        "station_longitude": 174.78792873,
+        "station_distance_km": 0.004,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "52",
+            "value_text": "52",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-31T11:19:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 49.1
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 63.6
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 16.1
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 50.3
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 76.7
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Pukerua Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Pukerua Bay",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Pukerua%20Bay&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.02936295,
+        "station_longitude": 174.89481296,
+        "station_distance_km": 0.237,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "<4",
+            "value_text": "<4",
+            "qualifier": "<",
+            "unit": "n/100ml",
+            "sampled_at": "2026-08-10T11:35:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 22.1
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 96.0
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 33.3
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 83.3
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 55.3
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Rona Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Rona Bay at Wharf",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Rona%20Bay%20at%20Wharf&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.28950787,
+        "station_longitude": 174.89563525,
+        "station_distance_km": 0.003,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "4",
+            "value_text": "4",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-30T10:00:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 38.9
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 74.3
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 7.8
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 61.0
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 65.9
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Scorching Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Scorching Bay",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Scorching%20Bay&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.29703432,
+        "station_longitude": 174.83359256,
+        "station_distance_km": 0.004,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "<4",
+            "value_text": "<4",
+            "qualifier": "<",
+            "unit": "n/100ml",
+            "sampled_at": "2026-08-12T11:27:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 42.6
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 70.0
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 12.4
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 56.7
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 70.7
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Seatoun Beach",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Seatoun Beach at Wharf",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Seatoun%20Beach%20at%20Wharf&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.31883265,
+        "station_longitude": 174.829568,
+        "station_distance_km": 0.005,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "4",
+            "value_text": "4",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-31T10:27:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 44.7
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 68.1
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 12.5
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 54.8
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 72.3
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Tītahi Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Titahi Bay at Toms Road",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Titahi%20Bay%20at%20Toms%20Road&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.10596177,
+        "station_longitude": 174.83532731,
+        "station_distance_km": 0.005,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "<4",
+            "value_text": "<4",
+            "qualifier": "<",
+            "unit": "n/100ml",
+            "sampled_at": "2026-08-10T10:31:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 29.2
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 86.3
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 26.8
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 73.5
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 61.8
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Worser Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Worser Bay",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Worser%20Bay&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.31354924,
+        "station_longitude": 174.82876317,
+        "station_distance_km": 0.006,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "400",
+            "value_text": "400",
+            "qualifier": null,
+            "unit": "n/100ml",
+            "sampled_at": "2026-03-31T10:21:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 44.3
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 68.4
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 12.6
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 55.2
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 72.0
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    },
+    {
+      "community": "Ōwhiro Bay",
+      "water": {
+        "source_name": "Greater Wellington",
+        "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+        "station_name": "Owhiro Bay",
+        "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Owhiro%20Bay&ObservedProperty=Enterococci%20Bacteria",
+        "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+        "station_latitude": -41.34489952,
+        "station_longitude": 174.75850109,
+        "station_distance_km": 0.0,
+        "samples": [
+          {
+            "parameter": "Enterococci Bacteria",
+            "value": "<4",
+            "value_text": "<4",
+            "qualifier": "<",
+            "unit": "n/100ml",
+            "sampled_at": "2026-08-12T12:12:00+12:00"
+          }
+        ],
+        "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+        "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+        "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      },
+      "geonet": {
+        "source_name": "GeoNet",
+        "source_url": "https://www.geonet.org.nz",
+        "notice": "Latest available GeoNet events within 100 km and the last 30 days, limited to five. The national feed contains at most 100 possibly felt earthquakes (MMI 3 or greater), so this is not a complete earthquake catalogue. Earthquake information is not a water-quality measurement or a tsunami warning. Source: GeoNet, CC BY 3.0 NZ.",
+        "events": [
+          {
+            "public_id": "2026p721645",
+            "time": "2026-09-25T00:12:46.841000+00:00",
+            "magnitude": 2.697034310642398,
+            "depth_km": 9.507068634033203,
+            "locality": "15 km north-east of Upper Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+            "distance_km": 50.7
+          },
+          {
+            "public_id": "2026p721145",
+            "time": "2026-09-24T19:46:16.272000+00:00",
+            "magnitude": 3.288109754149437,
+            "depth_km": 9.620562553405762,
+            "locality": "15 km south-east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+            "distance_km": 61.8
+          },
+          {
+            "public_id": "2026p719052",
+            "time": "2026-09-24T01:11:04.758000+00:00",
+            "magnitude": 2.635161779887439,
+            "depth_km": 20.736188888549805,
+            "locality": "10 km south-east of Lower Hutt",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+            "distance_km": 18.6
+          },
+          {
+            "public_id": "2026p717812",
+            "time": "2026-09-23T14:10:25.602000+00:00",
+            "magnitude": 2.7418553946293045,
+            "depth_km": 11.426687240600586,
+            "locality": "20 km east of Seddon",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+            "distance_km": 48.6
+          },
+          {
+            "public_id": "2026p711868",
+            "time": "2026-09-21T09:23:42.309000+00:00",
+            "magnitude": 4.110605178724192,
+            "depth_km": 17.210447311401367,
+            "locality": "5 km west of Masterton",
+            "quality": "best",
+            "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+            "distance_km": 78.8
+          }
+        ],
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+      }
+    }
+  ],
+  "map": {
+    "water_stations": [
+      {
+        "community": "Oriental Bay",
+        "station_name": "Oriental Bay at Band Rotunda",
+        "latitude": -41.29109602,
+        "longitude": 174.79432712,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Oriental Bay at Band Rotunda",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Oriental%20Bay%20at%20Band%20Rotunda&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.29109602,
+          "station_longitude": 174.79432712,
+          "station_distance_km": 0.002,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "500",
+              "value_text": "500",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-31T09:30:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Lyall Bay",
+        "station_name": "Lyall Bay at Tirangi Road",
+        "latitude": -41.32832071,
+        "longitude": 174.80137072,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Lyall Bay at Tirangi Road",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Lyall%20Bay%20at%20Tirangi%20Road&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.32832071,
+          "station_longitude": 174.80137072,
+          "station_distance_km": 0.472,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "180",
+              "value_text": "180",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-08-12T11:49:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Island Bay",
+        "station_name": "Island Bay at Surf Club",
+        "latitude": -41.34352595,
+        "longitude": 174.77346379,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Island Bay at Surf Club",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Island%20Bay%20at%20Surf%20Club&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.34352595,
+          "station_longitude": 174.77346379,
+          "station_distance_km": 0.004,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "8",
+              "value_text": "8",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-08-12T12:03:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Porirua Harbour",
+        "station_name": "Porirua Harbour at Rowing Club",
+        "latitude": -41.11400634,
+        "longitude": 174.84485321,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Porirua Harbour at Rowing Club",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Porirua%20Harbour%20at%20Rowing%20Club&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.11400634,
+          "station_longitude": 174.84485321,
+          "station_distance_km": 0.004,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "12",
+              "value_text": "12",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-08-10T10:05:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Petone Beach",
+        "station_name": "Petone Beach at Kiosk",
+        "latitude": -41.2325087,
+        "longitude": 174.88916682,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Petone Beach at Kiosk",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Petone%20Beach%20at%20Kiosk&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.2325087,
+          "station_longitude": 174.88916682,
+          "station_distance_km": 0.003,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "28",
+              "value_text": "28",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-08-11T12:19:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Scorching Bay",
+        "station_name": "Scorching Bay",
+        "latitude": -41.29703432,
+        "longitude": 174.83359256,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Scorching Bay",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Scorching%20Bay&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.29703432,
+          "station_longitude": 174.83359256,
+          "station_distance_km": 0.004,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "<4",
+              "value_text": "<4",
+              "qualifier": "<",
+              "unit": "n/100ml",
+              "sampled_at": "2026-08-12T11:27:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Worser Bay",
+        "station_name": "Worser Bay",
+        "latitude": -41.31354924,
+        "longitude": 174.82876317,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Worser Bay",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Worser%20Bay&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.31354924,
+          "station_longitude": 174.82876317,
+          "station_distance_km": 0.006,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "400",
+              "value_text": "400",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-31T10:21:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Seatoun Beach",
+        "station_name": "Seatoun Beach at Wharf",
+        "latitude": -41.31883265,
+        "longitude": 174.829568,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Seatoun Beach at Wharf",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Seatoun%20Beach%20at%20Wharf&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.31883265,
+          "station_longitude": 174.829568,
+          "station_distance_km": 0.005,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "4",
+              "value_text": "4",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-31T10:27:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Days Bay",
+        "station_name": "Days Bay at Wharf",
+        "latitude": -41.28084503,
+        "longitude": 174.90641735,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Days Bay at Wharf",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Days%20Bay%20at%20Wharf&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.28084503,
+          "station_longitude": 174.90641735,
+          "station_distance_km": 0.005,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "4",
+              "value_text": "4",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-30T10:15:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Rona Bay",
+        "station_name": "Rona Bay at Wharf",
+        "latitude": -41.28950787,
+        "longitude": 174.89563525,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Rona Bay at Wharf",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Rona%20Bay%20at%20Wharf&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.28950787,
+          "station_longitude": 174.89563525,
+          "station_distance_km": 0.003,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "4",
+              "value_text": "4",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-30T10:00:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Tītahi Bay",
+        "station_name": "Titahi Bay at Toms Road",
+        "latitude": -41.10596177,
+        "longitude": 174.83532731,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Titahi Bay at Toms Road",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Titahi%20Bay%20at%20Toms%20Road&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.10596177,
+          "station_longitude": 174.83532731,
+          "station_distance_km": 0.005,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "<4",
+              "value_text": "<4",
+              "qualifier": "<",
+              "unit": "n/100ml",
+              "sampled_at": "2026-08-10T10:31:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Plimmerton Beach",
+        "station_name": "Plimmerton Beach at Bath Street",
+        "latitude": -41.0833261,
+        "longitude": 174.86560139,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Plimmerton Beach at Bath Street",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Plimmerton%20Beach%20at%20Bath%20Street&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.0833261,
+          "station_longitude": 174.86560139,
+          "station_distance_km": 0.003,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "<4",
+              "value_text": "<4",
+              "qualifier": "<",
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-09T13:25:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Paremata",
+        "station_name": "Pauatahanui Inlet at Paremata Bridge",
+        "latitude": -41.1015345,
+        "longitude": 174.87143953,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Pauatahanui Inlet at Paremata Bridge",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Pauatahanui%20Inlet%20at%20Paremata%20Bridge&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.1015345,
+          "station_longitude": 174.87143953,
+          "station_distance_km": 0.005,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "<4",
+              "value_text": "<4",
+              "qualifier": "<",
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-09T14:10:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Pukerua Bay",
+        "station_name": "Pukerua Bay",
+        "latitude": -41.02936295,
+        "longitude": 174.89481296,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Pukerua Bay",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Pukerua%20Bay&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.02936295,
+          "station_longitude": 174.89481296,
+          "station_distance_km": 0.237,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "<4",
+              "value_text": "<4",
+              "qualifier": "<",
+              "unit": "n/100ml",
+              "sampled_at": "2026-08-10T11:35:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Ōwhiro Bay",
+        "station_name": "Owhiro Bay",
+        "latitude": -41.34489952,
+        "longitude": 174.75850109,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Owhiro Bay",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Owhiro%20Bay&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.34489952,
+          "station_longitude": 174.75850109,
+          "station_distance_km": 0.0,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "<4",
+              "value_text": "<4",
+              "qualifier": "<",
+              "unit": "n/100ml",
+              "sampled_at": "2026-08-12T12:12:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Princess Bay",
+        "station_name": "Princess Bay",
+        "latitude": -41.34407669,
+        "longitude": 174.78792873,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Princess Bay",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Princess%20Bay&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.34407669,
+          "station_longitude": 174.78792873,
+          "station_distance_km": 0.004,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "52",
+              "value_text": "52",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-31T11:19:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Hataitai Beach",
+        "station_name": "Hataitai Beach",
+        "latitude": -41.30583398,
+        "longitude": 174.79937783,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Hataitai Beach",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Hataitai%20Beach&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.30583398,
+          "station_longitude": 174.79937783,
+          "station_distance_km": 0.004,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "8",
+              "value_text": "8",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-31T09:46:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      },
+      {
+        "community": "Breaker Bay",
+        "station_name": "Breaker Bay",
+        "latitude": -41.33017782,
+        "longitude": 174.83207222,
+        "water": {
+          "source_name": "Greater Wellington",
+          "source_url": "https://graphs.gw.govt.nz/envmon?view=map",
+          "station_name": "Breaker Bay",
+          "station_url": "https://hilltop.gw.govt.nz/data.hts?Service=SOS&Request=GetObservation&FeatureOfInterest=Breaker%20Bay&ObservedProperty=Enterococci%20Bacteria",
+          "lawa_url": "https://www.lawa.org.nz/explore-data/swimming",
+          "station_latitude": -41.33017782,
+          "station_longitude": 174.83207222,
+          "station_distance_km": 0.003,
+          "samples": [
+            {
+              "parameter": "Enterococci Bacteria",
+              "value": "24",
+              "value_text": "24",
+              "qualifier": null,
+              "unit": "n/100ml",
+              "sampled_at": "2026-03-31T10:39:00+12:00"
+            }
+          ],
+          "notice": "A laboratory sample describes one station at its sampling time, not current conditions across the bay. Check LAWA for current swimming advice.",
+          "attribution": "Monitoring data: Greater Wellington Regional Council. Retrieved directly from its public Hilltop service; LAWA swimming guidance is linked separately.",
+          "documentation_url": "https://hilltop.gw.govt.nz/data.hts",
+          "status": "available",
+          "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+          "last_attempt_at": "2026-09-26T09:46:41.779703+00:00"
+        }
+      }
+    ],
+    "earthquakes": [
+      {
+        "public_id": "2026p721645",
+        "time": "2026-09-25T00:12:46.841000+00:00",
+        "magnitude": 2.697034310642398,
+        "depth_km": 9.507068634033203,
+        "locality": "15 km north-east of Upper Hutt",
+        "quality": "best",
+        "url": "https://www.geonet.org.nz/earthquake/2026p721645",
+        "latitude": -40.998420715,
+        "longitude": 175.152740479,
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "nearby_communities": [
+          "Oriental Bay",
+          "Lyall Bay",
+          "Island Bay",
+          "Porirua Harbour",
+          "Petone Beach",
+          "Scorching Bay",
+          "Worser Bay",
+          "Seatoun Beach",
+          "Days Bay",
+          "Rona Bay",
+          "Mākara Beach",
+          "Tītahi Bay",
+          "Plimmerton Beach",
+          "Paremata",
+          "Pukerua Bay",
+          "Houghton Bay",
+          "Ōwhiro Bay",
+          "Princess Bay",
+          "Hataitai Beach",
+          "Breaker Bay"
+        ]
+      },
+      {
+        "public_id": "2026p721145",
+        "time": "2026-09-24T19:46:16.272000+00:00",
+        "magnitude": 3.288109754149437,
+        "depth_km": 9.620562553405762,
+        "locality": "15 km south-east of Seddon",
+        "quality": "best",
+        "url": "https://www.geonet.org.nz/earthquake/2026p721145",
+        "latitude": -41.735187531,
+        "longitude": 174.230056763,
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "nearby_communities": [
+          "Oriental Bay",
+          "Lyall Bay",
+          "Island Bay",
+          "Porirua Harbour",
+          "Petone Beach",
+          "Scorching Bay",
+          "Worser Bay",
+          "Seatoun Beach",
+          "Days Bay",
+          "Rona Bay",
+          "Mākara Beach",
+          "Tītahi Bay",
+          "Plimmerton Beach",
+          "Paremata",
+          "Pukerua Bay",
+          "Houghton Bay",
+          "Ōwhiro Bay",
+          "Princess Bay",
+          "Hataitai Beach",
+          "Breaker Bay"
+        ]
+      },
+      {
+        "public_id": "2026p719052",
+        "time": "2026-09-24T01:11:04.758000+00:00",
+        "magnitude": 2.635161779887439,
+        "depth_km": 20.736188888549805,
+        "locality": "10 km south-east of Lower Hutt",
+        "quality": "best",
+        "url": "https://www.geonet.org.nz/earthquake/2026p719052",
+        "latitude": -41.3216362,
+        "longitude": 174.97883606,
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "nearby_communities": [
+          "Oriental Bay",
+          "Lyall Bay",
+          "Island Bay",
+          "Porirua Harbour",
+          "Petone Beach",
+          "Scorching Bay",
+          "Worser Bay",
+          "Seatoun Beach",
+          "Days Bay",
+          "Rona Bay",
+          "Mākara Beach",
+          "Tītahi Bay",
+          "Plimmerton Beach",
+          "Paremata",
+          "Pukerua Bay",
+          "Houghton Bay",
+          "Ōwhiro Bay",
+          "Princess Bay",
+          "Hataitai Beach",
+          "Breaker Bay"
+        ]
+      },
+      {
+        "public_id": "2026p717812",
+        "time": "2026-09-23T14:10:25.602000+00:00",
+        "magnitude": 2.7418553946293045,
+        "depth_km": 11.426687240600586,
+        "locality": "20 km east of Seddon",
+        "quality": "best",
+        "url": "https://www.geonet.org.nz/earthquake/2026p717812",
+        "latitude": -41.660354614,
+        "longitude": 174.355422974,
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "nearby_communities": [
+          "Oriental Bay",
+          "Lyall Bay",
+          "Island Bay",
+          "Porirua Harbour",
+          "Petone Beach",
+          "Scorching Bay",
+          "Worser Bay",
+          "Seatoun Beach",
+          "Days Bay",
+          "Rona Bay",
+          "Mākara Beach",
+          "Tītahi Bay",
+          "Plimmerton Beach",
+          "Paremata",
+          "Pukerua Bay",
+          "Houghton Bay",
+          "Ōwhiro Bay",
+          "Princess Bay",
+          "Hataitai Beach",
+          "Breaker Bay"
+        ]
+      },
+      {
+        "public_id": "2026p711868",
+        "time": "2026-09-21T09:23:42.309000+00:00",
+        "magnitude": 4.110605178724192,
+        "depth_km": 17.210447311401367,
+        "locality": "5 km west of Masterton",
+        "quality": "best",
+        "url": "https://www.geonet.org.nz/earthquake/2026p711868",
+        "latitude": -40.953899384,
+        "longitude": 175.543579102,
+        "status": "available",
+        "retrieved_at": "2026-09-26T09:46:41.779703+00:00",
+        "nearby_communities": [
+          "Oriental Bay",
+          "Lyall Bay",
+          "Island Bay",
+          "Porirua Harbour",
+          "Petone Beach",
+          "Scorching Bay",
+          "Worser Bay",
+          "Seatoun Beach",
+          "Days Bay",
+          "Rona Bay",
+          "Mākara Beach",
+          "Tītahi Bay",
+          "Plimmerton Beach",
+          "Paremata",
+          "Pukerua Bay",
+          "Houghton Bay",
+          "Ōwhiro Bay",
+          "Princess Bay",
+          "Hataitai Beach",
+          "Breaker Bay"
+        ]
+      }
+    ],
+    "notice": "Official monitoring stations and nearby events from the limited GeoNet feed. Marker colours do not establish swimming safety or tsunami risk."
+  }
+}
