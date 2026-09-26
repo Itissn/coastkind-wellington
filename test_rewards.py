@@ -19,7 +19,9 @@ class TestStore:
         with self.connect() as db:
             db.executescript("""
                 PRAGMA journal_mode=WAL;
-                CREATE TABLE users(id TEXT PRIMARY KEY);
+                CREATE TABLE users(id TEXT PRIMARY KEY,role TEXT NOT NULL DEFAULT 'member',
+                                   display_name TEXT NOT NULL DEFAULT 'Fixture member',email TEXT,
+                                   password_change_required INTEGER NOT NULL DEFAULT 0);
                 CREATE TABLE points_ledger(id INTEGER PRIMARY KEY,user_id TEXT REFERENCES users(id),delta INTEGER NOT NULL);
             """)
         rewards.initialize_rewards(self)
@@ -42,14 +44,15 @@ class RewardTests(unittest.TestCase):
         self.store = TestStore(Path(self.temp.name) / "rewards-test.sqlite3")
         self.user = self.account(100)
         self.other = self.account(100)
+        self.admin = self.account(0, role='admin')
 
     def tearDown(self):
         self.temp.cleanup()
 
-    def account(self, points):
+    def account(self, points, role='member'):
         user_id = str(uuid4())
         with self.store.connect() as db:
-            db.execute("INSERT INTO users(id) VALUES(?)", (user_id,))
+            db.execute("INSERT INTO users(id,role) VALUES(?,?)", (user_id, role))
             db.execute("INSERT INTO points_ledger(user_id,delta) VALUES(?,?)", (user_id, points))
         return user_id
 
@@ -60,7 +63,8 @@ class RewardTests(unittest.TestCase):
         ], "Test operator")
 
     def redeem(self, user=None, request_id=None):
-        return rewards.redeem(self.store, user or self.user, "test-reward", request_id or str(uuid4()))
+        request = rewards.redeem(self.store, user or self.user, "test-reward", request_id or str(uuid4()))
+        return rewards.review_request(self.store, request['id'], self.admin, 'approved', 'Approved synthetic test inventory.')
 
     def test_seed_catalog_is_inactive_and_does_not_promise_values(self):
         data = rewards.catalog(self.store)
@@ -155,7 +159,7 @@ class RewardTests(unittest.TestCase):
 
         with ThreadPoolExecutor(max_workers=2) as pool:
             outcomes = list(pool.map(worker, range(2)))
-        self.assertEqual(sum(outcome is not None for outcome in outcomes), 1)
+        self.assertEqual(len({outcome['id'] for outcome in outcomes if outcome is not None}), 1)
         self.assertEqual(rewards.points_balance(self.store, self.user), 25)
 
     def test_concurrent_retries_allocate_and_debit_once(self):

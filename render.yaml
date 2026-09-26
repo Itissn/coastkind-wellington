@@ -1,0 +1,27 @@
+# Paid deployment: create only after the owner approves the hosting cost.
+services:
+  - type: web
+    name: coastkind-wellington
+    runtime: python
+    plan: 0.5c-512mb
+    region: singapore
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    healthCheckPath: /api/health
+    autoDeployTrigger: off
+    numInstances: 1
+    disk:
+      name: coastkind-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: COASTKIND_HOST
+        value: 0.0.0.0
+      - key: COASTKIND_DB_PATH
+        value: /var/data/coastkind.sqlite3
+      - key: PYTHONUNBUFFERED
+        value: "1"
+# RENDER_EXTERNAL_URL and PORT are supplied by Render.
+# Add the first administrator email/password hash and optional AI key through
+# Render's private environment settings. Never add those values to this file.

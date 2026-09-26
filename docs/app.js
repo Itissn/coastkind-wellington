@@ -31,7 +31,9 @@ let currentUser = null, csrfToken = null, authMode = 'login', authBusy = false, 
 let rewardCatalog = [], myVouchers = [], redemption = null;
 let posts = [], filter = 'all', currentPost = null, coastMap = null, mapLoaded = false;
 let photoData = '', photoVersion = 0, photoLoading = false, position = null, locationVersion = 0;
-let submitting = false, submissionId = '', submissionHint = 'observation', backendReady = false, aiConfigured = false, demoMode = false;
+let submitting = false, submissionId = '', submissionHint = 'observation', backendReady = false, aiConfigured = false, demoMode = !!(window.coastkindDemoApi || document.body.classList.contains('demo-preview'));
+let composerCommunity = '', identityChosen = false;
+const composerDrafts = new Map();
 let refreshing = false, loaded = false;
 let concerns = [], alerts = [], focusedConcern = null;
 let wallet = {points:0,pending_observations:0,entries:[]};
@@ -84,6 +86,7 @@ function render() {
   const list = local.filter(p => (filter === 'all' || postType(p) === filter) && (!focused || focused.report_ids.includes(p.id))).sort((a,b) => $('#sort').value === 'supported' ? b.likes-a.likes : new Date(b.created)-new Date(a.created));
   $('#posts').innerHTML = list.length ? list.map(p => `<article class="post-card"><div class="post-photo"><img src="${escapeHTML(p.photo)}" alt="Community coastal observation" loading="lazy"><span class="tag ${postType(p)==='concern'?'concern':''}">${postType(p)==='concern'?'Coastal concern':postType(p)==='moment'?'Community update':'Coastal observation'}</span></div><div class="post-content"><div class="author-row"><span class="avatar">CK</span><div><span class="author-name">${escapeHTML(p.author_name || 'Guest contributor')}</span><time class="post-date">${dateLabel(p.created)}</time></div></div><div class="post-place">⌖ ${escapeHTML(p.community)}</div><h3 class="post-title">${escapeHTML(titleFor(p))}</h3>${p.feelings?`<p class="post-body">${escapeHTML(p.feelings)}</p>`:''}${tagsFor(p)}<span class="post-status">${statusText(p)}</span></div><div class="post-footer"><button data-like="${p.id}" aria-label="Support this observation" aria-pressed="${p.liked}">${p.liked?'♥':'♡'} ${p.likes}</button><button data-detail="${p.id}" aria-label="Read comments">↳ ${p.comments.length}</button><button class="read-story" data-detail="${p.id}">View observation ↗</button></div></article>`).join('') : `<div class="empty-state"><span class="empty-wave" aria-hidden="true">≋</span><h3>${!loaded?'Your coastal community':'Be the first pair of eyes.'}</h3><p>${!backendReady?'Connect to the local server to load and save community observations.':filter==='all'?'A quiet swim. Something out of place. Share what you see.':'No observations match this filter yet.'}</p><button class="button primary" data-compose="observation">＋ Share a photo</button></div>`;
   $('.feed-end').hidden = list.length === 0;
+  syncComposerPlacement();
 }
 async function refreshPosts() {
   if (refreshing || authBusy) return;
@@ -101,32 +104,76 @@ async function refreshPosts() {
     backendReady = true; loaded = true; aiConfigured = health.aiConfigured; demoMode = !!health.demoMode;
     const changed = JSON.stringify(posts) !== JSON.stringify(result.observations) || JSON.stringify(concerns)!==JSON.stringify(trends.concerns) || JSON.stringify(alerts)!==JSON.stringify(trends.alerts);
     posts = result.observations; concerns = trends.concerns; alerts = trends.alerts;
-    wallet=balance;renderWallet();
+    wallet=balance;renderWallet();renderAccount();syncComposerPlacement();
     $('#connection-status').textContent = demoMode ? 'Synthetic demonstration · Scripted analysis and reviews · No real pollution findings or rewards' : aiConfigured ? 'Saved to the community database · AI suggestions await human review' : 'Your observations are saved to the local database. AI analysis is awaiting setup.';
     if (changed || first) render();
   } catch (error) { if(revision===authRevision){backendReady = false; $('#connection-status').textContent = error.message; render();} }
   finally { refreshing = false; }
 }
-function openComposer(hint = 'observation') {
-  if(demoMode){toast('This fictional presentation is read-only.');return;}
-  if (submitting) return;
+function resetComposer(community = '', hint = 'observation') {
   $('#compose-form').reset(); photoVersion++; locationVersion++; photoData = ''; photoLoading = false; position = null;
-  submissionId = crypto.randomUUID(); submissionHint = hint;
+  submissionId = crypto.randomUUID(); submissionHint = hint; identityChosen = false;
   $('#upload-as-guest').checked=!currentUser;renderUploadIdentity();
   $('#concern-hint').checked = hint === 'concern';
   $('#photo-preview').hidden = true; $('#form-error').textContent = ''; $('#photo-quality').textContent = '';
+  $('#composer-success').hidden = true; $('#composer-success').textContent = '';
   $('#location-status').textContent = 'Optional. Only add your current location if you are at the photo location.';
   $('#clear-location').hidden = true; $('#location-confirm-label').hidden = true; $('#get-location').disabled = false;
-  $('#photo-details').open = false;$('.dataset-preference').open=false;
-  const community = $('#location-filter').value;
-  if (community !== 'all') $('#compose-form [name="location"]').value = community;
+  $('#extra-details').open=false;$('#photo-details').open = false;$('.dataset-preference').open=false;
+  $('#compose-form [name="location"]').value = community;
+  $('#composer-place').textContent=community?`Sharing with the ${community} community.`:'A moment from your coast.';
   const localNow = new Date(Date.now() - new Date().getTimezoneOffset()*60000).toISOString().slice(0,16);
   $('#observed-at').max = localNow;
+}
+function hasComposerContent(){
+  return !!(photoData || photoLoading || $('#compose-form [name="feelings"]').value.trim() || position || $('#observed-at').value || $('#concern-hint').checked);
+}
+function rememberComposerDraft(){
+  if(!composerCommunity || !submissionId)return;
+  composerDrafts.set(composerCommunity,{id:submissionId,photo:photoData,position,
+    location:$('#compose-form [name="location"]').value,feelings:$('#compose-form [name="feelings"]').value,
+    observed:$('#observed-at').value,concern:$('#concern-hint').checked,guest:$('#upload-as-guest').checked,
+    confirmed:$('#location-confirm').checked,consent:$('#dataset-consent').checked,identityChosen,
+    quality:$('#photo-quality').textContent,locationStatus:$('#location-status').textContent});
+}
+function restoreComposerDraft(community){
+  const draft=composerDrafts.get(community);resetComposer(community);
+  if(!draft)return;
+  submissionId=draft.id;photoData=draft.photo;position=draft.position;identityChosen=draft.identityChosen;
+  $('#compose-form [name="location"]').value=draft.location;$('#compose-form [name="feelings"]').value=draft.feelings;
+  $('#observed-at').value=draft.observed;$('#concern-hint').checked=draft.concern;$('#upload-as-guest').checked=draft.guest;
+  $('#location-confirm').checked=draft.confirmed;$('#dataset-consent').checked=draft.consent;
+  $('#photo-preview').src=photoData;$('#photo-preview').hidden=!photoData;$('#photo-quality').textContent=draft.quality;
+  $('#clear-location').hidden=!position;$('#location-confirm-label').hidden=!position;$('#location-status').textContent=draft.locationStatus;
+  $('#composer-place').textContent=`Sharing with the ${draft.location || community} community.`;
+  renderUploadIdentity();
+}
+function syncComposerPlacement(){
+  const community=coastalCommunities.find(c=>location.hash===`#coast/${c.slug}`);
+  const inline=!!community&&!demoMode;
+  const mount=$('#inline-composer'),form=$('#compose-form'),dialog=$('#compose-dialog');
+  if(submitting)return;
+  if(inline){
+    if(composerCommunity!==community.name){rememberComposerDraft();restoreComposerDraft(community.name);composerCommunity=community.name;}
+    if(form.parentElement!==mount){if(dialog.open)dialog.close();mount.append(form);}
+  }else if(form.parentElement===mount){rememberComposerDraft();composerCommunity='';dialog.append(form);}
+  mount.hidden=!inline;document.body.classList.toggle('has-inline-composer',inline);
+}
+function openComposer(hint = 'observation') {
+  if(demoMode){toast('This fictional presentation is read-only.');return;}
+  if (submitting) return;
+  syncComposerPlacement();
+  if($('#compose-form').parentElement===$('#inline-composer')){
+    if(hint==='concern')$('#concern-hint').checked=true;
+    $('#inline-composer').scrollIntoView({behavior:'smooth',block:'start'});$('#photo').focus({preventScroll:true});return;
+  }
+  resetComposer('',hint);$('#extra-details').open=true;
   $('#compose-dialog').showModal();
 }
 async function loadPhoto(event) {
   const version = ++photoVersion;
   const file = event.target.files[0];
+  $('#composer-success').hidden=true;
   photoData = ''; photoLoading = false; $('#photo-preview').hidden = true; $('#form-error').textContent = ''; $('#photo-quality').textContent = '';
   if (!file) return;
   if (!['image/jpeg','image/png','image/webp'].includes(file.type) || file.size > 5*1024*1024) {
@@ -173,6 +220,7 @@ $('#clear-location').addEventListener('click', () => {
 $('#compose-dialog').addEventListener('cancel', event => { if (submitting) event.preventDefault(); });
 $('#compose-form').addEventListener('submit', async event => {
   event.preventDefault(); if (submitting) return;
+  if(demoMode){toast('This fictional presentation is read-only.');return;}
   $('#form-error').textContent = '';
   if (photoLoading || !photoData) { $('#form-error').textContent = photoLoading ? 'Your photo is still loading. Please wait a moment.' : 'Add a photo to share your observation.'; return; }
   if (position && !$('#location-confirm').checked) { $('#form-error').textContent = 'Confirm this is where you took the photo, or remove the location.'; return; }
@@ -185,10 +233,14 @@ $('#compose-form').addEventListener('submit', async event => {
   $('#submit-observation').textContent = 'Saving your observation…';
   try {
     await api('/api/observations', {method:'POST', body:JSON.stringify(payload)});
-    $('#compose-dialog').close(); await refreshPosts(); enterCommunity(community);
+    if($('#compose-dialog').open)$('#compose-dialog').close();
+    composerDrafts.delete(composerCommunity);resetComposer(community);
+    $('#composer-success').textContent=payload.as_guest?'Thank you. Your photo and words are saved. This guest upload earns no rewards.':'Thank you. Your photo and words are saved to your account.';
+    $('#composer-success').hidden=false;
+    await refreshPosts(); enterCommunity(community);
     toast(payload.as_guest?'Guest observation saved. Rewards are waived for this upload.':aiConfigured ? 'Saved to your account. AI analysis will appear shortly.' : 'Saved to your account. Awaiting AI analysis setup.');
-  } catch (error) { $('#form-error').textContent = error.message; }
-  finally { submitting = false; controls.forEach(control => control.disabled = false); $('#submit-observation').textContent = 'Share observation ↗'; }
+  } catch (error) { $('#form-error').textContent = error.message; toast(error.message); }
+  finally { submitting = false; controls.forEach(control => control.disabled = false); $('#submit-observation').textContent = 'Share observation ↗'; syncComposerPlacement(); }
 });
 function analysisDetail(p) {
   if (!p.analysis) return `<section class="analysis-panel"><strong>${statusText(p)}</strong><p>${p.status==='duplicate'?'This photo is linked to an earlier record and will not be counted as independent evidence.':p.status==='failed'?'Your photo and words are saved in the database. Analysis can be retried by the site operator.':'Your original observation is saved. Analysis will be added when available.'}</p></section>`;
@@ -197,7 +249,7 @@ function analysisDetail(p) {
 }
 function openDetail(id) {
   const p = posts.find(p=>p.id===id); if (!p) return; currentPost = id;
-  $('#detail-content').innerHTML = `<img class="detail-image" src="${escapeHTML(p.photo)}" alt="Community coastal observation"><h2 class="detail-heading">${escapeHTML(titleFor(p))}</h2><p class="detail-meta">${escapeHTML(p.community)} · Submitted ${dateLabel(p.created)}${p.observed_at?` · Observed ${dateLabel(p.observed_at)}`:' · Photo date not supplied'}${p.position?' · Approximate location recorded':''}</p>${p.feelings?`<p class="detail-body">${escapeHTML(p.feelings)}</p>`:''}${p.quality_flags?.length?`<p class="report-note">Data notes: ${p.quality_flags.map(escapeHTML).join(' · ')}</p>`:''}${analysisDetail(p)}<button class="button primary" id="download-report">Download observation draft ↓</button><p class="report-note">Not submitted to government. Attach your original photo before sending.</p><section class="comments"><h3>Community follow-up</h3>${p.comments.map(c=>`<div class="comment"><strong>${escapeHTML(c.author)}</strong><p>${escapeHTML(c.body)}</p><small>${dateLabel(c.created)}</small></div>`).join('') || '<p class="detail-meta">Add another observation or share an update.</p>'}<form id="comment-form" class="comment-form"><p class="detail-meta">${currentUser ? `Posting as ${escapeHTML(currentUser.display_name)}` : 'Sign in to add a follow-up.'}</p><label>Your update<textarea name="body" required maxlength="1500" rows="3"></textarea></label><p class="form-error" id="comment-error" role="alert"></p><button class="button primary" type="submit">Save update ↗</button></form></section>`;
+  $('#detail-content').innerHTML = `<img class="detail-image" src="${escapeHTML(p.photo)}" alt="Community coastal observation"><h2 class="detail-heading">${escapeHTML(titleFor(p))}</h2><p class="detail-meta">${escapeHTML(p.community)} · Submitted ${dateLabel(p.created)}${p.observed_at?` · Observed ${dateLabel(p.observed_at)}`:' · Photo date not supplied'}${p.position?' · Approximate location recorded':''}</p>${p.feelings?`<p class="detail-body">${escapeHTML(p.feelings)}</p>`:''}${p.quality_flags?.length?`<p class="report-note">Data notes: ${p.quality_flags.map(escapeHTML).join(' · ')}</p>`:''}${analysisDetail(p)}<section class="comments"><h3>Community follow-up</h3>${p.comments.map(c=>`<div class="comment"><strong>${escapeHTML(c.author)}</strong><p>${escapeHTML(c.body)}</p><small>${dateLabel(c.created)}</small></div>`).join('') || '<p class="detail-meta">Add another observation or share an update.</p>'}<form id="comment-form" class="comment-form"><p class="detail-meta">${currentUser ? `Posting as ${escapeHTML(currentUser.display_name)}` : 'Sign in to add a follow-up.'}</p><label>Your update<textarea name="body" required maxlength="1500" rows="3"></textarea></label><p class="form-error" id="comment-error" role="alert"></p><button class="button primary" type="submit">Save update ↗</button></form></section>`;
   if (!$('#detail-dialog').open) $('#detail-dialog').showModal();
 }
 $('#detail-content').addEventListener('submit', async event => {
@@ -209,22 +261,15 @@ $('#detail-content').addEventListener('submit', async event => {
   catch (error) { $('#comment-error').textContent = error.message; }
   finally { button.disabled = false; }
 });
-function downloadReport() {
-  const p = posts.find(p=>p.id===currentPost);
-  const report = ['COASTKIND — OBSERVATION DRAFT','NOT SUBMITTED TO GOVERNMENT','Unverified community evidence',`Record: ${p.id}`,`Community: ${p.community}`,`Submitted: ${p.created}`,`Observed: ${p.observed_at || 'Not supplied'}`,p.position?`Approximate device coordinates: ${p.position.latitude}, ${p.position.longitude}`:'No device location shared.',`Data quality notes: ${(p.quality_flags||[]).join('; ')||'None recorded'}`,p.duplicate_of?`Repeated image linked to record: ${p.duplicate_of}`:'','', 'ORIGINAL FEELINGS',p.feelings || 'No text supplied.','', 'AI ANALYSIS — REQUIRES HUMAN REVIEW',p.analysis?JSON.stringify(p.analysis,null,2):statusText(p),'','FOLLOW-UP',...p.comments.map(c=>`${c.created} — ${c.author}: ${c.body}`),'','Attach the original photo. Review all observations before submission. This draft has not been sent to a council.'].join('\n');
-  const url = URL.createObjectURL(new Blob([report],{type:'text/plain;charset=utf-8'}));
-  const a = document.createElement('a'); a.href=url; a.download=`coastkind-${p.id}.txt`; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
 document.addEventListener('click', async event => {
   if(event.target.closest('[data-resources]')) $('#resources-dialog').showModal();
   const auth=event.target.closest('[data-auth]');if(auth)openAuth(auth.dataset.auth);
   const authTab=event.target.closest('[data-auth-mode]');if(authTab&&!authBusy)setAuthMode(authTab.dataset.authMode);
   const group = event.target.closest('[data-concern-group]');
   if(group){focusedConcern=group.dataset.concernGroup;filter='all';document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('selected',b.dataset.filter==='all'));render();$('#focused-concern').scrollIntoView({behavior:'smooth',block:'start'});}
-  const download = event.target.closest('[data-concern-download]');if(download)downloadConcern(download.dataset.concernDownload);
   if(event.target.closest('#clear-concern')){focusedConcern=null;render();}
   const compose = event.target.closest('[data-compose]'); if (compose) openComposer(compose.dataset.compose);
-  const close = event.target.closest('.close,.close-info'); if (close && !(close.closest('#compose-dialog') && submitting)) close.closest('dialog').close();
+  const close = event.target.closest('.close,.close-info'); if (close && !(close.closest('#compose-dialog') && submitting)) close.closest('dialog')?.close();
   const tab = event.target.closest('[data-filter]'); if (tab) {filter=tab.dataset.filter; document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('selected',b===tab)); render();}
   const detail = event.target.closest('[data-detail]'); if (detail) openDetail(detail.dataset.detail);
   const like = event.target.closest('[data-like]'); if (like) {
@@ -234,7 +279,6 @@ document.addEventListener('click', async event => {
     catch(error){toast(error.message);like.disabled=false;}
   }
   if(event.target.closest('#report-info')) $('#info-dialog').showModal();
-  if(event.target.closest('#download-report')) downloadReport();
 });
 function enterCommunity(name) {
   const c=coastalCommunities.find(c=>c.name===name); if(!c)return;
@@ -268,13 +312,7 @@ function renderConcerns(community){
   $('#shared-concerns').hidden=!groups.length;
   const attention=alerts.filter(a=>a.community===community && a.status!=='inactive');
   $('#concerns-title').textContent=attention.length?'Repeated concerns need a closer look':'What our community is noticing';
-  $('#concern-groups').innerHTML=groups.map(g=>`<article class="concern-group"><div class="concern-title"><h4>${escapeHTML(pollutionLabels[g.category]||g.category)}</h4><span>${g.reporting_span_days?`Reports span ${g.reporting_span_days} days`:'Reports received on one day'}</span></div><div class="concern-metrics"><div><strong>${g.report_count}</strong><span>reports received</span></div><div><strong>${g.distinct_photos}</strong><span>different photos</span></div><div><strong>${g.supporting_accounts}</strong><span>supporting accounts</span></div><div><strong>${g.followups}</strong><span>follow-up updates</span></div></div><p>First reported ${dateLabel(g.first_report)} · Latest ${dateLabel(g.last_report)}<br>${g.contributing_accounts} contributing accounts · ${g.duplicates} repeated photos · ${g.reviewed_reports} human-reviewed records</p><div class="concern-group-actions"><button class="text-button" data-concern-group="${g.id}">View related observations ↗</button><button class="text-button" data-concern-download="${g.id}">Download community summary ↓</button></div></article>`).join('');
-}
-function downloadConcern(id){
-  const group=concerns.find(g=>g.id===id);if(!group)return;
-  const related=posts.filter(p=>group.report_ids.includes(p.id));
-  const text=['COASTKIND — COMMUNITY CONCERN SUMMARY','UNVERIFIED COMMUNITY SIGNALS — NOT SUBMITTED TO GOVERNMENT',`Community: ${group.community}`,`Topic: ${pollutionLabels[group.category]}`,`Reports received: ${group.report_count}`,`Different photos: ${group.distinct_photos}`,`Repeated photos: ${group.duplicates}`,`Contributing accounts (not verified people): ${group.contributing_accounts}`,`Supporting accounts (not evidence): ${group.supporting_accounts}`,`Follow-ups: ${group.followups}`,`Human-reviewed records: ${group.reviewed_reports}`,`First report received: ${group.first_report}`,`Latest report received: ${group.last_report}`,'','This is an area/topic summary, not a finding that all reports refer to one incident. Repeated photographs are not independent evidence. Report frequency does not establish pollution severity or responsibility. Submission dates do not prove continuous pollution.','',...related.map(p=>[`Record: ${p.id}`,`Submitted: ${p.created}`,`Observed: ${p.observed_at||'Unknown'}`,`Review: ${p.review_status}`,`Original words: ${p.feelings||'None'}`,`Quality notes: ${(p.quality_flags||[]).join(', ')}`,`AI suggestion: ${p.analysis?JSON.stringify(p.analysis):'Not available'}`,...p.comments.map(c=>`Follow-up ${c.created}: ${c.body}`),''].join('\n'))].join('\n');
-  const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`coastkind-community-${id}.txt`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  $('#concern-groups').innerHTML=groups.map(g=>`<article class="concern-group"><div class="concern-title"><h4>${escapeHTML(pollutionLabels[g.category]||g.category)}</h4><span>${g.reporting_span_days?`Reports span ${g.reporting_span_days} days`:'Reports received on one day'}</span></div><div class="concern-metrics"><div><strong>${g.report_count}</strong><span>reports received</span></div><div><strong>${g.distinct_photos}</strong><span>different photos</span></div><div><strong>${g.supporting_accounts}</strong><span>supporting accounts</span></div><div><strong>${g.followups}</strong><span>follow-up updates</span></div></div><p>First reported ${dateLabel(g.first_report)} · Latest ${dateLabel(g.last_report)}<br>${g.contributing_accounts} contributing accounts · ${g.duplicates} repeated photos · ${g.reviewed_reports} human-reviewed records</p><div class="concern-group-actions"><button class="text-button" data-concern-group="${g.id}">View related observations ↗</button></div></article>`).join('');
 }
 function renderWallet(){
   $('#points-count').textContent=wallet.points;
@@ -284,7 +322,7 @@ function renderWallet(){
 }
 function clearAccountData(){
   wallet={points:0,pending_observations:0,entries:[]};myVouchers=[];rewardCatalog=[];redemption=null;
-  $('#my-vouchers').replaceChildren();$('#points-history').replaceChildren();$('#reward-catalog').replaceChildren();
+  $('#my-vouchers').replaceChildren();$('#points-history').replaceChildren();$('#reward-catalog').replaceChildren();$('#my-feedback').replaceChildren();$('#member-feedback-form').reset();$('#feedback-message').textContent='';
   $('#redemption-confirm').hidden=true;$('#reward-error').textContent='';
   $('#account-email').textContent='';$('#account-name').textContent='Your account';
   $('#rewards-dialog').close();renderWallet();
@@ -293,6 +331,8 @@ function renderAccount(){
   $('#header-sign-in').hidden=!!currentUser;$('#header-register').hidden=!!currentUser;
   $('#header-account').hidden=!currentUser;$('#open-rewards').hidden=!currentUser;
   if(currentUser){$('#account-name').textContent=currentUser.display_name;$('#account-email').textContent=currentUser.email;}
+  document.querySelectorAll('[data-admin-link]').forEach(link=>{link.textContent=currentUser?.role==='admin'?'Admin dashboard':'Admin sign in';link.hidden=demoMode;});
+  if(!identityChosen&&!hasComposerContent())$('#upload-as-guest').checked=!currentUser;
   renderUploadIdentity();
 }
 function renderUploadIdentity(){
@@ -315,7 +355,7 @@ function setAuthMode(mode){
   $('#auth-error').textContent='';
 }
 function openAuth(mode='login',intent=null){
-  if(currentUser){if(intent==='earn'){$('#upload-as-guest').checked=false;renderUploadIdentity();}else openAccount();return;}
+  if(currentUser){if(intent==='earn'){$('#upload-as-guest').checked=false;identityChosen=true;renderUploadIdentity();}else openAccount();return;}
   authIntent=intent;$('#auth-form').reset();setAuthMode(mode);
   if(!$('#auth-dialog').open)$('#auth-dialog').showModal();
 }
@@ -327,8 +367,9 @@ $('#auth-form').addEventListener('submit',async event=>{
   try{
     const result=await api(`/api/auth/${authMode}`,{method:'POST',body:JSON.stringify({email:data.get('email').trim(),password:data.get('password'),display_name:data.get('display_name').trim()})});
     currentUser=result.user;csrfToken=result.csrfToken;authRevision++;
+    if(currentUser.password_change_required){location.assign('admin');return;}
     $('#auth-form [name="password"]').value='';$('#auth-dialog').close();
-    if(authIntent==='earn')$('#upload-as-guest').checked=false;
+    if(authIntent==='earn'){$('#upload-as-guest').checked=false;identityChosen=true;}
     renderAccount();toast(authMode==='register'?'Your account is ready. Guest uploads from before registration remain reward-free.':'You are signed in.');
     if(authIntent==='rewards')await openAccount();
   }catch(error){$('#auth-error').textContent=error.message;}
@@ -337,10 +378,11 @@ $('#auth-form').addEventListener('submit',async event=>{
 $('#auth-dialog').addEventListener('cancel',event=>{if(authBusy)event.preventDefault();});
 $('#auth-continue-guest').addEventListener('click',()=>{
   $('#auth-dialog').close();
-  if($('#compose-dialog').open){$('#upload-as-guest').checked=true;renderUploadIdentity();}
+  if($('#compose-dialog').open||!$('#inline-composer').hidden){$('#upload-as-guest').checked=true;identityChosen=true;renderUploadIdentity();}
 });
 $('#sign-in-for-points').addEventListener('click',()=>openAuth('login','earn'));
-$('#upload-as-guest').addEventListener('change',renderUploadIdentity);
+$('#upload-as-guest').addEventListener('change',()=>{identityChosen=true;renderUploadIdentity();});
+$('#compose-form [name="location"]').addEventListener('change',event=>{$('#composer-place').textContent=event.target.value?`Sharing with the ${event.target.value} community.`:'Choose a coastal community.';});
 $('#sign-out').addEventListener('click',async()=>{
   const button=$('#sign-out');button.disabled=true;authRevision++;
   try{await api('/api/auth/logout',{method:'POST',body:'{}'});currentUser=null;csrfToken=null;authRevision++;clearAccountData();renderAccount();render();toast('You are signed out. Your account points are saved.');}
@@ -358,13 +400,15 @@ async function loadRewards(){
 }
 async function openAccount(){
   if(!currentUser){openAuth('login','rewards');return;}
+  if(currentUser.password_change_required){location.assign('admin');return;}
   renderAccount();renderWallet();$('#reward-error').textContent='';
   if(!$('#rewards-dialog').open)$('#rewards-dialog').showModal();
-  await loadRewards();
+  await Promise.all([loadRewards(),loadFeedback()]);
 }
 function renderRewards(){
   $('#reward-catalog').innerHTML=rewardCatalog.map(r=>`<div><strong>${escapeHTML(r.brand)}</strong><span>${escapeHTML(r.title)}</span><span>${r.points_cost?`${r.points_cost} points${r.value_label?' · '+escapeHTML(r.value_label):''}`:'Reward details to be confirmed'}</span><button class="reward-redeem" data-redeem="${escapeHTML(r.id)}" ${!r.available || wallet.points<r.points_cost?'disabled':''}>${r.status==='unavailable'?'Not available yet':r.status==='out_of_stock'?'Out of stock':wallet.points<r.points_cost?'Not enough points':'Redeem'}</button></div>`).join('');
-  $('#my-vouchers').innerHTML=myVouchers.length?myVouchers.map(v=>`<article class="issued-voucher"><div><strong>${escapeHTML(v.brand)}</strong><span>${escapeHTML(v.value_label)} · ${v.points_cost} points</span></div><p>${escapeHTML(v.title)}</p><code>${escapeHTML(v.voucher_code)}</code><small>Issued ${dateLabel(v.redeemed_at)}${v.expires_at?' · Expires '+dateLabel(v.expires_at):''}</small><button class="text-button" data-copy-voucher="${escapeHTML(v.id)}">Copy voucher code</button></article>`).join(''):'<p class="form-note">No vouchers yet. When you redeem an available reward, your voucher will appear here.</p>';
+  $('#my-vouchers').innerHTML=myVouchers.length?myVouchers.map(v=>`<article class="issued-voucher"><div><strong>${escapeHTML(v.brand)}</strong><span>${escapeHTML(v.value_label)} · ${v.points_cost} points</span></div><p>${escapeHTML(v.title)}</p>${v.status==='fulfilled'?`<code>${escapeHTML(v.voucher_code)}</code><small>Issued ${dateLabel(v.redeemed_at)}${v.expires_at?' · Expires '+dateLabel(v.expires_at):''}</small><button class="text-button" data-copy-voucher="${escapeHTML(v.id)}">Copy voucher code</button>`:`<strong>${v.status==='pending'?'Awaiting administrator approval':'Request rejected'}</strong><p class="form-note">Your points have not been spent.${v.review_note?' '+escapeHTML(v.review_note):''}</p>`}</article>`).join(''):'<p class="form-note">Your voucher requests and issued vouchers will appear here.</p>';
+  for(const button of document.querySelectorAll('[data-redeem]')){if(myVouchers.some(v=>v.reward_id===button.dataset.redeem&&v.status==='pending')){button.disabled=true;button.textContent='Awaiting review';}else if(!button.disabled)button.textContent='Request voucher';}
 }
 document.addEventListener('click',async event=>{
   const redeem=event.target.closest('[data-redeem]');
@@ -376,12 +420,22 @@ $('#cancel-redemption').addEventListener('click',()=>{redemption=null;$('#redemp
 $('#confirm-redemption').addEventListener('click',async()=>{
   if(!redemption||!currentUser)return;
   const button=$('#confirm-redemption'),userId=currentUser.id;button.disabled=true;$('#cancel-redemption').disabled=true;$('#reward-error').textContent='';
-  try{await api('/api/rewards/redeem',{method:'POST',body:JSON.stringify(redemption)});if(currentUser?.id!==userId)return;redemption=null;$('#redemption-confirm').hidden=true;await loadRewards();toast('Your voucher has been delivered to My vouchers.');}
+  try{await api('/api/rewards/redeem',{method:'POST',body:JSON.stringify(redemption)});if(currentUser?.id!==userId)return;redemption=null;$('#redemption-confirm').hidden=true;await loadRewards();toast('Voucher request saved for administrator review. Your points have not been spent.');}
   catch(error){$('#reward-error').textContent=error.message;}
   finally{button.disabled=false;$('#cancel-redemption').disabled=false;}
 });
 $('#open-rewards').addEventListener('click',openAccount);
 $('#header-account').addEventListener('click',openAccount);
+async function loadFeedback(){
+  if(!currentUser)return;const userId=currentUser.id,revision=authRevision;
+  try{const data=await api('/api/feedback');if(currentUser?.id!==userId||authRevision!==revision)return;
+    $('#my-feedback').innerHTML=data.feedback.length?data.feedback.map(item=>`<article class="member-feedback"><strong>${escapeHTML(item.category)} · ${escapeHTML(item.status.replaceAll('_',' '))}</strong><p>${escapeHTML(item.body)}</p>${item.admin_note?`<p><b>Administrator response:</b> ${escapeHTML(item.admin_note)}</p>`:''}<small>${dateLabel(item.created_at)}</small></article>`).join(''):'<p class="form-note">Your feedback and our responses will appear here.</p>';
+  }catch(error){$('#feedback-message').textContent=error.message;}
+}
+$('#member-feedback-form').addEventListener('submit',async event=>{
+  event.preventDefault();if(!currentUser)return;const form=event.target,button=form.querySelector('button'),userId=currentUser.id,payload=Object.fromEntries(new FormData(form));button.disabled=true;$('#feedback-message').textContent='';
+  try{await api('/api/feedback',{method:'POST',body:JSON.stringify(payload)});if(currentUser?.id!==userId)return;form.reset();$('#feedback-message').textContent='Thank you. Your feedback has been sent to the administrator.';await loadFeedback();}catch(error){$('#feedback-message').textContent=error.message;}finally{button.disabled=false;}
+});
 function fitCoastalMap() {
   if(!coastMap || document.body.classList.contains('in-community'))return;
   coastMap.invalidateSize(); const mobile=innerWidth<=700, panel=$('.explorer-copy');

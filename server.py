@@ -21,6 +21,8 @@ from uuid import UUID
 from PIL import Image, ImageOps, UnidentifiedImageError
 import accounts
 import rewards
+import admin_data
+import admin_ops
 
 ROOT = Path(__file__).resolve().parent
 # Approximate navigation/validation centres, not monitoring or water-quality results.
@@ -255,6 +257,7 @@ class Store:
                     db.execute(f"ALTER TABLE observations ADD COLUMN {column} {definition}")
         accounts.initialize_accounts(self)
         rewards.initialize_rewards(self)
+        admin_ops.initialize(self)
 
     @contextmanager
     def connect(self):
@@ -408,7 +411,7 @@ class Store:
             pending = db.execute("SELECT COUNT(*) FROM observations WHERE user_id=? AND rewards_waived=0 AND review_status='pending' AND duplicate_of IS NULL", (user_id,)).fetchone()[0]
         redemptions = rewards.mine(self, user_id)
         entries.extend({"observation_id": None, "delta": -item["points_cost"], "reason": f'Voucher redeemed: {item["title"]}',
-                        "created": item["redeemed_at"]} for item in redemptions)
+                        "created": item["redeemed_at"]} for item in redemptions if item.get("status", "fulfilled") == "fulfilled")
         entries.sort(key=lambda item: item["created"], reverse=True)
         return {"points": rewards.points_balance(self, user_id), "pending_observations": pending, "entries": entries,
                 "points_per_approved_observation": POINTS_PER_APPROVED_OBSERVATION,
@@ -474,7 +477,7 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, *_):
         pass
 
-    def send_bytes(self, status, content, mime, cookie=None):
+    def send_bytes(self, status, content, mime, cookie=None, download_name=None):
         self.send_response(status)
         self.send_header("Content-Type", mime)
         self.send_header("Content-Length", str(len(content)))
@@ -484,6 +487,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("X-Frame-Options", "SAMEORIGIN")
         if cookie:
             self.send_header("Set-Cookie", cookie)
+        if download_name:
+            self.send_header("Content-Disposition", f'attachment; filename="{download_name}"')
         self.end_headers()
         self.wfile.write(content)
 
@@ -494,16 +499,81 @@ class Handler(BaseHTTPRequestHandler):
         return accounts.session(self.server.store, self.headers.get("Cookie"))
 
     def trusted_host(self):
-        return self.headers.get("Host") in (f"localhost:{self.server.server_port}", f"127.0.0.1:{self.server.server_port}")
+        host = self.headers.get("Host")
+        public_origin = getattr(self.server, "public_origin", None)
+        if public_origin and host == urlsplit(public_origin).netloc:
+            return True
+        local_hosts = (f"localhost:{self.server.server_port}", f"127.0.0.1:{self.server.server_port}")
+        return host in local_hosts and (self.server.server_address[0] in ("127.0.0.1", "localhost", "::1")
+                                        or urlsplit(self.path).path == "/api/health")
+
+    def trusted_origin(self):
+        origin = self.headers.get("Origin")
+        if origin is None:
+            return True
+        public_origin = getattr(self.server, "public_origin", None)
+        if public_origin and origin == public_origin:
+            return True
+        return (self.server.server_address[0] in ("127.0.0.1", "localhost", "::1")
+                and origin == f'http://{self.headers.get("Host")}'
+                and self.headers.get("Host") in (f"localhost:{self.server.server_port}", f"127.0.0.1:{self.server.server_port}"))
+
+    def secure_cookie(self):
+        return (getattr(self.server, "public_origin", None) or "").startswith("https://")
+
+    def require_admin(self, auth):
+        if not auth:
+            self.json(401, {"error": "Sign in with an administrator account to continue."})
+            return False
+        if auth["user"].get("password_change_required"):
+            self.json(403, {"error": "Change your temporary password before continuing.", "code": "password_change_required"})
+            return False
+        if auth["user"].get("role") != "admin":
+            self.json(403, {"error": "Administrator access is required."})
+            return False
+        return True
 
     def do_GET(self):
         if not self.trusted_host():
             return self.json(403, {"error": "Invalid host."})
         path = urlsplit(self.path).path
         if path == "/api/health":
-            return self.json(200, {"storage": "sqlite", "aiConfigured": bool(self.server.api_key)})
+            with self.server.store.connect() as db:
+                admin_configured = bool(db.execute("SELECT 1 FROM users WHERE role='admin' LIMIT 1").fetchone())
+            return self.json(200, {"storage": "sqlite", "aiConfigured": bool(self.server.api_key), "adminConfigured": admin_configured})
         if path == "/api/auth/me":
             return self.json(200, self.auth_session() or {"user": None, "csrfToken": None})
+        if path in ("/api/admin/data", "/api/admin/export"):
+            auth = self.auth_session()
+            if not self.require_admin(auth):
+                return
+            try:
+                filters, format_name = admin_data.parse_filters(urlsplit(self.path).query, COMMUNITIES, path.endswith("export"))
+                payload = admin_data.dataset_payload(self.server.store, filters)
+                if path.endswith("export"):
+                    content, mime = admin_data.export_bytes(payload, format_name)
+                    filename = f"coastkind-research-{datetime.now(timezone.utc).strftime('%Y-%m-%d')}.{format_name}"
+                    return self.send_bytes(200, content, mime, download_name=filename)
+                return self.json(200, payload)
+            except (ValueError, TypeError, UnicodeError) as error:
+                return self.json(400, {"error": str(error)})
+            except sqlite3.Error:
+                return self.json(503, {"error": "Could not load the dataset. Please try again."})
+        if path in ("/api/admin/vouchers", "/api/admin/feedback"):
+            auth = self.auth_session()
+            if not self.require_admin(auth):
+                return
+            try:
+                return self.json(200, admin_ops.vouchers(self.server.store) if path.endswith("vouchers") else admin_ops.feedback_all(self.server.store))
+            except ValueError as error:
+                return self.json(400, {"error": str(error)})
+            except sqlite3.Error:
+                return self.json(503, {"error": "Could not load administrator records. Please try again."})
+        if path == "/api/feedback":
+            auth = self.auth_session()
+            if not auth:
+                return self.json(401, {"error": "Sign in to view your feedback."})
+            return self.json(200, admin_ops.feedback_mine(self.server.store, auth["user"]["id"]))
         if path == "/api/observations":
             auth = self.auth_session()
             return self.json(200, {"observations": self.server.store.list(auth["user"]["id"] if auth else "")})
@@ -529,14 +599,16 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send_bytes(200, row["image"], row["mime"])
         assets = {"/": ("index.html", "text/html"), "/index.html": ("index.html", "text/html"),
                   "/app.js": ("app.js", "text/javascript"), "/styles.css": ("styles.css", "text/css"),
-                  "/map.css": ("map.css", "text/css")}
+                  "/map.css": ("map.css", "text/css"), "/admin": ("admin.html", "text/html"),
+                  "/admin.html": ("admin.html", "text/html"), "/admin.js": ("admin.js", "text/javascript"),
+                  "/admin.css": ("admin.css", "text/css")}
         if path in assets:
             filename, mime = assets[path]
             return self.send_bytes(200, (ROOT / filename).read_bytes(), mime + "; charset=utf-8")
         self.json(404, {"error": "Not found."})
 
     def do_POST(self):
-        if (not self.trusted_host() or self.headers.get("Origin") not in (None, f'http://{self.headers.get("Host")}')
+        if (not self.trusted_host() or not self.trusted_origin()
                 or self.headers.get("Sec-Fetch-Site") == "cross-site"):
             return self.json(403, {"error": "Only same-origin submissions are accepted."})
         try:
@@ -550,19 +622,35 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(data, dict):
                 raise ValueError("Invalid submission.")
             path = urlsplit(self.path).path
-            if path in ("/api/auth/register", "/api/auth/login"):
+            if {"role", "is_admin", "admin", "permissions", "privileges", "password_change_required"}.intersection(data):
+                return self.json(400, {"error": "Account permissions are managed by the site operator."})
+            if path in ("/api/auth/register", "/api/auth/login", "/api/admin/setup"):
                 email = data.get("email", "")
                 self.server.auth_throttle.check(self.client_address[0], email.strip().casefold() if isinstance(email, str) else "")
-                user = accounts.register(self.server.store, data) if path.endswith("register") else accounts.login(self.server.store, data)
-                accounts.logout(self.server.store, self.headers.get("Cookie"))
-                result, cookie = accounts.issue_session(self.server.store, user)
-                return self.json(201 if path.endswith("register") else 200, result, cookie)
+                if path == "/api/admin/setup":
+                    user = accounts.accept_admin_invite(self.server.store, data)
+                else:
+                    user = accounts.register(self.server.store, data) if path.endswith("register") else accounts.login(self.server.store, data)
+                accounts.logout(self.server.store, self.headers.get("Cookie"), self.secure_cookie())
+                result, cookie = accounts.issue_session(self.server.store, user, self.secure_cookie())
+                return self.json(200 if path.endswith("login") else 201, result, cookie)
             auth = self.auth_session()
             if auth and not accounts.valid_csrf(auth, self.headers.get("X-CSRF-Token")):
                 return self.json(403, {"error": "Your session changed. Refresh the page and try again."})
             if path == "/api/auth/logout":
-                cookie = accounts.logout(self.server.store, self.headers.get("Cookie"))
+                cookie = accounts.logout(self.server.store, self.headers.get("Cookie"), self.secure_cookie())
                 return self.json(200, {"user": None, "csrfToken": None}, cookie)
+            if path == "/api/auth/password":
+                if not auth:
+                    return self.json(401, {"error": "Sign in to change your password."})
+                if set(data) != {"current_password", "new_password"}:
+                    return self.json(400, {"error": "Enter your current password and a new password."})
+                self.server.auth_throttle.check(self.client_address[0], auth["user"]["email"])
+                user = accounts.change_password(self.server.store, auth["user"]["id"], data["current_password"], data["new_password"])
+                result, cookie = accounts.issue_session(self.server.store, user, self.secure_cookie())
+                return self.json(200, result, cookie)
+            if auth and auth["user"].get("password_change_required"):
+                return self.json(403, {"error": "Change your temporary password before continuing.", "code": "password_change_required"})
             ownership_fields = {"user_id", "contributor_hash", "client_id", "rewards_waived", "author", "author_name"}
             if ownership_fields.intersection(data) or any(self.headers.get(key) for key in ("X-User-ID", "X-Account-ID", "X-Contributor-ID")):
                 return self.json(400, {"error": "Account ownership is assigned by your signed-in session."})
@@ -571,6 +659,34 @@ class Handler(BaseHTTPRequestHandler):
             guest_upload = path == "/api/observations" and data.get("as_guest") is True
             if not auth and not guest_upload:
                 return self.json(401, {"error": "Sign in to continue, or choose a guest upload without rewards."})
+            if path.startswith("/api/admin/"):
+                if not self.require_admin(auth):
+                    return
+                voucher_match = re.fullmatch(r"/api/admin/vouchers/([a-f0-9-]{36})(?:/review)?", path)
+                feedback_match = re.fullmatch(r"/api/admin/feedback/([a-f0-9-]{36})", path)
+                if voucher_match or feedback_match:
+                    try:
+                        result = (admin_ops.review_voucher(self.server.store, voucher_match[1], auth["user"]["id"], data)
+                                  if voucher_match else admin_ops.update_feedback(self.server.store, feedback_match[1], auth["user"]["id"], data))
+                        return self.json(200, result)
+                    except ValueError as error:
+                        return self.json(400, {"error": str(error)})
+                match = re.fullmatch(r"/api/admin/reviews/([a-f0-9-]{36})", path)
+                if not match:
+                    return self.json(404, {"error": "Not found."})
+                if set(data) != {"decision", "note"} or not isinstance(data.get("note"), str) or not 1 <= len(data["note"].strip()) <= 3000:
+                    return self.json(400, {"error": "Choose a decision and add a review note of 1 to 3,000 characters."})
+                from manage import review
+                try:
+                    review(self.server.store, match[1], data["decision"], auth["user"]["display_name"], data["note"])
+                except ValueError as error:
+                    return self.json(400, {"error": str(error)})
+                return self.json(200, {"saved": True, "id": match[1], "review_status": data["decision"]})
+            if path == "/api/feedback":
+                try:
+                    return self.json(201, admin_ops.submit_feedback(self.server.store, auth["user"]["id"], data))
+                except ValueError as error:
+                    return self.json(400, {"error": str(error)})
             if path == "/api/observations":
                 observation = validate_observation(data)
                 user_id = auth["user"]["id"] if auth and not guest_upload else None
@@ -615,11 +731,25 @@ class Handler(BaseHTTPRequestHandler):
             self.json(503, {"error": "Could not save to the database. Please try again."})
 
 
-def create_server(port=8000, db_path=None, api_key="", model="gpt-4.1-mini"):
-    server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
+def configured_public_origin(value):
+    if not value:
+        return None
+    parsed = urlsplit(value)
+    if (parsed.scheme not in ("http", "https") or not parsed.hostname or parsed.username or parsed.password
+            or parsed.path not in ("", "/") or parsed.query or parsed.fragment):
+        raise ValueError("The configured public origin must be an http(s) origin without a path, credentials, query or fragment.")
+    # Accessing port also validates malformed/out-of-range values.
+    parsed.port
+    return f"{parsed.scheme}://{parsed.netloc}"
+
+
+def create_server(port=8000, db_path=None, api_key="", model="gpt-4.1-mini", host="127.0.0.1", public_origin=None):
+    public_origin = configured_public_origin(public_origin)
+    server = ThreadingHTTPServer((host, port), Handler)
     server.store = Store(db_path or ROOT / "data" / "coastkind.sqlite3")
     server.auth_throttle = accounts.AuthThrottle()
     server.api_key, server.model = api_key, model
+    server.public_origin = public_origin
     return server
 
 
@@ -629,18 +759,25 @@ def load_config():
         for line in envfile.read_text(encoding="utf-8-sig").splitlines():
             if "=" in line and not line.lstrip().startswith("#"):
                 key, value = line.split("=", 1)
-                if key.strip() in ("OPENAI_API_KEY", "OPENAI_MODEL"):
+                if key.strip() in ("OPENAI_API_KEY", "OPENAI_MODEL", "COASTKIND_HOST", "PORT", "COASTKIND_DB_PATH",
+                                  "COASTKIND_PUBLIC_ORIGIN", "COASTKIND_ADMIN_EMAIL", "COASTKIND_ADMIN_SETUP_TOKEN", "COASTKIND_ADMIN_PASSWORD_HASH"):
                     os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
 def main():
+    load_config()
     parser = argparse.ArgumentParser()
-    parser.add_argument("--port", type=int, default=8000)
-    parser.add_argument("--db", default=str(ROOT / "data" / "coastkind.sqlite3"))
+    parser.add_argument("--port", type=int, default=int(os.getenv("PORT", "8000")))
+    parser.add_argument("--db", default=os.getenv("COASTKIND_DB_PATH", str(ROOT / "data" / "coastkind.sqlite3")))
+    parser.add_argument("--host", default=os.getenv("COASTKIND_HOST", "127.0.0.1"))
     parser.add_argument("--retry-failed", action="store_true")
     args = parser.parse_args()
-    load_config()
-    server = create_server(args.port, args.db, os.getenv("OPENAI_API_KEY", ""), os.getenv("OPENAI_MODEL", "gpt-4.1-mini"))
+    server = create_server(args.port, args.db, os.getenv("OPENAI_API_KEY", ""), os.getenv("OPENAI_MODEL", "gpt-4.1-mini"),
+                           args.host, os.getenv("COASTKIND_PUBLIC_ORIGIN") or os.getenv("RENDER_EXTERNAL_URL"))
+    if os.getenv("COASTKIND_ADMIN_PASSWORD_HASH"):
+        accounts.bootstrap_temporary_admin(server.store, os.getenv("COASTKIND_ADMIN_EMAIL"), os.getenv("COASTKIND_ADMIN_PASSWORD_HASH"))
+    elif os.getenv("COASTKIND_ADMIN_SETUP_TOKEN"):
+        accounts.bootstrap_admin_invite(server.store, os.getenv("COASTKIND_ADMIN_EMAIL"), os.getenv("COASTKIND_ADMIN_SETUP_TOKEN"))
     with server.store.connect() as db:
         db.execute("UPDATE observations SET status='pending' WHERE status='processing'")
         if args.retry_failed:
@@ -654,7 +791,7 @@ def main():
             except sqlite3.Error:
                 time.sleep(2)
     threading.Thread(target=worker, daemon=True).start()
-    print(f"Coastkind: http://localhost:{server.server_port}", flush=True)
+    print(f"Coastkind: {server.public_origin or f'http://localhost:{server.server_port}'}", flush=True)
     print("AI enabled." if server.api_key else "AI not configured: uploads are saved with pending analysis.", flush=True)
     try:
         server.serve_forever()

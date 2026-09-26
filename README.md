@@ -40,6 +40,15 @@ The map offers 20 coastal communities. Regional zoom shows five main labels and 
 
 ## Accounts and guest uploads
 
+The website has three simple access levels. Guests upload photos and optional
+words without rewards. Members upload, earn reviewed contribution points, request
+vouchers and send private feedback. Administrators sign in at **/admin** to inspect
+and export observation data, view analysis, review evidence, approve voucher
+requests and respond to feedback. Ordinary registration always creates a member.
+An operator-created temporary administrator password must be replaced before any
+administration functions can be used. See [DEPLOYMENT.md](DEPLOYMENT.md) for the
+prepared shared online backend; GitHub Pages remains a read-only presentation.
+
 Use **Create account** to register with a display name, email and a password of 12–128 characters. Passwords use a random salt and PBKDF2-HMAC-SHA256 with 600,000 iterations; raw passwords are not stored. Login uses a revocable, expiring server session in an HttpOnly, SameSite cookie; authenticated writes require a CSRF token. The local HTTP cookie is not Secure: public deployment requires HTTPS and secure cookies. See [OWASP password storage guidance](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html).
 
 Guests can upload immediately without registration. **Every guest upload permanently waives rewards**, including an upload explicitly made as a guest while signed in. Its database row has `user_id = NULL` and `rewards_waived = 1`. Registering later never claims guest evidence or anonymous browser points. The same photo validation, AI pipeline and review rules apply to guest and account evidence.
@@ -130,7 +139,7 @@ python reward_admin.py import REWARD_SLUG --file data/private-voucher-inventory.
 python reward_admin.py catalog
 ```
 
-The private import file is a JSON array of objects with `code` and `expires_at` (an ISO timestamp with timezone or `null`). Keep it under the ignored `data/` directory, never in source control. Import commands do not log codes. Redemption checks account balance and unexpired stock, atomically spends points and allocates one voucher, and uses an idempotency ID to prevent duplicate charges. Issued codes appear only under **My account → My vouchers** for the owning account; no email is sent. A later review reversal can leave a negative balance after points were spent, preventing further redemption until enough points are earned.
+The private import file is a JSON array of objects with `code` and `expires_at` (an ISO timestamp with timezone or `null`). Keep it under the ignored `data/` directory, never in source control. Import commands do not log codes. A member request enters a pending queue without spending points or allocating stock. Administrator approval rechecks the balance and unexpired stock, atomically spends points and allocates one voucher. Retries cannot double-charge or double-issue. Rejection leaves the points untouched. Issued codes appear only under **My account → My vouchers** for the owning account; no email is sent. A later evidence-review reversal can leave a negative balance after points were spent, preventing further unaffordable redemption.
 
 Real reward fulfilment still requires a funded budget, legitimate voucher supply, issuer conditions and abuse controls. No real voucher inventory was imported during implementation.
 
