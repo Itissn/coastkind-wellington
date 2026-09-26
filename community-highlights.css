@@ -1,0 +1,38 @@
+/* Presentation-only additions: a sample leaderboard card and a sample upcoming-events
+   section. Both use clearly illustrative placeholder content, not live application data,
+   in keeping with how this project labels every other non-real demonstration surface. */
+
+.sample-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.6px;
+  text-transform:uppercase;padding:4px 8px;border-radius:4px;background:#fff2e4;color:#9a5b2e}
+
+/* Sidebar leaderboard card, styled to match .watch-card / .action-card / .guideline */
+.leaderboard-card{padding:22px;border:1px solid var(--line);border-radius:11px;
+  background:#fff;margin-top:20px}
+.leaderboard-card h3{font-size:19px;font-weight:600;margin:10px 0 4px;letter-spacing:-.4px}
+.leaderboard-card .leaderboard-note{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 16px}
+.leaderboard-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.leaderboard-list li{display:flex;align-items:center;gap:12px;font-size:15px}
+.leaderboard-rank{width:24px;height:24px;border-radius:50%;background:#edf3e6;color:var(--green);
+  font-size:13px;font-weight:700;display:grid;place-items:center;flex-shrink:0}
+.leaderboard-list li:first-child .leaderboard-rank{background:var(--green);color:#fff}
+.leaderboard-avatar{width:32px;height:32px;border-radius:50%;background:#e4e9df;
+  display:grid;place-items:center;font-size:14px;color:#586955;flex-shrink:0;font-weight:600}
+.leaderboard-name{flex:1;min-width:0;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.leaderboard-points{font-weight:700;color:var(--green);font-size:14px;white-space:nowrap}
+
+/* Upcoming events section, styled to match .section / .section-heading / .resource-card */
+.events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:26px}
+.event-card{border:1px solid var(--line);background:#fff;border-radius:9px;padding:22px;
+  display:flex;flex-direction:column;gap:10px}
+.event-date{font-size:13px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--green)}
+.event-card h3{font-size:19px;font-weight:600;margin:0;letter-spacing:-.4px;font-family:'Manrope',sans-serif}
+.event-meta{font-size:14px;color:var(--muted)}
+.event-card p{font-size:14px;color:#57665f;line-height:1.6;margin:0}
+
+@media(max-width:900px){
+  .events-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  .events-grid{grid-template-columns:1fr}
+  .leaderboard-card{padding:18px}
+}
