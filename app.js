@@ -407,12 +407,13 @@ function setAuthMode(mode){
   $('#auth-error').textContent='';
 }
 function openAuth(mode='login',intent=null){
+  if(demoMode){$('#demo-account-title').textContent=mode==='register'?'Create your Coastkind account':'Sign in to Coastkind';$('#demo-account-dialog').showModal();return;}
   if(currentUser){if(intent==='earn'){$('#upload-as-guest').checked=false;identityChosen=true;renderUploadIdentity();}else openAccount();return;}
   authIntent=intent;$('#auth-form').reset();setAuthMode(mode);
   if(!$('#auth-dialog').open)$('#auth-dialog').showModal();
 }
 $('#auth-form').addEventListener('submit',async event=>{
-  event.preventDefault();if(authBusy)return;
+  event.preventDefault();if(demoMode||authBusy)return;
   authBusy=true;authRevision++;
   const data=new FormData(event.target),controls=[...event.target.elements];controls.forEach(c=>c.disabled=true);
   $('#auth-error').textContent='';$('#auth-submit').textContent=authMode==='register'?'Creating your account…':'Signing in…';

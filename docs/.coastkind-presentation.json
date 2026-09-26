@@ -1,13 +1,13 @@
 {
   "package_kind": "coastkind-static-synthetic-v1",
   "synthetic": true,
-  "built_at": "2026-09-26T08:57:30.929707+00:00",
+  "built_at": "2026-09-26T09:15:24.321753+00:00",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "README.md": "376a0b4fd0fec47b18cdd927fd31f973d899d1869c30979b1d0b9092475dddce",
-    "app.js": "9b6f30765df73db7b770e583e2eaef2ea6802b4289c53b19c1cca01237409cc3",
+    "app.js": "843a01d9da9a029275b412c62115fd26d7be4f46d54e227f96cdccc8930863ba",
     "data/preview.json": "7f461ce1143a4f06ca10f2dcd94076764ff68bb4d01404b65dad9eb6051bd44a",
-    "demo.css": "b5f20c8fda6f65789825ebd10d39b679b8f4a5627ac4653f15eb6bc580d2de83",
+    "demo.css": "1e9f6d9b033e33b1b5b6f3c71fcf34a089890e624d5381cc49f11aacf02107b5",
     "demo.html": "072dfbafb2a4c383e3e2f4611777c667da0a41ce33d28221e203d92cddeb2421",
     "demo.js": "5b22a747474a3c549c6b8435de2eb0963a0b513a885eead7288da9a8eae6d387",
     "downloads/codebook.md": "1fef6e0eea5240d3d3d9f05049e457d130c228aba9a2368e9072821ad34ccb34",
@@ -253,10 +253,10 @@
     "images/fd400775-a4e2-51fb-8476-95a8d4da1dad.jpg": "829f3c9520e980365c623b1bec131d84fa1fda9b7e85e16ec89562ec0ce2d94c",
     "images/ff2de9c0-4ac6-5177-b435-46f60cb45eea.jpg": "d308ac96b459574826829a0b0993b4adb9a874dfe4055fa3f7369aef218be772",
     "images/ffe61199-5a31-552f-bd1c-f0220d9bd030.jpg": "f4b5a8e242b05141aa239408a14bd3b63e78464e141597647d4255d1a1c8b6b8",
-    "index.html": "074da2ec259e227d960196ec48ed0152583b0e7a7f0b620e94bab72c72f5bba8",
-    "map.css": "4803127c190f020a5e7668cd6139fcbbd3857017ca757417414631883b6d4be3",
+    "index.html": "63f5753b1270d664efa54df4e3e0a2ac0fb93025fbe6a18ee699f2c54919cd9d",
+    "map.css": "0a353e3df7d0381d2abdcb4ccede13cf4368d7e61f67e84d0901cf7416c3e646",
     "static_demo.js": "026614c15e89fe5cd926832bbb873f8044a9e69cb335798b44064ed9dcb13f09",
-    "styles.css": "f80b22cc06f4da5929b168ca5321b8b846a5051790b754e4204e607b7cbdfd45"
+    "styles.css": "9d199d9c882af8622234ac3e12be9cb3e11a742c8342c958f3747eff1265a88a"
   },
   "observations": 240,
   "notice": "Static fictional demonstration only. No database, credentials, account sessions or voucher codes."
