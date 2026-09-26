@@ -1,0 +1,16 @@
+.browser-check/
+preview.png
+.env
+.env.*
+!.env.example
+/data/
+__pycache__/
+*.pyc
+*.sqlite
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.zip
+presentation/
+presentation-*/
+.publish/
