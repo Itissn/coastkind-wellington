@@ -492,7 +492,7 @@ $('#member-feedback-form').addEventListener('submit',async event=>{
 function fitCoastalMap() {
   if(!coastMap || document.body.classList.contains('in-community'))return;
   coastMap.invalidateSize(); const mobile=innerWidth<=700, panel=$('.explorer-copy');
-  coastMap.fitBounds(coastalCommunities.map(c=>c.point),{paddingTopLeft:mobile?[75,40]:[panel.offsetWidth+55,65],paddingBottomRight:mobile?[100,panel.offsetHeight+65]:[145,55],maxZoom:12,animate:false});
+  coastMap.fitBounds(coastalCommunities.map(c=>c.point),{paddingTopLeft:mobile?[75,40]:[48,45],paddingBottomRight:mobile?[100,panel.offsetHeight+65]:[70,45],maxZoom:12,animate:false});
 }
 const leaflet=document.createElement('script');
 leaflet.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';leaflet.integrity='sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';leaflet.crossOrigin='';
@@ -500,7 +500,7 @@ function mapUnavailable(){if(!mapLoaded)$('#coast-map').innerHTML='<p class="map
 leaflet.onerror=mapUnavailable;
 leaflet.onload=()=>{
   mapLoaded=true; $('#coast-map').replaceChildren();
-  coastMap=L.map('coast-map',{scrollWheelZoom:false}).setView([-41.23,174.82],10);coastMap.zoomControl.setPosition('topright');fitCoastalMap();
+  coastMap=L.map('coast-map',{scrollWheelZoom:false,zoomSnap:.25,zoomDelta:.5}).setView([-41.23,174.82],10);coastMap.zoomControl.setPosition('topright');fitCoastalMap();
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(coastMap).on('tileerror',()=>{$('#map-note').textContent='Some map tiles could not load. You can still choose a community by name.';});
   const communityMarkers=coastalCommunities.map(c=>{
     const marker=L.marker(c.point,{title:`Enter ${c.name} community`,alt:`Enter ${c.name} community`,keyboard:true,

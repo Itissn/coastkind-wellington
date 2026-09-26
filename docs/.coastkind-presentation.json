@@ -1,11 +1,11 @@
 {
   "package_kind": "coastkind-static-synthetic-v1",
   "synthetic": true,
-  "built_at": "2026-09-26T09:15:24.321753+00:00",
+  "built_at": "2026-09-26T09:26:11.589759+00:00",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "README.md": "376a0b4fd0fec47b18cdd927fd31f973d899d1869c30979b1d0b9092475dddce",
-    "app.js": "843a01d9da9a029275b412c62115fd26d7be4f46d54e227f96cdccc8930863ba",
+    "app.js": "b5380f185bc627de5321b75d51963ff6f22dede3ebf594d946d6a4703b89746f",
     "data/preview.json": "7f461ce1143a4f06ca10f2dcd94076764ff68bb4d01404b65dad9eb6051bd44a",
     "demo.css": "1e9f6d9b033e33b1b5b6f3c71fcf34a089890e624d5381cc49f11aacf02107b5",
     "demo.html": "072dfbafb2a4c383e3e2f4611777c667da0a41ce33d28221e203d92cddeb2421",
