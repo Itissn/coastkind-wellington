@@ -31,6 +31,7 @@ let currentUser = null, csrfToken = null, authMode = 'login', authBusy = false, 
 let rewardCatalog = [], myVouchers = [], redemption = null;
 let posts = [], filter = 'all', currentPost = null, coastMap = null, mapLoaded = false;
 let photoData = '', photoVersion = 0, photoLoading = false, position = null, locationVersion = 0;
+let cameraStream = null, cameraRevision = 0;
 let submitting = false, submissionId = '', submissionHint = 'observation', backendReady = false, aiConfigured = false, demoMode = !!(window.coastkindDemoApi || document.body.classList.contains('demo-preview'));
 let composerCommunity = '', identityChosen = false;
 const composerDrafts = new Map();
@@ -111,6 +112,7 @@ async function refreshPosts() {
   finally { refreshing = false; }
 }
 function resetComposer(community = '', hint = 'observation') {
+  closeCamera();
   $('#compose-form').reset(); photoVersion++; locationVersion++; photoData = ''; photoLoading = false; position = null;
   submissionId = crypto.randomUUID(); submissionHint = hint; identityChosen = false;
   $('#upload-as-guest').checked=!currentUser;renderUploadIdentity();
@@ -170,14 +172,13 @@ function openComposer(hint = 'observation') {
   resetComposer('',hint);$('#extra-details').open=true;
   $('#compose-dialog').showModal();
 }
-async function loadPhoto(event) {
+async function loadPhoto(file, input = null) {
+  if (!file) return;
   const version = ++photoVersion;
-  const file = event.target.files[0];
   $('#composer-success').hidden=true;
   photoData = ''; photoLoading = false; $('#photo-preview').hidden = true; $('#form-error').textContent = ''; $('#photo-quality').textContent = '';
-  if (!file) return;
   if (!['image/jpeg','image/png','image/webp'].includes(file.type) || file.size > 5*1024*1024) {
-    $('#form-error').textContent = 'Choose a JPG, PNG, or WebP photo smaller than 5 MB.'; event.target.value = ''; return;
+    $('#form-error').textContent = 'Choose a JPG, PNG, or WebP photo smaller than 5 MB.'; if(input)input.value = ''; return;
   }
   photoLoading = true;
   try {
@@ -194,8 +195,58 @@ async function loadPhoto(event) {
   } catch { if (version === photoVersion) $('#form-error').textContent = 'This photo could not be read. Please choose another one.'; }
   finally { if (version === photoVersion) photoLoading = false; }
 }
-$('#photo').addEventListener('change', loadPhoto);
-$('#camera').addEventListener('change', loadPhoto);
+$('#photo').addEventListener('change', event => loadPhoto(event.target.files[0], event.target));
+function stopCamera(){
+  cameraRevision++;
+  if(cameraStream)cameraStream.getTracks().forEach(track=>track.stop());
+  cameraStream=null;const video=$('#camera-preview');video.pause();video.srcObject=null;
+  $('#capture-photo').disabled=true;
+}
+function closeCamera(){stopCamera();if($('#camera-dialog').open)$('#camera-dialog').close();}
+async function openCamera(){
+  if(demoMode||submitting||$('#camera-dialog').open)return;
+  stopCamera();const version=cameraRevision,dialog=$('#camera-dialog'),video=$('#camera-preview');
+  $('#camera-status').textContent='Allow camera access to see your preview.';dialog.showModal();
+  if(!window.isSecureContext||!navigator.mediaDevices?.getUserMedia){$('#camera-status').textContent='Camera access is unavailable here. Open Coastkind on localhost or HTTPS, or use Upload photo.';return;}
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:1600},height:{ideal:1200}},audio:false});
+    if(version!==cameraRevision||!dialog.open){stream.getTracks().forEach(track=>track.stop());return;}
+    cameraStream=stream;video.srcObject=stream;
+    stream.getVideoTracks().forEach(track=>track.addEventListener('ended',()=>{
+      if(cameraStream!==stream)return;stopCamera();$('#camera-status').textContent='The camera disconnected. Close this window and try again, or use Upload photo.';
+    },{once:true}));
+    await video.play();
+    if(version!==cameraRevision||!dialog.open)return;
+    $('#capture-photo').disabled=video.readyState<2||!video.videoWidth;
+    $('#camera-status').textContent='Frame your photo, then select Capture photo.';
+  }catch(error){
+    if(version!==cameraRevision||!dialog.open)return;stopCamera();
+    const messages={NotAllowedError:'Camera permission was denied. Allow camera access in your browser, or use Upload photo.',NotFoundError:'No camera was found. Connect a camera, or use Upload photo.',NotReadableError:'The camera is unavailable or being used by another application. Close it there and try again.'};
+    $('#camera-status').textContent=messages[error.name]||'Could not open the camera. Close this window and try again, or use Upload photo.';
+  }
+}
+$('#camera').addEventListener('click',openCamera);
+$('#close-camera').addEventListener('click',closeCamera);$('#cancel-camera').addEventListener('click',closeCamera);
+$('#camera-dialog').addEventListener('cancel',event=>{event.preventDefault();closeCamera();});
+$('#camera-dialog').addEventListener('close',()=>{if(!$('#camera-dialog').open)stopCamera();});
+$('#capture-photo').addEventListener('click',async()=>{
+  const video=$('#camera-preview');if(!cameraStream||video.readyState<2||!video.videoWidth)return;
+  const version=cameraRevision,canvas=document.createElement('canvas'),scale=Math.min(1,1800/Math.max(video.videoWidth,video.videoHeight));
+  canvas.width=Math.round(video.videoWidth*scale);canvas.height=Math.round(video.videoHeight*scale);
+  $('#capture-photo').disabled=true;
+  try{
+    canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);
+    const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',.9));
+    if(version!==cameraRevision||!$('#camera-dialog').open)return;
+    if(!blob)throw new Error('Capture failed');
+    $('#photo').value='';const loaded=loadPhoto(new File([blob],'coastkind-camera.jpg',{type:'image/jpeg'}));
+    closeCamera();await loaded;
+  }catch{
+    if(version!==cameraRevision)return;$('#capture-photo').disabled=false;$('#camera-status').textContent='Could not capture this photo. Please try again.';
+  }
+});
+addEventListener('pagehide',closeCamera);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)closeCamera();});
 $('#get-location').addEventListener('click', () => {
   if (!navigator.geolocation) { $('#location-status').textContent = 'Location is not available. You can still share a photo.'; return; }
   const version = ++locationVersion; position = null;
@@ -285,6 +336,7 @@ function enterCommunity(name) {
   const hash=`#coast/${c.slug}`; if(location.hash===hash)applyCommunityRoute();else location.hash=hash;
 }
 function applyCommunityRoute() {
+  closeCamera();
   const c=coastalCommunities.find(c=>location.hash===`#coast/${c.slug}`);
   document.body.classList.toggle('in-community',!!c); $('.community-return').hidden=!c;
   $('#location-filter').value=c?c.name:'all'; $('#community-picker').value=c?c.name:'';
