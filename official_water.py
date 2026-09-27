@@ -155,7 +155,7 @@ def fetch(community, opener=urlopen, now=None):
     """One fixed public GET per community; the caller controls cache freshness."""
     details = metadata(community)
     request = Request(details['station_url'], headers={
-        'Accept': 'application/xml, text/xml', 'User-Agent': 'Coastkind/1.0 (public coastal monitoring)',
+        'Accept': 'application/xml, text/xml', 'User-Agent': 'WAINET/1.0 (public coastal monitoring)',
     })
     with opener(request, timeout=TIMEOUT_SECONDS) as response:
         # An unexpected redirect must never become an unverified data source.
