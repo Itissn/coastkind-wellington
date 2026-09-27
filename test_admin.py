@@ -343,12 +343,12 @@ class AdminTests(unittest.TestCase):
     def test_invitation_cli_writes_secret_only_to_new_private_file(self):
         output = Path(self.temp.name) / 'private-admin-invitation.json'
         command = [sys.executable, str(ROOT / 'admin_manage.py'), '--db', str(self.path), 'invite',
-                   'cli-admin@example.test', '--out', str(output), '--origin', 'https://coastkind.example.test']
+                   'cli-admin@example.test', '--out', str(output), '--origin', 'https://wainet.example.test']
         result = subprocess.run(command, capture_output=True, text=True, timeout=20)
         self.assertEqual(result.returncode, 0, result.stderr)
         invitation = json.loads(output.read_text(encoding='utf-8'))
         self.assertEqual(invitation['email'], 'cli-admin@example.test')
-        self.assertTrue(invitation['url'].startswith('https://coastkind.example.test/admin#setup='))
+        self.assertTrue(invitation['url'].startswith('https://wainet.example.test/admin#setup='))
         self.assertIn(invitation['token'], invitation['url'])
         self.assertNotIn(invitation['token'], result.stdout + result.stderr)
         original = output.read_bytes()
@@ -361,11 +361,11 @@ class AdminTests(unittest.TestCase):
             self.assertEqual(db.execute('SELECT COUNT(*) FROM users').fetchone()[0], 0)
 
     def test_public_https_origin_sets_secure_cookie_and_checks_host_and_origin(self):
-        public = create_server(0, Path(self.temp.name) / 'public.sqlite3', public_origin='https://coastkind.example.test')
+        public = create_server(0, Path(self.temp.name) / 'public.sqlite3', public_origin='https://wainet.example.test')
         thread = threading.Thread(target=public.serve_forever, daemon=True)
         thread.start()
         browser = AdminBrowser(f'http://127.0.0.1:{public.server_port}')
-        trusted = {'Host': 'coastkind.example.test', 'Origin': 'https://coastkind.example.test'}
+        trusted = {'Host': 'wainet.example.test', 'Origin': 'https://wainet.example.test'}
         data = {'email': 'public@example.test', 'display_name': 'Public account', 'password': PASSWORD}
         try:
             status, body, headers = browser.request('/api/auth/register', data, trusted)
@@ -379,9 +379,9 @@ class AdminTests(unittest.TestCase):
                 db.execute("UPDATE users SET role='admin' WHERE id=?", (user['id'],))
             auth = {**trusted, 'Cookie': cookie}
             self.assertEqual(browser.request('/api/admin/data', headers=auth)[0], 200)
-            for headers in ({'Host': 'attacker.example.test', 'X-Forwarded-Host': 'coastkind.example.test'},
+            for headers in ({'Host': 'attacker.example.test', 'X-Forwarded-Host': 'wainet.example.test'},
                             {**trusted, 'Origin': 'https://attacker.example.test'},
-                            {**trusted, 'Origin': 'http://coastkind.example.test', 'X-Forwarded-Proto': 'https'}):
+                            {**trusted, 'Origin': 'http://wainet.example.test', 'X-Forwarded-Proto': 'https'}):
                 with self.subTest(headers=headers):
                     self.assertEqual(browser.request('/api/auth/login', data, headers)[0], 403)
             status, _, headers = browser.request('/api/auth/logout', {}, auth)
