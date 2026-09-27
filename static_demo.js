@@ -4,7 +4,7 @@
   const source = new URL('data/preview.json', document.baseURI);
   let loading;
   let officialLoading;
-  window.coastkindReloadOfficial = () => { officialLoading=null; };
+  window.wainetReloadOfficial = () => { officialLoading=null; };
   async function officialDataset(){
     if(!officialLoading)officialLoading=fetch(new URL('data/official.json',document.baseURI),{credentials:'omit',cache:'no-cache'}).then(async response=>{if(!response.ok)throw error('Official source snapshot unavailable.',503);const data=await response.json();if(data.kind!=='official-data-snapshot-v1'||!Array.isArray(data.communities))throw error('Invalid official source snapshot.',503);return data;}).catch(problem=>{officialLoading=null;throw problem;});
     return officialLoading;
@@ -28,7 +28,7 @@
     });
     return loading;
   }
-  window.coastkindDemoApi = async (path, options = {}) => {
+  window.wainetDemoApi = async (path, options = {}) => {
     if ((options.method || 'GET').toUpperCase() !== 'GET') {
       throw error('This fictional presentation is read-only. Uploads, accounts and rewards are unavailable.', 405);
     }
