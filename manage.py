@@ -88,7 +88,7 @@ def export_records(store, licensed=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--db", default=str(ROOT / "data" / "coastkind.sqlite3"))
+    parser.add_argument("--db", default=str(ROOT / "data" / "wainet.sqlite3"))
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("queue")
     commands.add_parser("alerts")
