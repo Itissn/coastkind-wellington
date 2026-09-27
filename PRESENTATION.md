@@ -1,4 +1,4 @@
-# Coastkind presentation
+# WAINET presentation
 
 This is an English, read-only demonstration of a coastal community around Wellington. All observations, illustrations, accounts, analysis, review decisions, points and attention signals are fictional. They are provided for presentation and analysis practice, not environmental findings or real benefits. Do not submit or sell them as evidence.
 
