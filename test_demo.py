@@ -119,7 +119,7 @@ class DemoTests(unittest.TestCase):
     def test_generator_refuses_real_database_even_with_directory_marker(self):
         target = self.directory / 'unmarked-database'
         target.mkdir()
-        marker = '.coastkind-demo.json'
+        marker = '.wainet-demo.json'
         (target / marker).write_bytes((self.db_path.parent / marker).read_bytes())
         database = target / self.db_path.name
         real_store = Store(database)
@@ -198,14 +198,14 @@ class DemoTests(unittest.TestCase):
         for path in ('/api/observations', '/api/auth/register', '/api/auth/login', '/api/rewards/redeem'):
             with self.subTest(path=path):
                 self.assertIn(self.request(path, 'POST')[0], (404, 405))
-        for path in ('/data/coastkind.sqlite3', '/data/demo/coastkind-demo.sqlite3', '/.env', '/seed_demo.py',
+        for path in ('/data/wainet.sqlite3', '/data/demo/wainet-demo.sqlite3', '/.env', '/seed_demo.py',
                      '/../../server.py', '/api/rewards/mine', '/api/wallet'):
             with self.subTest(path=path):
                 self.assertIn(self.request(path)[0], (401, 404, 405))
         self.assertEqual(self.database_snapshot(), before)
 
     def test_preview_ignores_account_cookie_and_rejects_untrusted_host(self):
-        status, raw, headers = self.request('/api/auth/me', headers={'Cookie': 'coastkind_session=regular-app-session'})
+        status, raw, headers = self.request('/api/auth/me', headers={'Cookie': 'wainet_session=regular-app-session'})
         self.assertEqual(status, 200)
         self.assertIsNone(json.loads(raw)['user'])
         self.assertIsNone(headers.get('Set-Cookie'))
