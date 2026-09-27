@@ -12,12 +12,12 @@ import community_status
 import official_data
 
 DEMO_KIND = 'synthetic-demo-v1'
-DEFAULT_DB = ROOT / 'data' / 'demo' / 'coastkind-demo.sqlite3'
+DEFAULT_DB = ROOT / 'data' / 'demo' / 'wainet-demo.sqlite3'
 
 
 def validate_demo_database(path):
     path = Path(path).resolve()
-    if path == (ROOT / 'data' / 'coastkind.sqlite3').resolve() or not path.is_file():
+    if path == (ROOT / 'data' / 'wainet.sqlite3').resolve() or not path.is_file():
         raise ValueError('Choose a generated demonstration database, never the community database.')
     with sqlite3.connect(path.as_uri() + '?mode=ro', uri=True) as db:
         try:
