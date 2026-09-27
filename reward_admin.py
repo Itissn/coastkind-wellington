@@ -9,7 +9,7 @@ import rewards
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--db", default=str(Path(__file__).resolve().parent / "data" / "coastkind.sqlite3"))
+    parser.add_argument("--db", default=str(Path(__file__).resolve().parent / "data" / "wainet.sqlite3"))
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("catalog", help="Show public availability, without voucher codes.")
     configure = commands.add_parser("configure", help="Set an explicit operator-approved points cost and voucher value.")
