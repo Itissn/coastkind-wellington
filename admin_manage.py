@@ -39,7 +39,7 @@ def create_temporary_admin(store, email, display_name, password):
 def main():
     load_config()
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--db", default=os.getenv("COASTKIND_DB_PATH", str(ROOT / "data" / "coastkind.sqlite3")), help="Local SQLite database managed by this operator.")
+    parser.add_argument("--db", default=os.getenv("WAINET_DB_PATH", str(ROOT / "data" / "wainet.sqlite3")), help="Local SQLite database managed by this operator.")
     commands = parser.add_subparsers(dest="command", required=True)
     for name in ("grant", "revoke"):
         command = commands.add_parser(name, help=f"{name.capitalize()} administrator access for an existing account.")
@@ -49,7 +49,7 @@ def main():
     invite = commands.add_parser("invite", help="Write a one-use setup invitation to a private local file.")
     invite.add_argument("email", help="Exact email address allowed to create the administrator account.")
     invite.add_argument("--out", required=True, help="New private JSON file for the setup secret. Never publish this file.")
-    invite.add_argument("--origin", default=os.getenv("COASTKIND_PUBLIC_ORIGIN") or os.getenv("RENDER_EXTERNAL_URL") or "http://localhost:8000")
+    invite.add_argument("--origin", default=os.getenv("WAINET_PUBLIC_ORIGIN") or os.getenv("RENDER_EXTERNAL_URL") or "http://localhost:8000")
     args = parser.parse_args()
     store = Store(args.db)
     try:
