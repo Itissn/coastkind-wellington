@@ -1,4 +1,4 @@
-"""Generate isolated, explicitly synthetic Coastkind demonstration data.
+"""Generate isolated, explicitly synthetic WAINET demonstration data.
 
 This program never calls an AI provider, writes the live database, or creates
 real rewards. Run ``python seed_demo.py`` and browse the separate demo server.
@@ -28,8 +28,8 @@ MODEL = "demo-simulated-v1"
 SCHEMA = "demo-coastal-observation-v1"
 PROMPT = "demo-evidence-separated-v1"
 DEFAULT_OUTPUT = ROOT / "data" / "demo"
-SENTINEL = ".coastkind-demo.json"
-DB_NAME = "coastkind-demo.sqlite3"
+SENTINEL = ".wainet-demo.json"
+DB_NAME = "wainet-demo.sqlite3"
 # The versioned fixture remains five communities even as the live map expands.
 COMMUNITIES = ("Oriental Bay", "Lyall Bay", "Island Bay", "Porirua Harbour", "Petone Beach")
 CATEGORIES = ("litter", "suspected_industrial", "oil_or_fuel", "suspected_wastewater", "unusual_water", "other")
@@ -56,7 +56,7 @@ FEATURES = {
 
 
 def identifier(kind, value):
-    return str(uuid5(NAMESPACE_URL, f"coastkind/{DATASET_KIND}/{kind}/{value}"))
+    return str(uuid5(NAMESPACE_URL, f"wainet/{DATASET_KIND}/{kind}/{value}"))
 
 
 def _read_metadata(path):
@@ -363,7 +363,7 @@ def _export(store, output, metadata):
     return summary
 
 
-_README = """# Coastkind synthetic demonstration dataset
+_README = """# WAINET synthetic demonstration dataset
 
 **DEMO: All observations, users, images, analyses, reviews, alerts and points are fictional.**
 This collection makes no claim about real water quality in any named Wellington community.
@@ -372,7 +372,7 @@ six activity types and six example concern categories over a 60-day scenario per
 
 Files:
 
-- `coastkind-demo.sqlite3`: isolated SQLite database; open with a SQLite viewer.
+- `wainet-demo.sqlite3`: isolated SQLite database; open with a SQLite viewer.
 - `observations.csv`: UTF-8 with BOM, one observation per row; suitable for Excel, pandas or BI tools.
 - `dataset.json`: structured observations, simulated analyses, quality flags, reviews, comments and attention signals.
 - `summary.json`: counts and scenario coverage.
@@ -380,7 +380,7 @@ Files:
 
 Run `python seed_demo.py` in the project directory to regenerate exports. Repeated runs preserve
 the same IDs and do not append records. The generator only accepts an explicitly marked demo
-directory inside `data/demo` or `data/demo-*`. It does not modify `data/coastkind.sqlite3`.
+directory inside `data/demo` or `data/demo-*`. It does not modify `data/wainet.sqlite3`.
 
 For the separate local demonstration viewer, run `python demo_server.py` from the project root.
 No real API keys, AI requests, user passwords, login sessions or vouchers are created.
