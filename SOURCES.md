@@ -1,12 +1,12 @@
 # Official coastal resources
 
-Links and purposes checked on 26 September 2026. These are independent official resources; no partnership or endorsement is implied. Official measurements and events are kept separate from community observations. Coastkind does not reproduce swimming advisories, weather forecasts or fishing limits as its own findings.
+Links and purposes checked on 26 September 2026. These are independent official resources; no partnership or endorsement is implied. Official measurements and events are kept separate from community observations. WAINET does not reproduce swimming advisories, weather forecasts or fishing limits as its own findings.
 
 | Resource | Why a coastal user would open it |
 | --- | --- |
 | [LAWA — Can I Swim Here?](https://www.lawa.org.nz/explore-data/swimming) | Select Wellington and a swimming site to consult monitoring results, predicted water quality and site warnings. The former Wellington coastal index redirects to this swimming search. |
 | [MetService — Kāpiti and Wellington marine forecast](https://www.metservice.com/marine/regions/kapiti-wellington) | Check the region's marine forecast, warnings and tides before water activities. Greater Wellington's [harbours and coasts page](https://www.gw.govt.nz/environment/harbours-and-coasts/) links directly to this forecast. |
-| [Greater Wellington — Environmental incidents](https://www.gw.govt.nz/environment/environmental-incidents/) | Find the council's reporting contact and what location, timing and observation details help it respond to pollution. A Coastkind post is not a council submission. |
+| [Greater Wellington — Environmental incidents](https://www.gw.govt.nz/environment/environmental-incidents/) | Find the council's reporting contact and what location, timing and observation details help it respond to pollution. A WAINET post is not a council submission. |
 | [MPI / Fisheries New Zealand — Fishing rules](https://www.mpi.govt.nz/fishing-aquaculture/recreational-fishing/fishing-rules) | Choose the applicable recreational fishing area and check current limits, closures and gear restrictions before each trip. This link concerns recreational fishing, not commercial fishing permission. |
 | [Maritime New Zealand — Key safety messages for recreational boating](https://www.maritimenz.govt.nz/recreational-craft/on-the-water/rules-and-safety/) | Review boating preparation, the Boating Safety Code and guidance on equipment, communications and skipper responsibilities. |
 
@@ -30,7 +30,7 @@ The application requests **Enterococci Bacteria** from fixed named coastal stati
 
 Sample age and retrieval age are different. During verification, the latest Mākara Beach sample was from 2001 and Houghton Bay from 2005; those are historical measurements. Even successfully refreshed data may contain old samples. One station cannot establish conditions throughout a whole bay. Consult [LAWA swimming guidance](https://www.lawa.org.nz/explore-data/swimming) for current site advisories and warnings.
 
-Attribution: **Greater Wellington Regional Council**, with a link to the exact measurement request and the [environmental data dashboard](https://graphs.gw.govt.nz/envmon?view=map). The council's [geographic data page](https://www.gw.govt.nz/environment/environmental-data-and-information/geographic-mapping-information/) states a default CC BY 4.0 licence for its open geographic data. The Hilltop sample responses do not contain a dataset-specific licence statement; do not label them as Coastkind-owned data or silently apply the GIS licence to every time series. LAWA's [download page](https://www.lawa.org.nz/download-data) describes CC BY 4.0 for most downloadable datasets and requires checking individual metadata. This integration retrieves council measurements directly; it does not scrape blocked LAWA pages.
+Attribution: **Greater Wellington Regional Council**, with a link to the exact measurement request and the [environmental data dashboard](https://graphs.gw.govt.nz/envmon?view=map). The council's [geographic data page](https://www.gw.govt.nz/environment/environmental-data-and-information/geographic-mapping-information/) states a default CC BY 4.0 licence for its open geographic data. The Hilltop sample responses do not contain a dataset-specific licence statement; do not label them as WAINET-owned data or silently apply the GIS licence to every time series. LAWA's [download page](https://www.lawa.org.nz/download-data) describes CC BY 4.0 for most downloadable datasets and requires checking individual metadata. This integration retrieves council measurements directly; it does not scrape blocked LAWA pages.
 
 ## GeoNet earthquake context
 
