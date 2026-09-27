@@ -1,4 +1,4 @@
-# Coastkind
+# WAINET
 
 [Public presentation](https://itissn.github.io/coastkind-wellington/) · [Multimodal AI and dataset explorer](https://itissn.github.io/coastkind-wellington/demo.html)
 
@@ -30,11 +30,11 @@ python build_presentation.py --out docs
 python -m unittest test_demo -v
 ```
 
-The local demonstration is at **http://localhost:8001/demo-data**; its separate database is `data/demo/coastkind-demo.sqlite3`. `seed_demo.py` also writes `observations.csv`, `dataset.json`, `summary.json` and `CODEBOOK.md` in that directory. Re-running it preserves the generated records without duplication and refuses unmarked databases or production paths. Synthetic records are blocked from live AI processing and from the normal government/licensed export. See [PRESENTATION.md](PRESENTATION.md) for publishing and presentation steps.
+The local demonstration is at **http://localhost:8001/demo-data**; its separate database is `data/demo/wainet-demo.sqlite3`. `seed_demo.py` also writes `observations.csv`, `dataset.json`, `summary.json` and `CODEBOOK.md` in that directory. Re-running it preserves the generated records without duplication and refuses unmarked databases or production paths. Synthetic records are blocked from live AI processing and from the normal government/licensed export. See [PRESENTATION.md](PRESENTATION.md) for publishing and presentation steps.
 
 The public analysis walkthrough reads precomputed examples and does not call a model or change a database. The full local backend implements real multimodal API calls after a key is configured. GitHub Pages hosts the static presentation; the working account/upload backend requires separate server hosting.
 
-Official external resources are available through **Useful links** on the map and community pages. They connect visitors to current swimming information, marine forecasts, pollution reporting, fishing rules and boating guidance. The links open independently of Coastkind and do not imply an official partnership. See [SOURCES.md](SOURCES.md) for the purpose and source of each link.
+Official external resources are available through **Useful links** on the map and community pages. They connect visitors to current swimming information, marine forecasts, pollution reporting, fishing rules and boating guidance. The links open independently of WAINET and do not imply an official partnership. See [SOURCES.md](SOURCES.md) for the purpose and source of each link.
 
 The map offers 20 coastal communities. Regional zoom shows five main labels and smaller points for nearby communities; zooming in reveals additional names. All locations remain available in the selector. The 240-record demonstration intentionally covers the original five communities, while the other areas open without fabricated extra observations.
 
@@ -61,7 +61,7 @@ Guests can upload immediately without registration. **Every guest upload permane
 
 Normal signed-in uploads are tied to the session's user ID. Clients cannot select another account ID or award points. Comments and support require sign-in. The public feed shows only a display name (or Guest contributor), never account emails. Points and issued vouchers are private account data and are available after signing in from another browser.
 
-The SQLite database is created and migrated on startup at `data/coastkind.sqlite3`, with users, sessions, owned observations, point transactions, reward inventory and redemption records. Existing anonymous observations are preserved without reassignment. See [DATABASE.md](DATABASE.md) for the relationships and migration details. No email is sent; email ownership verification and password recovery are not yet configured.
+The SQLite database is created and migrated on startup at `data/wainet.sqlite3`, with users, sessions, owned observations, point transactions, reward inventory and redemption records. Existing anonymous observations are preserved without reassignment. See [DATABASE.md](DATABASE.md) for the relationships and migration details. No email is sent; email ownership verification and password recovery are not yet configured.
 
 ## AI configuration
 
@@ -79,7 +79,7 @@ Only one server process should own a database. In-progress jobs return to the qu
 
 ## Data and quality controls
 
-`data/coastkind.sqlite3` stores submitted photo copies, words, timestamps, optional exact coordinates and device accuracy, image hashes, AI results, model/response identifiers, schema/prompt versions, comments, support, and review audit entries. Photos are resized in the browser, decoded and validated by Pillow, and normalised without EXIF metadata. Retain camera originals separately for formal evidence.
+`data/wainet.sqlite3` stores submitted photo copies, words, timestamps, optional exact coordinates and device accuracy, image hashes, AI results, model/response identifiers, schema/prompt versions, comments, support, and review audit entries. Photos are resized in the browser, decoded and validated by Pillow, and normalised without EXIF metadata. Retain camera originals separately for formal evidence.
 
 - Required: a decodable photo and a community (prefilled when entering a community).
 - Optional: feelings, photo date, and device location. Device coordinates require an explicit user confirmation that they correspond to the photo location. Photo dates and submission dates are separate; an unknown photo date stays unknown.
