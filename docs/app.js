@@ -40,6 +40,7 @@ let composerCommunity = '', identityChosen = false;
 const composerDrafts = new Map();
 let refreshing = false, loaded = false;
 let concerns = [], alerts = [], focusedConcern = null;
+let localDemoPosts = [];
 let wallet = {points:0,pending_observations:0,entries:[]};
 
 function toast(message) {
@@ -66,7 +67,7 @@ function postType(p) {
 }
 function titleFor(p) { return p.analysis?.summary || (postType(p) === 'concern' ? 'A coastal concern' : `An observation from ${p.community}`); }
 function statusText(p) {
-  if(demoMode){if(p.review_status==='approved')return 'Simulated review · Approved example';if(p.review_status==='rejected')return 'Simulated review · Rejected example';return p.status==='analyzed'?'Scripted analysis · Demo only':`Demo workflow · ${p.status}`;}
+  if(demoMode){if(p.local_demo)return 'Local demo submission · Not uploaded';if(p.review_status==='approved')return 'Simulated review · Approved example';if(p.review_status==='rejected')return 'Simulated review · Rejected example';return p.status==='analyzed'?'Scripted analysis · Demo only':`Demo workflow · ${p.status}`;}
   if(p.review_status==='approved')return 'Human reviewed · Community evidence';
   if(p.review_status==='rejected')return 'Reviewed · Not eligible for data export';
   return {pending:'Saved · Awaiting AI analysis', processing:'Saved · AI is analysing', analyzed:'AI suggestion · Needs review', failed:'Saved · AI analysis unavailable', duplicate:'Saved · Repeated photo linked'}[p.status] || 'Saved observation';
@@ -88,7 +89,7 @@ function render() {
   $('#focused-concern').hidden = !focused;
   if(focused)$('#focused-concern span').textContent = `Showing: ${pollutionLabels[focused.category]}`;
   const list = local.filter(p => (filter === 'all' || postType(p) === filter) && (!focused || focused.report_ids.includes(p.id))).sort((a,b) => $('#sort').value === 'supported' ? b.likes-a.likes : new Date(b.created)-new Date(a.created));
-  $('#posts').innerHTML = list.length ? list.map(p => `<article class="post-card"><div class="post-photo"><img src="${escapeHTML(p.photo)}" alt="Community coastal observation" loading="lazy"><span class="tag ${postType(p)==='concern'?'concern':''}">${postType(p)==='concern'?'Coastal concern':postType(p)==='moment'?'Community update':'Coastal observation'}</span></div><div class="post-content"><div class="author-row"><span class="avatar">CK</span><div><span class="author-name">${escapeHTML(p.author_name || 'Guest contributor')}</span><time class="post-date">${dateLabel(p.created)}</time></div></div><div class="post-place">⌖ ${escapeHTML(p.community)}</div><h3 class="post-title">${escapeHTML(titleFor(p))}</h3>${p.feelings?`<p class="post-body">${escapeHTML(p.feelings)}</p>`:''}${tagsFor(p)}<span class="post-status">${statusText(p)}</span></div><div class="post-footer"><button data-like="${p.id}" aria-label="Support this observation" aria-pressed="${p.liked}">${p.liked?'♥':'♡'} ${p.likes}</button><button data-detail="${p.id}" aria-label="Read comments">↳ ${p.comments.length}</button><button class="read-story" data-detail="${p.id}">View observation ↗</button></div></article>`).join('') : `<div class="empty-state"><span class="empty-wave" aria-hidden="true">≋</span><h3>${!loaded?'Your coastal community':'Be the first pair of eyes.'}</h3><p>${!backendReady?'Connect to the local server to load and save community observations.':filter==='all'?'A quiet swim. Something out of place. Share what you see.':'No observations match this filter yet.'}</p><button class="button primary" data-compose="observation">＋ Share a photo</button></div>`;
+  $('#posts').innerHTML = list.length ? list.map(p => `<article class="post-card"><div class="post-photo"><img src="${escapeHTML(p.photo)}" alt="Community coastal observation" loading="lazy"><span class="tag ${postType(p)==='concern'?'concern':''}">${postType(p)==='concern'?'Coastal concern':postType(p)==='moment'?'Community update':'Coastal observation'}</span></div><div class="post-content"><div class="author-row"><span class="avatar">WN</span><div><span class="author-name">${escapeHTML(p.author_name || 'Guest contributor')}</span><time class="post-date">${dateLabel(p.created)}</time></div></div><div class="post-place">⌖ ${escapeHTML(p.community)}</div><h3 class="post-title">${escapeHTML(titleFor(p))}</h3>${p.feelings?`<p class="post-body">${escapeHTML(p.feelings)}</p>`:''}${tagsFor(p)}<span class="post-status">${statusText(p)}</span></div><div class="post-footer"><button data-like="${p.id}" aria-label="Support this observation" aria-pressed="${p.liked}">${p.liked?'♥':'♡'} ${p.likes}</button><button data-detail="${p.id}" aria-label="Read comments">↳ ${p.comments.length}</button><button class="read-story" data-detail="${p.id}">View observation ↗</button></div></article>`).join('') : `<div class="empty-state"><span class="empty-wave" aria-hidden="true">≋</span><h3>${!loaded?'Your coastal community':'Be the first pair of eyes.'}</h3><p>${!backendReady?'Connect to the local server to load and save community observations.':filter==='all'?'A quiet swim. Something out of place. Share what you see.':'No observations match this filter yet.'}</p><button class="button primary" data-compose="observation">＋ Share a photo</button></div>`;
   $('.feed-end').hidden = list.length === 0;
   syncComposerPlacement();
 }
@@ -107,7 +108,7 @@ async function refreshPosts() {
     const first = !loaded;
     backendReady = true; loaded = true; aiConfigured = health.aiConfigured; demoMode = !!health.demoMode;
     const changed = JSON.stringify(posts) !== JSON.stringify(result.observations) || JSON.stringify(concerns)!==JSON.stringify(trends.concerns) || JSON.stringify(alerts)!==JSON.stringify(trends.alerts);
-    posts = result.observations; concerns = trends.concerns; alerts = trends.alerts;
+    posts = demoMode ? [...localDemoPosts, ...result.observations] : result.observations; concerns = trends.concerns; alerts = trends.alerts;
     wallet=balance;renderWallet();renderAccount();syncComposerPlacement();
     $('#connection-status').textContent = demoMode ? 'Synthetic demonstration · Scripted analysis and reviews · No real pollution findings or rewards' : aiConfigured ? 'Saved to the community database · AI suggestions await human review' : 'Your observations are saved to the local database. AI analysis is awaiting setup.';
     if (changed || first) {render();refreshCommunitySignals();}
@@ -165,7 +166,6 @@ function syncComposerPlacement(){
   mount.hidden=!inline;document.body.classList.toggle('has-inline-composer',inline);
 }
 function openComposer(hint = 'observation') {
-  if(demoMode){toast('This fictional presentation is read-only.');return;}
   if (submitting) return;
   syncComposerPlacement();
   if($('#compose-form').parentElement===$('#inline-composer')){
@@ -207,7 +207,7 @@ function stopCamera(){
 }
 function closeCamera(){stopCamera();if($('#camera-dialog').open)$('#camera-dialog').close();}
 async function openCamera(){
-  if(demoMode||submitting||$('#camera-dialog').open)return;
+  if(submitting||$('#camera-dialog').open)return;
   stopCamera();const version=cameraRevision,dialog=$('#camera-dialog'),video=$('#camera-preview');
   $('#camera-status').textContent='Allow camera access to see your preview.';dialog.showModal();
   if(!window.isSecureContext||!navigator.mediaDevices?.getUserMedia){$('#camera-status').textContent='Camera access is unavailable here. Open WAINET on localhost or HTTPS, or use Upload photo.';return;}
@@ -274,7 +274,6 @@ $('#clear-location').addEventListener('click', () => {
 $('#compose-dialog').addEventListener('cancel', event => { if (submitting) event.preventDefault(); });
 $('#compose-form').addEventListener('submit', async event => {
   event.preventDefault(); if (submitting) return;
-  if(demoMode){toast('This fictional presentation is read-only.');return;}
   $('#form-error').textContent = '';
   if (photoLoading || !photoData) { $('#form-error').textContent = photoLoading ? 'Your photo is still loading. Please wait a moment.' : 'Add a photo to share your observation.'; return; }
   if (position && !$('#location-confirm').checked) { $('#form-error').textContent = 'Confirm this is where you took the photo, or remove the location.'; return; }
@@ -286,13 +285,33 @@ $('#compose-form').addEventListener('submit', async event => {
   const controls = [...$('#compose-form').elements]; controls.forEach(control => control.disabled = true);
   $('#submit-observation').textContent = 'Saving your observation…';
   try {
-    await api('/api/observations', {method:'POST', body:JSON.stringify(payload)});
-    if($('#compose-dialog').open)$('#compose-dialog').close();
-    composerDrafts.delete(composerCommunity);resetComposer(community);
-    $('#composer-success').textContent=payload.as_guest?'Thank you. Your photo and words are saved. This guest upload earns no rewards.':'Thank you. Your photo and words are saved to your account.';
-    $('#composer-success').hidden=false;
-    await refreshPosts(); enterCommunity(community);
-    toast(payload.as_guest?'Guest observation saved. Rewards are waived for this upload.':aiConfigured ? 'Saved to your account. AI analysis will appear shortly.' : 'Saved to your account. Awaiting AI analysis setup.');
+    if(demoMode){
+      const now=new Date().toISOString();
+      const localPost={
+        id:submissionId,community,feelings:payload.feelings,photo:photoData,
+        position:position?{latitude:position.latitude,longitude:position.longitude}:null,
+        hint:payload.hint,created:now,observed_at:payload.observed_at,status:'pending',
+        analysis:null,model:'browser-local-demo',review_status:'pending',
+        quality_flags:['synthetic_demo','browser_local_demo'],duplicate_of:null,
+        author_name:'Demo visitor',comments:[],likes:0,liked:false,user_id:null,
+        dataset_consent:0,synthetic:true,simulated_analysis:false,local_demo:true
+      };
+      localDemoPosts.unshift(localPost);
+      posts=[...localDemoPosts,...posts.filter(p=>!p.local_demo)];
+      if($('#compose-dialog').open)$('#compose-dialog').close();
+      composerDrafts.delete(composerCommunity);resetComposer(community);
+      enterCommunity(community);
+      render();
+      toast('Demo photo + words added locally. Nothing was uploaded to a server.');
+    }else{
+      await api('/api/observations', {method:'POST', body:JSON.stringify(payload)});
+      if($('#compose-dialog').open)$('#compose-dialog').close();
+      composerDrafts.delete(composerCommunity);resetComposer(community);
+      $('#composer-success').textContent=payload.as_guest?'Thank you. Your photo and words are saved. This guest upload earns no rewards.':'Thank you. Your photo and words are saved to your account.';
+      $('#composer-success').hidden=false;
+      await refreshPosts(); enterCommunity(community);
+      toast(payload.as_guest?'Guest observation saved. Rewards are waived for this upload.':aiConfigured ? 'Saved to your account. AI analysis will appear shortly.' : 'Saved to your account. Awaiting AI analysis setup.');
+    }
   } catch (error) { $('#form-error').textContent = error.message; toast(error.message); }
   finally { submitting = false; controls.forEach(control => control.disabled = false); $('#submit-observation').textContent = 'Share observation ↗'; syncComposerPlacement(); }
 });
