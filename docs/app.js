@@ -35,7 +35,7 @@ let officialRevision = 0, mapSource = 'community', officialMap = null, officialM
 const signalStyles={red:{label:'Repeated concerns',symbol:'!'},orange:{label:'Needs review',symbol:'?'},green:{label:'Positive observations',symbol:'✓'},gray:{label:'Not enough evidence',symbol:'–'}};
 let photoData = '', photoVersion = 0, photoLoading = false, position = null, locationVersion = 0;
 let cameraStream = null, cameraRevision = 0;
-let submitting = false, submissionId = '', submissionHint = 'observation', backendReady = false, aiConfigured = false, demoMode = !!(window.coastkindDemoApi || document.body.classList.contains('demo-preview'));
+let submitting = false, submissionId = '', submissionHint = 'observation', backendReady = false, aiConfigured = false, demoMode = !!(window.wainetDemoApi || document.body.classList.contains('demo-preview'));
 let composerCommunity = '', identityChosen = false;
 const composerDrafts = new Map();
 let refreshing = false, loaded = false;
@@ -47,7 +47,7 @@ function toast(message) {
   clearTimeout(toast.timer); toast.timer = setTimeout(() => $('#toast').classList.remove('visible'), 5000);
 }
 async function api(path, options = {}) {
-  if (window.coastkindDemoApi) return window.coastkindDemoApi(path, options);
+  if (window.wainetDemoApi) return window.wainetDemoApi(path, options);
   if (location.protocol === 'file:') throw new Error('Open http://localhost:8000 to save observations.');
   let response;
   try { response = await fetch(path, {...options, credentials:'same-origin', headers:{'Content-Type':'application/json', ...(csrfToken && options.method && options.method!=='GET'?{'X-CSRF-Token':csrfToken}:{}), ...options.headers}, signal:AbortSignal.timeout(25000)}); }
@@ -210,7 +210,7 @@ async function openCamera(){
   if(demoMode||submitting||$('#camera-dialog').open)return;
   stopCamera();const version=cameraRevision,dialog=$('#camera-dialog'),video=$('#camera-preview');
   $('#camera-status').textContent='Allow camera access to see your preview.';dialog.showModal();
-  if(!window.isSecureContext||!navigator.mediaDevices?.getUserMedia){$('#camera-status').textContent='Camera access is unavailable here. Open Coastkind on localhost or HTTPS, or use Upload photo.';return;}
+  if(!window.isSecureContext||!navigator.mediaDevices?.getUserMedia){$('#camera-status').textContent='Camera access is unavailable here. Open WAINET on localhost or HTTPS, or use Upload photo.';return;}
   try{
     const stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:1600},height:{ideal:1200}},audio:false});
     if(version!==cameraRevision||!dialog.open){stream.getTracks().forEach(track=>track.stop());return;}
@@ -242,7 +242,7 @@ $('#capture-photo').addEventListener('click',async()=>{
     const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',.9));
     if(version!==cameraRevision||!$('#camera-dialog').open)return;
     if(!blob)throw new Error('Capture failed');
-    $('#photo').value='';const loaded=loadPhoto(new File([blob],'coastkind-camera.jpg',{type:'image/jpeg'}));
+    $('#photo').value='';const loaded=loadPhoto(new File([blob],'wainet-camera.jpg',{type:'image/jpeg'}));
     closeCamera();await loaded;
   }catch{
     if(version!==cameraRevision)return;$('#capture-photo').disabled=false;$('#camera-status').textContent='Could not capture this photo. Please try again.';
@@ -346,7 +346,7 @@ function applyCommunityRoute() {
   $('#location-filter').value=c?c.name:'all'; $('#community-picker').value=c?c.name:'';
   filter='all'; document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('selected',b.dataset.filter==='all'));
   focusedConcern=null;
-  document.title=c?`${c.name} community — Coastkind`:'Coastkind — Wellington coast';
+  document.title=c?`${c.name} community — WAINET`:'WAINET — Wellington coast';
   render(); window.scrollTo({top:0,behavior:'instant'});
   loadOfficialData(c?.name);
   if(!c && coastMap)requestAnimationFrame(fitCoastalMap);
@@ -432,7 +432,7 @@ function setAuthMode(mode){
   $('#auth-error').textContent='';
 }
 function openAuth(mode='login',intent=null){
-  if(demoMode){$('#demo-account-title').textContent=mode==='register'?'Create your Coastkind account':'Sign in to Coastkind';$('#demo-account-dialog').showModal();return;}
+  if(demoMode){$('#demo-account-title').textContent=mode==='register'?'Create your WAINET account':'Sign in to WAINET';$('#demo-account-dialog').showModal();return;}
   if(currentUser){if(intent==='earn'){$('#upload-as-guest').checked=false;identityChosen=true;renderUploadIdentity();}else openAccount();return;}
   authIntent=intent;$('#auth-form').reset();setAuthMode(mode);
   if(!$('#auth-dialog').open)$('#auth-dialog').showModal();
@@ -569,7 +569,7 @@ async function loadOfficialData(community){
   }catch(error){if(version!==officialRevision)return;renderOfficialWater({status:'unavailable'});renderOfficialGeoNet({status:'unavailable'});foldOfficialDetails();$('#official-context').textContent='Could not refresh official sources. Use the source links above for current information.';
   }finally{if(version===officialRevision)$('#refresh-official').disabled=false;}
 }
-$('#refresh-official').addEventListener('click',()=>{window.coastkindReloadOfficial?.();loadOfficialData(coastalCommunities.find(c=>location.hash===`#coast/${c.slug}`)?.name);});
+$('#refresh-official').addEventListener('click',()=>{window.wainetReloadOfficial?.();loadOfficialData(coastalCommunities.find(c=>location.hash===`#coast/${c.slug}`)?.name);});
 const communityLegend=$('#map-source-legend').innerHTML;
 function sampleAge(source){
   const time=new Date(source?.samples?.[0]?.sampled_at).getTime();return Number.isFinite(time)?Math.floor((Date.now()-time)/86400000):null;
