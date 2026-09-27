@@ -68,7 +68,7 @@ q('#download-filtered').addEventListener('click',()=>{
   const fields=['id','synthetic','community','observed_at','created','activity','contributor_type','rewards_waived','status','review_status','points_awarded','dataset_consent','duplicate_of','feelings','pollution_types','quality_flags'];
   const cell=value=>'"'+String(value??'').replaceAll('"','""')+'"';
   const csv='\uFEFF'+[fields.join(','),...selection.map(record=>fields.map(field=>cell(field==='pollution_types'?(record.analysis?.pollution_types||[]).join(';'):field==='quality_flags'?record.quality_flags.join(';'):record[field])).join(','))].join('\r\n');
-  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='coastkind-synthetic-selection.csv';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='wainet-synthetic-selection.csv';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
 async function start(){
   try{const response=await fetch(document.body.dataset.demoSource||'/api/demo-data');if(!response.ok)throw new Error('Could not load the demonstration dataset.');const data=await response.json();if(!data.synthetic||data.observations.some(r=>!r.synthetic))throw new Error('This page only accepts explicitly synthetic data.');
