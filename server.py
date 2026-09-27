@@ -1,4 +1,4 @@
-"""Local Coastkind application: SQLite storage and an optional AI analysis worker."""
+"""Local WAINET application: SQLite storage and an optional AI analysis worker."""
 import argparse
 import base64
 import binascii
@@ -579,7 +579,7 @@ class Handler(BaseHTTPRequestHandler):
                 payload = admin_data.dataset_payload(self.server.store, filters)
                 if path.endswith("export"):
                     content, mime = admin_data.export_bytes(payload, format_name)
-                    filename = f"coastkind-research-{datetime.now(timezone.utc).strftime('%Y-%m-%d')}.{format_name}"
+                    filename = f"wainet-research-{datetime.now(timezone.utc).strftime('%Y-%m-%d')}.{format_name}"
                     return self.send_bytes(200, content, mime, download_name=filename)
                 return self.json(200, payload)
             except (ValueError, TypeError, UnicodeError) as error:
@@ -773,7 +773,7 @@ def configured_public_origin(value):
 def create_server(port=8000, db_path=None, api_key="", model="gpt-4.1-mini", host="127.0.0.1", public_origin=None):
     public_origin = configured_public_origin(public_origin)
     server = ThreadingHTTPServer((host, port), Handler)
-    server.store = Store(db_path or ROOT / "data" / "coastkind.sqlite3")
+    server.store = Store(db_path or ROOT / "data" / "wainet.sqlite3")
     server.auth_throttle = accounts.AuthThrottle()
     server.api_key, server.model = api_key, model
     server.public_origin = public_origin
@@ -786,8 +786,8 @@ def load_config():
         for line in envfile.read_text(encoding="utf-8-sig").splitlines():
             if "=" in line and not line.lstrip().startswith("#"):
                 key, value = line.split("=", 1)
-                if key.strip() in ("OPENAI_API_KEY", "OPENAI_MODEL", "COASTKIND_HOST", "PORT", "COASTKIND_DB_PATH",
-                                  "COASTKIND_PUBLIC_ORIGIN", "COASTKIND_ADMIN_EMAIL", "COASTKIND_ADMIN_SETUP_TOKEN", "COASTKIND_ADMIN_PASSWORD_HASH"):
+                if key.strip() in ("OPENAI_API_KEY", "OPENAI_MODEL", "WAINET_HOST", "PORT", "WAINET_DB_PATH",
+                                  "WAINET_PUBLIC_ORIGIN", "WAINET_ADMIN_EMAIL", "WAINET_ADMIN_SETUP_TOKEN", "WAINET_ADMIN_PASSWORD_HASH"):
                     os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
@@ -795,16 +795,16 @@ def main():
     load_config()
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", type=int, default=int(os.getenv("PORT", "8000")))
-    parser.add_argument("--db", default=os.getenv("COASTKIND_DB_PATH", str(ROOT / "data" / "coastkind.sqlite3")))
-    parser.add_argument("--host", default=os.getenv("COASTKIND_HOST", "127.0.0.1"))
+    parser.add_argument("--db", default=os.getenv("WAINET_DB_PATH", str(ROOT / "data" / "wainet.sqlite3")))
+    parser.add_argument("--host", default=os.getenv("WAINET_HOST", "127.0.0.1"))
     parser.add_argument("--retry-failed", action="store_true")
     args = parser.parse_args()
     server = create_server(args.port, args.db, os.getenv("OPENAI_API_KEY", ""), os.getenv("OPENAI_MODEL", "gpt-4.1-mini"),
-                           args.host, os.getenv("COASTKIND_PUBLIC_ORIGIN") or os.getenv("RENDER_EXTERNAL_URL"))
-    if os.getenv("COASTKIND_ADMIN_PASSWORD_HASH"):
-        accounts.bootstrap_temporary_admin(server.store, os.getenv("COASTKIND_ADMIN_EMAIL"), os.getenv("COASTKIND_ADMIN_PASSWORD_HASH"))
-    elif os.getenv("COASTKIND_ADMIN_SETUP_TOKEN"):
-        accounts.bootstrap_admin_invite(server.store, os.getenv("COASTKIND_ADMIN_EMAIL"), os.getenv("COASTKIND_ADMIN_SETUP_TOKEN"))
+                           args.host, os.getenv("WAINET_PUBLIC_ORIGIN") or os.getenv("RENDER_EXTERNAL_URL"))
+    if os.getenv("WAINET_ADMIN_PASSWORD_HASH"):
+        accounts.bootstrap_temporary_admin(server.store, os.getenv("WAINET_ADMIN_EMAIL"), os.getenv("WAINET_ADMIN_PASSWORD_HASH"))
+    elif os.getenv("WAINET_ADMIN_SETUP_TOKEN"):
+        accounts.bootstrap_admin_invite(server.store, os.getenv("WAINET_ADMIN_EMAIL"), os.getenv("WAINET_ADMIN_SETUP_TOKEN"))
     with server.store.connect() as db:
         db.execute("UPDATE observations SET status='pending' WHERE status='processing'")
         if args.retry_failed:
@@ -818,7 +818,7 @@ def main():
             except sqlite3.Error:
                 time.sleep(2)
     threading.Thread(target=worker, daemon=True).start()
-    print(f"Coastkind: {server.public_origin or f'http://localhost:{server.server_port}'}", flush=True)
+    print(f"WAINET: {server.public_origin or f'http://localhost:{server.server_port}'}", flush=True)
     print("AI enabled." if server.api_key else "AI not configured: uploads are saved with pending analysis.", flush=True)
     try:
         server.serve_forever()
