@@ -14,8 +14,8 @@ from server import ROOT, Store
 import official_data
 from server import COMMUNITIES
 
-PACKAGE_KIND = 'coastkind-static-synthetic-v1'
-MARKER = '.coastkind-presentation.json'
+PACKAGE_KIND = 'wainet-static-synthetic-v1'
+MARKER = '.wainet-presentation.json'
 ASSETS = ('app.js', 'styles.css', 'map.css', 'account.css', 'demo.js', 'demo.css', 'static_demo.js')
 FORBIDDEN_KEYS = {'password', 'password_hash', 'token_hash', 'csrf_token', 'csrfToken', 'voucher_code', 'api_key', 'email', 'image'}
 
@@ -102,7 +102,7 @@ def build_presentation(output_dir=ROOT / 'presentation', db_path=DEFAULT_DB):
     reject_private_fields(payload)
     plan = {name: source_text(name).encode('utf-8') for name in ASSETS}
     main = source_text('index.html')
-    if 'window.coastkindDemoApi' not in plan['app.js'].decode('utf-8'):
+    if 'window.wainetDemoApi' not in plan['app.js'].decode('utf-8'):
         raise ValueError('The application does not yet support the static demonstration adapter.')
     main = main.replace('<script src="app.js" defer></script>', '<script src="static_demo.js" defer></script><script src="app.js" defer></script>')
     main = main.replace('</head>', '<link rel="stylesheet" href="demo.css"></head>')
