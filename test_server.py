@@ -291,7 +291,7 @@ class HTTPTests(unittest.TestCase):
             self.assertTrue(record['liked'])
 
     def test_database_and_secrets_are_not_served_and_foreign_origin_is_blocked(self):
-        for path in ['/.env', '/data/coastkind.sqlite3', '/server.py', '/../server.py']:
+        for path in ['/.env', '/data/wainet.sqlite3', '/server.py', '/../server.py']:
             with self.subTest(path=path), self.assertRaises(HTTPError) as error:
                 self.request(path)
             self.assertEqual(error.exception.code, 404)
