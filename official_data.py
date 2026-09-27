@@ -119,7 +119,7 @@ def parse_geonet(payload, now=None):
 def fetch_geonet(opener=None, now=None):
     opener = opener or urlopen
     request = Request(GEONET_URL, headers={"Accept": "application/vnd.geo+json;version=2",
-                                        "User-Agent": "Coastkind/1.0 (public coastal observations)"})
+                                        "User-Agent": "WAINET/1.0 (public coastal observations)"})
     with opener(request, timeout=REQUEST_TIMEOUT) as response:
         if callable(getattr(response, "geturl", None)):
             destination = urlsplit(response.geturl())
