@@ -23,10 +23,10 @@ Sources: [Render pricing](https://render.com/pricing),
 
 1. Connect the owner's Render account and GitHub repository, then review the
    prepared Blueprint and cost before creating it. Automatic deploys are off.
-2. Keep `COASTKIND_HOST=0.0.0.0` and the database path from the Blueprint. Render
+2. Keep `WAINET_HOST=0.0.0.0` and the database path from the Blueprint. Render
    supplies `PORT` and `RENDER_EXTERNAL_URL`; the server uses that HTTPS origin
    to validate requests and issue Secure cookies.
-3. Set `COASTKIND_ADMIN_EMAIL` and `COASTKIND_ADMIN_PASSWORD_HASH` privately in
+3. Set `WAINET_ADMIN_EMAIL` and `WAINET_ADMIN_PASSWORD_HASH` privately in
    Render's environment. Supply a PBKDF2 hash made by `accounts.hash_password`,
    never a plaintext password. This creates a first administrator only if no
    administrator or account with that email already exists. It never resets an
