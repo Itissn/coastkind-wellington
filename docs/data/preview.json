@@ -3,14 +3,14 @@
   "dataset_kind": "synthetic-demo-v1",
   "notice": "Fictional data for software and analysis practice. No real environmental findings, AI calls, human assessments or monetary rewards.",
   "summary": {
-    "observations": 240,
+    "observations": 285,
     "users": 30,
     "table_counts": {
-      "observations": 240,
+      "observations": 285,
       "users": 30,
       "comments": 240,
       "support": 360,
-      "reviews": 140,
+      "reviews": 179,
       "points_ledger": 107,
       "alerts": 35
     },
@@ -21,25 +21,40 @@
       "Porirua Harbour": 48,
       "Island Bay": 48,
       "Lyall Bay": 48,
-      "Oriental Bay": 48
+      "Oriental Bay": 48,
+      "Breaker Bay": 3,
+      "Houghton Bay": 3,
+      "Mākara Beach": 3,
+      "Pukerua Bay": 3,
+      "Tītahi Bay": 3,
+      "Ōwhiro Bay": 3,
+      "Days Bay": 3,
+      "Hataitai Beach": 3,
+      "Paremata": 3,
+      "Plimmerton Beach": 3,
+      "Princess Bay": 3,
+      "Rona Bay": 3,
+      "Seatoun Beach": 3,
+      "Scorching Bay": 3,
+      "Worser Bay": 3
     },
     "analysis_status": {
-      "analyzed": 190,
+      "analyzed": 235,
       "failed": 25,
       "duplicate": 5,
       "pending": 20
     },
     "review_status": {
-      "pending": 100,
+      "pending": 106,
       "rejected": 25,
-      "approved": 115
+      "approved": 154
     },
     "activities": {
-      "boating": 40,
-      "paddling": 40,
-      "recreational_fishing": 40,
-      "swimming": 40,
-      "conservation": 40,
+      "boating": 46,
+      "paddling": 49,
+      "recreational_fishing": 43,
+      "swimming": 55,
+      "conservation": 52,
       "commercial_fishing": 40
     },
     "categories": {
@@ -47,8 +62,8 @@
       "suspected_wastewater": 25,
       "oil_or_fuel": 25,
       "suspected_industrial": 25,
-      "unusual_water": 20,
-      "litter": 20
+      "unusual_water": 26,
+      "litter": 38
     },
     "simulated_points": 1070,
     "submitted_from": "2026-07-28T08:00:00+00:00",
@@ -14230,6 +14245,2574 @@
       "activity": "swimming",
       "scenario_id": "C01-S01",
       "scenario_type": "repeated_concern_quality_approved"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000001",
+      "community": "Breaker Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Breaker Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Breaker Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Breaker Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:17:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 04",
+      "position": {
+        "latitude": -41.3302,
+        "longitude": 174.8321
+      },
+      "photo": "images/b2e3474b-c0ba-55f6-b5b6-ea2366d6ea9f.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "78059473-8c46-53b2-a7c3-66eaa72450d0",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-BREAKERBAY-1",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000002",
+      "community": "Breaker Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Breaker Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Breaker Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Breaker Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:07:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 27",
+      "position": {
+        "latitude": -41.3302,
+        "longitude": 174.8321
+      },
+      "photo": "images/6b5fc7f5-12d3-5561-8cc8-e47345c178ce.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "101493fe-8ba4-516d-b693-ae459d3b75f9",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-BREAKERBAY-2",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000003",
+      "community": "Breaker Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Breaker Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Breaker Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented outfall symbol; odour is reported text, not visible evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Breaker Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "recreational_fishing",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 22",
+      "position": {
+        "latitude": -41.3302,
+        "longitude": 174.8321
+      },
+      "photo": "images/c50cbd4c-d898-57cd-b35f-05d5c9d8511e.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": "1f438d18-9e91-5f2d-93ff-1b9163287bde",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "recreational_fishing",
+      "scenario_id": "WAINET-BREAKERBAY-3",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000004",
+      "community": "Houghton Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Houghton Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Houghton Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Houghton Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:17:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 04",
+      "position": {
+        "latitude": -41.3437,
+        "longitude": 174.7853
+      },
+      "photo": "images/b2e3474b-c0ba-55f6-b5b6-ea2366d6ea9f.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "78059473-8c46-53b2-a7c3-66eaa72450d0",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-HOUGHTONBAY-1",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000005",
+      "community": "Houghton Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Houghton Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Houghton Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Houghton Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:07:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 27",
+      "position": {
+        "latitude": -41.3437,
+        "longitude": 174.7853
+      },
+      "photo": "images/6b5fc7f5-12d3-5561-8cc8-e47345c178ce.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "101493fe-8ba4-516d-b693-ae459d3b75f9",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-HOUGHTONBAY-2",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000006",
+      "community": "Houghton Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Houghton Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Houghton Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented outfall symbol; odour is reported text, not visible evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Houghton Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "recreational_fishing",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 22",
+      "position": {
+        "latitude": -41.3437,
+        "longitude": 174.7853
+      },
+      "photo": "images/c50cbd4c-d898-57cd-b35f-05d5c9d8511e.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": "1f438d18-9e91-5f2d-93ff-1b9163287bde",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "recreational_fishing",
+      "scenario_id": "WAINET-HOUGHTONBAY-3",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000007",
+      "community": "Mākara Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Mākara Beach. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Mākara Beach; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Mākara Beach. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:17:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 04",
+      "position": {
+        "latitude": -41.2202,
+        "longitude": 174.7126
+      },
+      "photo": "images/b2e3474b-c0ba-55f6-b5b6-ea2366d6ea9f.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "78059473-8c46-53b2-a7c3-66eaa72450d0",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-MKARABEACH-1",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000008",
+      "community": "Mākara Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Mākara Beach. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Mākara Beach; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Mākara Beach. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:07:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 27",
+      "position": {
+        "latitude": -41.2202,
+        "longitude": 174.7126
+      },
+      "photo": "images/6b5fc7f5-12d3-5561-8cc8-e47345c178ce.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "101493fe-8ba4-516d-b693-ae459d3b75f9",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-MKARABEACH-2",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000009",
+      "community": "Mākara Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Mākara Beach. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Mākara Beach; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented outfall symbol; odour is reported text, not visible evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Mākara Beach. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "recreational_fishing",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 22",
+      "position": {
+        "latitude": -41.2202,
+        "longitude": 174.7126
+      },
+      "photo": "images/c50cbd4c-d898-57cd-b35f-05d5c9d8511e.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": "1f438d18-9e91-5f2d-93ff-1b9163287bde",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "recreational_fishing",
+      "scenario_id": "WAINET-MKARABEACH-3",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000010",
+      "community": "Pukerua Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Pukerua Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Pukerua Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Pukerua Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:17:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 04",
+      "position": {
+        "latitude": -41.0292,
+        "longitude": 174.892
+      },
+      "photo": "images/b2e3474b-c0ba-55f6-b5b6-ea2366d6ea9f.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "78059473-8c46-53b2-a7c3-66eaa72450d0",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-PUKERUABAY-1",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000011",
+      "community": "Pukerua Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Pukerua Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Pukerua Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Pukerua Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:07:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 27",
+      "position": {
+        "latitude": -41.0292,
+        "longitude": 174.892
+      },
+      "photo": "images/6b5fc7f5-12d3-5561-8cc8-e47345c178ce.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "101493fe-8ba4-516d-b693-ae459d3b75f9",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-PUKERUABAY-2",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000012",
+      "community": "Pukerua Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Pukerua Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Pukerua Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented outfall symbol; odour is reported text, not visible evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Pukerua Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "recreational_fishing",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 22",
+      "position": {
+        "latitude": -41.0292,
+        "longitude": 174.892
+      },
+      "photo": "images/c50cbd4c-d898-57cd-b35f-05d5c9d8511e.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": "1f438d18-9e91-5f2d-93ff-1b9163287bde",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "recreational_fishing",
+      "scenario_id": "WAINET-PUKERUABAY-3",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000013",
+      "community": "Tītahi Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Tītahi Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Tītahi Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Tītahi Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:17:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 04",
+      "position": {
+        "latitude": -41.106,
+        "longitude": 174.8353
+      },
+      "photo": "images/b2e3474b-c0ba-55f6-b5b6-ea2366d6ea9f.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "78059473-8c46-53b2-a7c3-66eaa72450d0",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-TTAHIBAY-1",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000014",
+      "community": "Tītahi Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Tītahi Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Tītahi Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Tītahi Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:07:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 27",
+      "position": {
+        "latitude": -41.106,
+        "longitude": 174.8353
+      },
+      "photo": "images/6b5fc7f5-12d3-5561-8cc8-e47345c178ce.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "101493fe-8ba4-516d-b693-ae459d3b75f9",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-TTAHIBAY-2",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000015",
+      "community": "Tītahi Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Tītahi Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Tītahi Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented outfall symbol; odour is reported text, not visible evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Tītahi Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "recreational_fishing",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 22",
+      "position": {
+        "latitude": -41.106,
+        "longitude": 174.8353
+      },
+      "photo": "images/c50cbd4c-d898-57cd-b35f-05d5c9d8511e.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": "1f438d18-9e91-5f2d-93ff-1b9163287bde",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "recreational_fishing",
+      "scenario_id": "WAINET-TTAHIBAY-3",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000016",
+      "community": "Ōwhiro Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Ōwhiro Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Ōwhiro Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Ōwhiro Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:17:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 04",
+      "position": {
+        "latitude": -41.3449,
+        "longitude": 174.7585
+      },
+      "photo": "images/b2e3474b-c0ba-55f6-b5b6-ea2366d6ea9f.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "78059473-8c46-53b2-a7c3-66eaa72450d0",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-WHIROBAY-1",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000017",
+      "community": "Ōwhiro Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Ōwhiro Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Ōwhiro Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Ōwhiro Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:07:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 27",
+      "position": {
+        "latitude": -41.3449,
+        "longitude": 174.7585
+      },
+      "photo": "images/6b5fc7f5-12d3-5561-8cc8-e47345c178ce.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "101493fe-8ba4-516d-b693-ae459d3b75f9",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-WHIROBAY-2",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000018",
+      "community": "Ōwhiro Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Ōwhiro Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted repeated concern at Ōwhiro Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "litter"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented outfall symbol; odour is reported text, not visible evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional repeated coastal concern at Ōwhiro Bay. A contributor reports visible litter near the shoreline for presentation purposes only. This event did not occur.",
+        "sentiment": "negative",
+        "activity": "recreational_fishing",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 22",
+      "position": {
+        "latitude": -41.3449,
+        "longitude": 174.7585
+      },
+      "photo": "images/c50cbd4c-d898-57cd-b35f-05d5c9d8511e.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": "1f438d18-9e91-5f2d-93ff-1b9163287bde",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "recreational_fishing",
+      "scenario_id": "WAINET-WHIROBAY-3",
+      "scenario_type": "repeated_concern_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000019",
+      "community": "Days Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Days Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Days Bay; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Days Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:25:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 12",
+      "position": {
+        "latitude": -41.2808,
+        "longitude": 174.9064
+      },
+      "photo": "images/e2bebc05-e614-52b4-93c8-f087d29a6298.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "0a4cfedb-9e7f-5416-a936-b064bb3d89a9",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-DAYSBAY-1",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000020",
+      "community": "Days Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Days Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Days Bay; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Days Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "paddling",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:15:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 05",
+      "position": {
+        "latitude": -41.2808,
+        "longitude": 174.9064
+      },
+      "photo": "images/26aa0a7f-2185-5b09-96d2-f9ae1285e9a9.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "0dc6578d-60e0-5d68-9036-22ab507ffd76",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "paddling",
+      "scenario_id": "WAINET-DAYSBAY-2",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000021",
+      "community": "Days Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Days Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Days Bay; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Days Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Guest contributor",
+      "position": {
+        "latitude": -41.2808,
+        "longitude": 174.9064
+      },
+      "photo": "images/6c3836d1-467b-5fdd-b167-fb56c8341d01.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": null,
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "guest",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-DAYSBAY-3",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000022",
+      "community": "Hataitai Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Hataitai Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Hataitai Beach; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Hataitai Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:25:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 12",
+      "position": {
+        "latitude": -41.3058,
+        "longitude": 174.7994
+      },
+      "photo": "images/e2bebc05-e614-52b4-93c8-f087d29a6298.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "0a4cfedb-9e7f-5416-a936-b064bb3d89a9",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-HATAITAIBEACH-1",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000023",
+      "community": "Hataitai Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Hataitai Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Hataitai Beach; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Hataitai Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "paddling",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:15:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 05",
+      "position": {
+        "latitude": -41.3058,
+        "longitude": 174.7994
+      },
+      "photo": "images/26aa0a7f-2185-5b09-96d2-f9ae1285e9a9.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "0dc6578d-60e0-5d68-9036-22ab507ffd76",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "paddling",
+      "scenario_id": "WAINET-HATAITAIBEACH-2",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000024",
+      "community": "Hataitai Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Hataitai Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Hataitai Beach; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Hataitai Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Guest contributor",
+      "position": {
+        "latitude": -41.3058,
+        "longitude": 174.7994
+      },
+      "photo": "images/6c3836d1-467b-5fdd-b167-fb56c8341d01.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": null,
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "guest",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-HATAITAIBEACH-3",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000025",
+      "community": "Paremata",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Paremata. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Paremata; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Paremata. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:25:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 12",
+      "position": {
+        "latitude": -41.1015,
+        "longitude": 174.8714
+      },
+      "photo": "images/e2bebc05-e614-52b4-93c8-f087d29a6298.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "0a4cfedb-9e7f-5416-a936-b064bb3d89a9",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-PAREMATA-1",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000026",
+      "community": "Paremata",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Paremata. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Paremata; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Paremata. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "paddling",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:15:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 05",
+      "position": {
+        "latitude": -41.1015,
+        "longitude": 174.8714
+      },
+      "photo": "images/26aa0a7f-2185-5b09-96d2-f9ae1285e9a9.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "0dc6578d-60e0-5d68-9036-22ab507ffd76",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "paddling",
+      "scenario_id": "WAINET-PAREMATA-2",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000027",
+      "community": "Paremata",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Paremata. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Paremata; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Paremata. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Guest contributor",
+      "position": {
+        "latitude": -41.1015,
+        "longitude": 174.8714
+      },
+      "photo": "images/6c3836d1-467b-5fdd-b167-fb56c8341d01.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": null,
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "guest",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-PAREMATA-3",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000028",
+      "community": "Plimmerton Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Plimmerton Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Plimmerton Beach; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Plimmerton Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:25:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 12",
+      "position": {
+        "latitude": -41.0833,
+        "longitude": 174.8656
+      },
+      "photo": "images/e2bebc05-e614-52b4-93c8-f087d29a6298.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "0a4cfedb-9e7f-5416-a936-b064bb3d89a9",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-PLIMMERTONBEACH-1",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000029",
+      "community": "Plimmerton Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Plimmerton Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Plimmerton Beach; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Plimmerton Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "paddling",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:15:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 05",
+      "position": {
+        "latitude": -41.0833,
+        "longitude": 174.8656
+      },
+      "photo": "images/26aa0a7f-2185-5b09-96d2-f9ae1285e9a9.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "0dc6578d-60e0-5d68-9036-22ab507ffd76",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "paddling",
+      "scenario_id": "WAINET-PLIMMERTONBEACH-2",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000030",
+      "community": "Plimmerton Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Plimmerton Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Plimmerton Beach; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Plimmerton Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Guest contributor",
+      "position": {
+        "latitude": -41.0833,
+        "longitude": 174.8656
+      },
+      "photo": "images/6c3836d1-467b-5fdd-b167-fb56c8341d01.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": null,
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "guest",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-PLIMMERTONBEACH-3",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000031",
+      "community": "Princess Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Princess Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Princess Bay; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Princess Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:25:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 12",
+      "position": {
+        "latitude": -41.3441,
+        "longitude": 174.7879
+      },
+      "photo": "images/e2bebc05-e614-52b4-93c8-f087d29a6298.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "0a4cfedb-9e7f-5416-a936-b064bb3d89a9",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-PRINCESSBAY-1",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000032",
+      "community": "Princess Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Princess Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Princess Bay; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Princess Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "paddling",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:15:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 05",
+      "position": {
+        "latitude": -41.3441,
+        "longitude": 174.7879
+      },
+      "photo": "images/26aa0a7f-2185-5b09-96d2-f9ae1285e9a9.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "0dc6578d-60e0-5d68-9036-22ab507ffd76",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "paddling",
+      "scenario_id": "WAINET-PRINCESSBAY-2",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000033",
+      "community": "Princess Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Princess Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Princess Bay; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Princess Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Guest contributor",
+      "position": {
+        "latitude": -41.3441,
+        "longitude": 174.7879
+      },
+      "photo": "images/6c3836d1-467b-5fdd-b167-fb56c8341d01.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": null,
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "guest",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-PRINCESSBAY-3",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000034",
+      "community": "Rona Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Rona Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Rona Bay; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Rona Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:25:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 12",
+      "position": {
+        "latitude": -41.2895,
+        "longitude": 174.8956
+      },
+      "photo": "images/e2bebc05-e614-52b4-93c8-f087d29a6298.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "0a4cfedb-9e7f-5416-a936-b064bb3d89a9",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-RONABAY-1",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000035",
+      "community": "Rona Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Rona Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Rona Bay; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Rona Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "paddling",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:15:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 05",
+      "position": {
+        "latitude": -41.2895,
+        "longitude": 174.8956
+      },
+      "photo": "images/26aa0a7f-2185-5b09-96d2-f9ae1285e9a9.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "0dc6578d-60e0-5d68-9036-22ab507ffd76",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "paddling",
+      "scenario_id": "WAINET-RONABAY-2",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000036",
+      "community": "Rona Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Rona Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Rona Bay; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Rona Bay. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Guest contributor",
+      "position": {
+        "latitude": -41.2895,
+        "longitude": 174.8956
+      },
+      "photo": "images/6c3836d1-467b-5fdd-b167-fb56c8341d01.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": null,
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "guest",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-RONABAY-3",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000037",
+      "community": "Seatoun Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Seatoun Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Seatoun Beach; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Seatoun Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:25:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 12",
+      "position": {
+        "latitude": -41.3188,
+        "longitude": 174.8296
+      },
+      "photo": "images/e2bebc05-e614-52b4-93c8-f087d29a6298.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "0a4cfedb-9e7f-5416-a936-b064bb3d89a9",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-SEATOUNBEACH-1",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000038",
+      "community": "Seatoun Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Seatoun Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Seatoun Beach; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Seatoun Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "paddling",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:15:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 05",
+      "position": {
+        "latitude": -41.3188,
+        "longitude": 174.8296
+      },
+      "photo": "images/26aa0a7f-2185-5b09-96d2-f9ae1285e9a9.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "0dc6578d-60e0-5d68-9036-22ab507ffd76",
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "paddling",
+      "scenario_id": "WAINET-SEATOUNBEACH-2",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000039",
+      "community": "Seatoun Beach",
+      "feelings": "DEMO / SYNTHETIC: Fictional positive coastal visit at Seatoun Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+      "hint": "observation",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted positive community moment at Seatoun Beach; not a water-quality finding.",
+        "observation_type": "moment",
+        "pollution_types": [],
+        "visible_evidence": [
+          "DEMO fixture only: a geometric blue-water placeholder without environmental evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional positive coastal visit at Seatoun Beach. The contributor enjoyed the water and surroundings. This personal impression is not a water-safety assessment and the event did not occur.",
+        "sentiment": "positive",
+        "activity": "conservation",
+        "image_relevant": true,
+        "text_image_consistency": "consistent",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": false
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-22T09:05:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "approved",
+      "rewards_waived": 1,
+      "author_name": "Guest contributor",
+      "position": {
+        "latitude": -41.3188,
+        "longitude": 174.8296
+      },
+      "photo": "images/6c3836d1-467b-5fdd-b167-fb56c8341d01.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": null,
+      "dataset_consent": 0,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "guest",
+      "points_awarded": 0,
+      "activity": "conservation",
+      "scenario_id": "WAINET-SEATOUNBEACH-3",
+      "scenario_type": "positive_moment_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000040",
+      "community": "Scorching Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional observation at Scorching Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted unresolved observation at Scorching Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "unusual_water"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional observation at Scorching Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+        "sentiment": "unknown",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "uncertain",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": true
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T08:57:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "pending",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 20",
+      "position": {
+        "latitude": -41.297,
+        "longitude": 174.8336
+      },
+      "photo": "images/6252cf75-35ae-5f5e-a657-5853f2cf2a7f.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "58050f5f-bb57-5188-bea6-50029269ffc6",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-SCORCHINGBAY-1",
+      "scenario_type": "needs_review_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000041",
+      "community": "Scorching Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional observation at Scorching Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted unresolved observation at Scorching Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "unusual_water"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented outfall symbol; odour is reported text, not visible evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional observation at Scorching Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+        "sentiment": "unknown",
+        "activity": "boating",
+        "image_relevant": true,
+        "text_image_consistency": "uncertain",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": true
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T08:55:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "pending",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 15",
+      "position": {
+        "latitude": -41.297,
+        "longitude": 174.8336
+      },
+      "photo": "images/e6275f85-6823-5ab3-88c4-6ecc6ff3cfdc.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "f5692cd2-f066-5e1a-9bd3-297471a57d84",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "boating",
+      "scenario_id": "WAINET-SCORCHINGBAY-2",
+      "scenario_type": "needs_review_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000042",
+      "community": "Scorching Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional observation at Scorching Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted unresolved observation at Scorching Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "unusual_water"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional observation at Scorching Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+        "sentiment": "unknown",
+        "activity": "paddling",
+        "image_relevant": true,
+        "text_image_consistency": "uncertain",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": true
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T08:47:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "pending",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 13",
+      "position": {
+        "latitude": -41.297,
+        "longitude": 174.8336
+      },
+      "photo": "images/c43c0c94-16c4-58dc-afe9-e694716b22e0.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": "21e8c742-530e-5305-9cc8-dc406a382538",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "paddling",
+      "scenario_id": "WAINET-SCORCHINGBAY-3",
+      "scenario_type": "needs_review_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000043",
+      "community": "Worser Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional observation at Worser Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-10T10:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted unresolved observation at Worser Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "unusual_water"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional observation at Worser Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+        "sentiment": "unknown",
+        "activity": "swimming",
+        "image_relevant": true,
+        "text_image_consistency": "uncertain",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": true
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T08:57:00+00:00",
+      "observed_at": "2026-09-10T10:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "pending",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 20",
+      "position": {
+        "latitude": -41.3135,
+        "longitude": 174.8288
+      },
+      "photo": "images/6252cf75-35ae-5f5e-a657-5853f2cf2a7f.jpg",
+      "comments": [],
+      "likes": 1,
+      "liked": false,
+      "user_id": "58050f5f-bb57-5188-bea6-50029269ffc6",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "swimming",
+      "scenario_id": "WAINET-WORSERBAY-1",
+      "scenario_type": "needs_review_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000044",
+      "community": "Worser Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional observation at Worser Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-18T14:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted unresolved observation at Worser Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "unusual_water"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented outfall symbol; odour is reported text, not visible evidence. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional observation at Worser Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+        "sentiment": "unknown",
+        "activity": "boating",
+        "image_relevant": true,
+        "text_image_consistency": "uncertain",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": true
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T08:55:00+00:00",
+      "observed_at": "2026-09-18T14:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "pending",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 15",
+      "position": {
+        "latitude": -41.3135,
+        "longitude": 174.8288
+      },
+      "photo": "images/e6275f85-6823-5ab3-88c4-6ecc6ff3cfdc.jpg",
+      "comments": [],
+      "likes": 2,
+      "liked": false,
+      "user_id": "f5692cd2-f066-5e1a-9bd3-297471a57d84",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "boating",
+      "scenario_id": "WAINET-WORSERBAY-2",
+      "scenario_type": "needs_review_demo"
+    },
+    {
+      "id": "90000000-0000-5000-8000-000000000045",
+      "community": "Worser Bay",
+      "feelings": "DEMO / SYNTHETIC: Fictional observation at Worser Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+      "hint": "concern",
+      "created": "2026-09-24T09:00:00+00:00",
+      "status": "analyzed",
+      "analysis": {
+        "summary": "DEMO / SYNTHETIC: Scripted unresolved observation at Worser Bay; not an environmental finding.",
+        "observation_type": "concern",
+        "pollution_types": [
+          "unusual_water"
+        ],
+        "visible_evidence": [
+          "DEMO fixture only: an invented loop representing discarded fishing line. No real photograph was analyzed."
+        ],
+        "reported_experience": "DEMO / SYNTHETIC: Fictional observation at Worser Bay that needs human review. The contributor noticed an unusual patch near the waterline but makes no claim about pollution or safety. This event did not occur.",
+        "sentiment": "unknown",
+        "activity": "paddling",
+        "image_relevant": true,
+        "text_image_consistency": "uncertain",
+        "uncertainties": [
+          "DEMO: All fields are scripted scenario labels, not model outputs or verified observations.",
+          "Water safety, chemical composition, pathogens and pollution source cannot be established by this fixture."
+        ],
+        "needs_human_review": true
+      },
+      "model": "demo-simulated-v1",
+      "analyzed_at": "2026-09-24T08:47:00+00:00",
+      "observed_at": "2026-09-24T09:00:00+00:00",
+      "quality_flags": [
+        "synthetic_demo"
+      ],
+      "duplicate_of": null,
+      "review_status": "pending",
+      "rewards_waived": 1,
+      "author_name": "Demo Coastal Member 13",
+      "position": {
+        "latitude": -41.3135,
+        "longitude": 174.8288
+      },
+      "photo": "images/c43c0c94-16c4-58dc-afe9-e694716b22e0.jpg",
+      "comments": [],
+      "likes": 3,
+      "liked": false,
+      "user_id": "21e8c742-530e-5305-9cc8-dc406a382538",
+      "dataset_consent": 1,
+      "schema_version": "synthetic-demo-coastal-observation-v2",
+      "prompt_version": "demo-evidence-separated-v2",
+      "analysis_error": null,
+      "synthetic": true,
+      "simulated_analysis": true,
+      "contributor_type": "account",
+      "points_awarded": 0,
+      "activity": "paddling",
+      "scenario_id": "WAINET-WORSERBAY-3",
+      "scenario_type": "needs_review_demo"
     }
   ],
   "users": [
@@ -15911,34 +18494,34 @@
     "window_days": 30,
     "as_of": "2026-09-25T09:27:00+00:00",
     "synthetic": true,
-    "notice": "Synthetic demo using the dataset's latest valid observation date. Colours summarise recent community observations, not measured water quality, verified pollution severity or swimming safety. Check official advice before entering the water.",
+    "notice": "Synthetic presentation data. Map colours are deliberately varied to demonstrate WAINET's community-signal workflow; they are not measured water quality, verified pollution severity, or swimming-safety ratings.",
     "communities": [
       {
         "community": "Breaker Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "red",
+        "label": "Repeated concerns",
+        "detail": "Synthetic demo. 3 reviewed, distinct concern photos from 3 demo accounts in the same category span at least 7 days within the last 30 days. This is not a pollution severity rating.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
-          "concern_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
+          "concern_observations": 3,
           "reviewed_positive_observations": 0,
-          "unresolved_observations": 0,
+          "unresolved_observations": 3,
           "excluded_observations": 0,
-          "repeated_concern_photos": 0,
-          "repeated_concern_accounts": 0
+          "repeated_concern_photos": 3,
+          "repeated_concern_accounts": 3
         }
       },
       {
         "community": "Days Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "green",
+        "label": "Positive observations",
+        "detail": "Synthetic demo. 3 recent reviewed positive observations, with no other usable unresolved reports in this window. Positive experiences do not establish safe water.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
           "concern_observations": 0,
-          "reviewed_positive_observations": 0,
+          "reviewed_positive_observations": 3,
           "unresolved_observations": 0,
           "excluded_observations": 0,
           "repeated_concern_photos": 0,
@@ -15947,14 +18530,14 @@
       },
       {
         "community": "Hataitai Beach",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "green",
+        "label": "Positive observations",
+        "detail": "Synthetic demo. 3 recent reviewed positive observations, with no other usable unresolved reports in this window. Positive experiences do not establish safe water.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
           "concern_observations": 0,
-          "reviewed_positive_observations": 0,
+          "reviewed_positive_observations": 3,
           "unresolved_observations": 0,
           "excluded_observations": 0,
           "repeated_concern_photos": 0,
@@ -15963,18 +18546,18 @@
       },
       {
         "community": "Houghton Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "red",
+        "label": "Repeated concerns",
+        "detail": "Synthetic demo. 3 reviewed, distinct concern photos from 3 demo accounts in the same category span at least 7 days within the last 30 days. This is not a pollution severity rating.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
-          "concern_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
+          "concern_observations": 3,
           "reviewed_positive_observations": 0,
-          "unresolved_observations": 0,
+          "unresolved_observations": 3,
           "excluded_observations": 0,
-          "repeated_concern_photos": 0,
-          "repeated_concern_accounts": 0
+          "repeated_concern_photos": 3,
+          "repeated_concern_accounts": 3
         }
       },
       {
@@ -16011,18 +18594,18 @@
       },
       {
         "community": "Mākara Beach",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "red",
+        "label": "Repeated concerns",
+        "detail": "Synthetic demo. 3 reviewed, distinct concern photos from 3 demo accounts in the same category span at least 7 days within the last 30 days. This is not a pollution severity rating.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
-          "concern_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
+          "concern_observations": 3,
           "reviewed_positive_observations": 0,
-          "unresolved_observations": 0,
+          "unresolved_observations": 3,
           "excluded_observations": 0,
-          "repeated_concern_photos": 0,
-          "repeated_concern_accounts": 0
+          "repeated_concern_photos": 3,
+          "repeated_concern_accounts": 3
         }
       },
       {
@@ -16043,14 +18626,14 @@
       },
       {
         "community": "Paremata",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "green",
+        "label": "Positive observations",
+        "detail": "Synthetic demo. 3 recent reviewed positive observations, with no other usable unresolved reports in this window. Positive experiences do not establish safe water.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
           "concern_observations": 0,
-          "reviewed_positive_observations": 0,
+          "reviewed_positive_observations": 3,
           "unresolved_observations": 0,
           "excluded_observations": 0,
           "repeated_concern_photos": 0,
@@ -16075,14 +18658,14 @@
       },
       {
         "community": "Plimmerton Beach",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "green",
+        "label": "Positive observations",
+        "detail": "Synthetic demo. 3 recent reviewed positive observations, with no other usable unresolved reports in this window. Positive experiences do not establish safe water.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
           "concern_observations": 0,
-          "reviewed_positive_observations": 0,
+          "reviewed_positive_observations": 3,
           "unresolved_observations": 0,
           "excluded_observations": 0,
           "repeated_concern_photos": 0,
@@ -16107,14 +18690,14 @@
       },
       {
         "community": "Princess Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "green",
+        "label": "Positive observations",
+        "detail": "Synthetic demo. 3 recent reviewed positive observations, with no other usable unresolved reports in this window. Positive experiences do not establish safe water.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
           "concern_observations": 0,
-          "reviewed_positive_observations": 0,
+          "reviewed_positive_observations": 3,
           "unresolved_observations": 0,
           "excluded_observations": 0,
           "repeated_concern_photos": 0,
@@ -16123,30 +18706,30 @@
       },
       {
         "community": "Pukerua Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "red",
+        "label": "Repeated concerns",
+        "detail": "Synthetic demo. 3 reviewed, distinct concern photos from 3 demo accounts in the same category span at least 7 days within the last 30 days. This is not a pollution severity rating.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
-          "concern_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
+          "concern_observations": 3,
           "reviewed_positive_observations": 0,
-          "unresolved_observations": 0,
+          "unresolved_observations": 3,
           "excluded_observations": 0,
-          "repeated_concern_photos": 0,
-          "repeated_concern_accounts": 0
+          "repeated_concern_photos": 3,
+          "repeated_concern_accounts": 3
         }
       },
       {
         "community": "Rona Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "green",
+        "label": "Positive observations",
+        "detail": "Synthetic demo. 3 recent reviewed positive observations, with no other usable unresolved reports in this window. Positive experiences do not establish safe water.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
           "concern_observations": 0,
-          "reviewed_positive_observations": 0,
+          "reviewed_positive_observations": 3,
           "unresolved_observations": 0,
           "excluded_observations": 0,
           "repeated_concern_photos": 0,
@@ -16155,15 +18738,15 @@
       },
       {
         "community": "Scorching Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "orange",
+        "label": "Needs review",
+        "detail": "Synthetic demo. 3 recent observations need human review. Community reports alone do not establish pollution or water safety.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
-          "concern_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
+          "concern_observations": 3,
           "reviewed_positive_observations": 0,
-          "unresolved_observations": 0,
+          "unresolved_observations": 3,
           "excluded_observations": 0,
           "repeated_concern_photos": 0,
           "repeated_concern_accounts": 0
@@ -16171,14 +18754,14 @@
       },
       {
         "community": "Seatoun Beach",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "green",
+        "label": "Positive observations",
+        "detail": "Synthetic demo. 3 recent reviewed positive observations, with no other usable unresolved reports in this window. Positive experiences do not establish safe water.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
           "concern_observations": 0,
-          "reviewed_positive_observations": 0,
+          "reviewed_positive_observations": 3,
           "unresolved_observations": 0,
           "excluded_observations": 0,
           "repeated_concern_photos": 0,
@@ -16187,31 +18770,31 @@
       },
       {
         "community": "Tītahi Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "red",
+        "label": "Repeated concerns",
+        "detail": "Synthetic demo. 3 reviewed, distinct concern photos from 3 demo accounts in the same category span at least 7 days within the last 30 days. This is not a pollution severity rating.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
-          "concern_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
+          "concern_observations": 3,
           "reviewed_positive_observations": 0,
-          "unresolved_observations": 0,
+          "unresolved_observations": 3,
           "excluded_observations": 0,
-          "repeated_concern_photos": 0,
-          "repeated_concern_accounts": 0
+          "repeated_concern_photos": 3,
+          "repeated_concern_accounts": 3
         }
       },
       {
         "community": "Worser Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "orange",
+        "label": "Needs review",
+        "detail": "Synthetic demo. 3 recent observations need human review. Community reports alone do not establish pollution or water safety.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
-          "concern_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
+          "concern_observations": 3,
           "reviewed_positive_observations": 0,
-          "unresolved_observations": 0,
+          "unresolved_observations": 3,
           "excluded_observations": 0,
           "repeated_concern_photos": 0,
           "repeated_concern_accounts": 0
@@ -16219,18 +18802,18 @@
       },
       {
         "community": "Ōwhiro Bay",
-        "status": "gray",
-        "label": "Not enough evidence",
-        "detail": "Synthetic demo. No qualifying recent observations in the last 30 days. Rejected, duplicate or unusable records do not establish current conditions.",
+        "status": "red",
+        "label": "Repeated concerns",
+        "detail": "Synthetic demo. 3 reviewed, distinct concern photos from 3 demo accounts in the same category span at least 7 days within the last 30 days. This is not a pollution severity rating.",
         "counts": {
-          "recent_observations": 0,
-          "usable_observations": 0,
-          "concern_observations": 0,
+          "recent_observations": 3,
+          "usable_observations": 3,
+          "concern_observations": 3,
           "reviewed_positive_observations": 0,
-          "unresolved_observations": 0,
+          "unresolved_observations": 3,
           "excluded_observations": 0,
-          "repeated_concern_photos": 0,
-          "repeated_concern_accounts": 0
+          "repeated_concern_photos": 3,
+          "repeated_concern_accounts": 3
         }
       }
     ]
