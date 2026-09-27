@@ -12,8 +12,8 @@ from uuid import uuid4
 
 PASSWORD_ITERATIONS = 600_000
 SESSION_SECONDS = 14 * 24 * 60 * 60
-COOKIE_NAME = "coastkind_session"
-_DUMMY_HASH = hashlib.pbkdf2_hmac("sha256", b"invalid password", b"coastkind-login-padding", PASSWORD_ITERATIONS)
+COOKIE_NAME = "wainet_session"
+_DUMMY_HASH = hashlib.pbkdf2_hmac("sha256", b"invalid password", b"wainet-login-padding", PASSWORD_ITERATIONS)
 
 
 class AccountError(ValueError):
@@ -107,7 +107,7 @@ def check_password(password, encoded):
         return hmac.compare_digest(actual, bytes.fromhex(expected)) and valid_input
     except (AttributeError, TypeError, ValueError):
         # Missing accounts consume the same password work as incorrect passwords.
-        actual = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), b"coastkind-login-padding", PASSWORD_ITERATIONS)
+        actual = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), b"wainet-login-padding", PASSWORD_ITERATIONS)
         hmac.compare_digest(actual, _DUMMY_HASH)
         return False
 
